@@ -1,11 +1,11 @@
 Name: MagicalParcherPlus
 Version: 0.0.0
-#Icon: mod_icon.png
+Icon: magical_parcher_zena
 Title: Magical Parcher+
 Desc: Adds Something.
 DLL: "MPPlus.dll"
 Dependencies:
 - Name: Quintessential
-  Version: 0.3.0
+  Version: 0.5.0
 #OptionalDependencies
 #Mappings:

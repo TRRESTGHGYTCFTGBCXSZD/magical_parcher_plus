@@ -24,13 +24,13 @@ internal static class Parts
 	public static Texture ProjectionGlow = class_235.method_615("textures/select/double_glow");
 	public static Texture ProjectionBowl = class_235.method_615("textures/parts/projection_glyph/metal_bowl");
 	public static Texture ProjectionHole = class_235.method_615("textures/parts/projection_glyph/quicksilver_input");
-	public static Texture QuicksilverSymbol = class_235.method_615("textures/atoms/quicksilver_symbol");
-	public static Texture SaltSymbol = class_235.method_615("textures/atoms/salt_symbol");
-	public static Texture QuintessenceSymbol = class_235.method_615("textures/atoms/elements/quintessence_symbol");
-
+    
 	public static Texture Wordexis_Input = class_235.method_615("textures/parts/magicalparcher/inputs/wordexis_input");
-	public static List<AtomType> atomsToAdd;
-	private static IDetour hook_Sim_method_1832;
+	public static Texture QuicksilverSymbol = class_235.method_615("textures/parts/projection_glyph/quicksilver_symbol");
+	public static Texture SaltSymbol = class_235.method_615("textures/parts/animismus/symbol_salt");
+	public static Texture QuintessenceSymbol = class_235.method_615("textures/parts/dispersion/symbol_quintessence");
+
+	public static Texture CalcinatorBase = class_235.method_615("textures/parts/calcinator_base");
 
 	public static void AddNewContent() {
 	    Cardinalification = new(){
@@ -41,8 +41,8 @@ internal static class Parts
 	    	field_1539 = true, // Is a glyph (?)
 	    	field_1549 = class_238.field_1989.field_97.field_382, // Shadow/glow
 	    	field_1550 = class_238.field_1989.field_97.field_383, // Stroke/outline
-	    	field_1547 = Wordexis_Input, // Panel icon
-	    	field_1548 = Wordexis_Input, // Hovered panel icon
+	    	field_1547 = SaltSymbol, // Panel icon
+	    	field_1548 = SaltSymbol, // Hovered panel icon
 	    	field_1540 = new HexIndex[]{
 	    		new(0, 0),
 	    		new(1, 0)
@@ -89,8 +89,8 @@ internal static class Parts
 	    	field_1539 = true, // Is a glyph (?)
 	    	field_1549 = class_238.field_1989.field_97.field_382, // Shadow/glow
 	    	field_1550 = class_238.field_1989.field_97.field_383, // Stroke/outline
-	    	field_1547 = Wordexis_Input, // Panel icon
-	    	field_1548 = Wordexis_Input, // Hovered panel icon
+	    	field_1547 = QuicksilverSymbol, // Panel icon
+	    	field_1548 = QuicksilverSymbol, // Hovered panel icon
 	    	field_1540 = new HexIndex[]{
 	    		new(0, 0),
 	    		new(1, 0)
@@ -177,6 +177,60 @@ internal static class Parts
 		QApi.AddPartTypeToPanel(Gerioification, PartTypes.field_1775);
 		
 		QApi.AddPuzzlePermission("magicalparcherplus:gerioification", "Haxior Gerioification", "Magical Parcher+");
+
+	    Metallification = new(){
+	    	field_1528 = "magical-parcher-plus-metallification", // ID
+	    	field_1529 = class_134.method_253("Glyph of Metallification", string.Empty), // Name
+	    	field_1530 = class_134.method_253("Transforms Quicksilver to Lead.", string.Empty), // Description
+	    	field_1531 = 30, // Cost
+	    	field_1539 = true, // Is a glyph (?)
+	    	field_1549 = class_238.field_1989.field_97.field_382, // Shadow/glow
+	    	field_1550 = class_238.field_1989.field_97.field_383, // Stroke/outline
+	    	field_1547 = Wordexis_Input, // Panel icon
+	    	field_1548 = Wordexis_Input, // Hovered panel icon
+	    	field_1540 = new HexIndex[]{
+	    		new(0, 0)
+	    	}, // Spaces used
+	    	field_1551 = Permissions.None,
+	    	CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:metallification")
+	    };
+
+		QApi.AddPartType(Metallification, (part, pos, editor, renderer) => {
+			Vector2 vector2 = new(41f, 48f);
+			renderer.method_523(CalcinatorBase, new Vector2(0.0f, 0.0f), vector2, 0.0f);
+			renderer.method_528(ProjectionBowl, new HexIndex(0, 0), Vector2.Zero);
+			renderer.method_529(QuicksilverSymbol /*quicksilver_symbol*/, new HexIndex(0, 0), Vector2.Zero);
+		});
+		QApi.AddPartTypeToPanel(Metallification, PartTypes.field_1775);
+		
+		QApi.AddPuzzlePermission("magicalparcherplus:metallification", "Glyph of Metallification", "Magical Parcher+");
+
+	    Demetallification = new(){
+	    	field_1528 = "magical-parcher-plus-demetallification", // ID
+	    	field_1529 = class_134.method_253("Glyph of Demetallification", string.Empty), // Name
+	    	field_1530 = class_134.method_253("Transforms Lead to Quicksilver.", string.Empty), // Description
+	    	field_1531 = 30, // Cost
+	    	field_1539 = true, // Is a glyph (?)
+	    	field_1549 = class_238.field_1989.field_97.field_382, // Shadow/glow
+	    	field_1550 = class_238.field_1989.field_97.field_383, // Stroke/outline
+	    	field_1547 = Wordexis_Input, // Panel icon
+	    	field_1548 = Wordexis_Input, // Hovered panel icon
+	    	field_1540 = new HexIndex[]{
+	    		new(0, 0)
+	    	}, // Spaces used
+	    	field_1551 = Permissions.None,
+	    	CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:demetallification")
+	    };
+
+		QApi.AddPartType(Demetallification, (part, pos, editor, renderer) => {
+			Vector2 vector2 = new(41f, 48f);
+			renderer.method_523(CalcinatorBase, new Vector2(0.0f, 0.0f), vector2, 0.0f);
+			renderer.method_528(ProjectionBowl, new HexIndex(0, 0), Vector2.Zero);
+			renderer.method_529(QuicksilverSymbol /*quicksilver_symbol*/, new HexIndex(0, 0), Vector2.Zero);
+		});
+		QApi.AddPartTypeToPanel(Demetallification, PartTypes.field_1775);
+		
+		QApi.AddPuzzlePermission("magicalparcherplus:demetallification", "Glyph of Demetallification", "Magical Parcher+");
         // the that code runs below
 		QApi.RunAfterCycle((sim, first) => {
 			var seb = sim.field_3818;
@@ -241,6 +295,28 @@ internal static class Parts
 								// upgrade effect for gold -> uranium
 								qs.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, qs.field_2280, class_238.field_1989.field_81.field_614, 30f);
 							}
+						}
+					}
+				}else if(type == Metallification){
+					// if all the atoms exist...
+					if(sim.FindAtomRelative(part, new HexIndex(0, 0)).method_99(out AtomReference bowl)){
+						// and are the right types...
+						if(bowl.field_2280 == AtomTypes.field_1680){
+								// transmute the gold and destroy the quicksilver
+								bowl.field_2277.method_1106(AtomTypes.field_1681, bowl.field_2278);
+								// upgrade effect for gold -> uranium
+								bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
+						}
+					}
+				}else if(type == Demetallification){
+					// if all the atoms exist...
+					if(sim.FindAtomRelative(part, new HexIndex(0, 0)).method_99(out AtomReference bowl)){
+						// and are the right types...
+						if(bowl.field_2280 == AtomTypes.field_1681){
+								// transmute the gold and destroy the quicksilver
+								bowl.field_2277.method_1106(AtomTypes.field_1680, bowl.field_2278);
+								// upgrade effect for gold -> uranium
+								bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
 						}
 					}
 				}
