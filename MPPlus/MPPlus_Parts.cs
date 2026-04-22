@@ -29,6 +29,7 @@ internal static class Parts
 	public static Texture QuicksilverSymbol = class_235.method_615("textures/parts/projection_glyph/quicksilver_symbol");
 	public static Texture SaltSymbol = class_235.method_615("textures/parts/animismus/symbol_salt");
 	public static Texture QuintessenceSymbol = class_235.method_615("textures/parts/dispersion/symbol_quintessence");
+	public static Texture LeadSymbol = class_235.method_615("textures/atoms/lead_symbol");
 
 	public static Texture CalcinatorBase = class_235.method_615("textures/parts/calcinator_base");
 
@@ -226,7 +227,7 @@ internal static class Parts
 			Vector2 vector2 = new(41f, 48f);
 			renderer.method_523(CalcinatorBase, new Vector2(0.0f, 0.0f), vector2, 0.0f);
 			renderer.method_528(ProjectionBowl, new HexIndex(0, 0), Vector2.Zero);
-			renderer.method_529(QuicksilverSymbol /*quicksilver_symbol*/, new HexIndex(0, 0), Vector2.Zero);
+			renderer.method_529(LeadSymbol /*quicksilver_symbol*/, new HexIndex(0, 0), Vector2.Zero);
 		});
 		QApi.AddPartTypeToPanel(Demetallification, PartTypes.field_1775);
 		
