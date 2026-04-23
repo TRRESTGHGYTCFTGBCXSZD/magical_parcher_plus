@@ -37,7 +37,14 @@ internal static class Parts
 
 	public static Texture CalcinatorBase = class_235.method_615("textures/parts/calcinator_base");
 
+	private static bool ContentLoaded = false;
 	public static void AddNewContent() {
+		if (ContentLoaded) return;
+		ContentLoaded = true;
+
+		Flexibility.addMetallificationRule(AtomTypes.field_1680,AtomTypes.field_1681);
+		Flexibility.addDemetallificationRule(AtomTypes.field_1681,AtomTypes.field_1680);
+
 	    Cardinalification = new(){
 	    	field_1528 = "magical-parcher-plus-cardinalification", // ID
 	    	field_1529 = class_134.method_253("Haxior Cardinalification", string.Empty), // Name
@@ -304,36 +311,26 @@ internal static class Parts
 					}
 				}else if(type == Metallification){
 					// if all the atoms exist...
+					AtomType Demetal = default(AtomType);
 					if(sim.FindAtomRelative(part, new HexIndex(0, 0)).method_99(out AtomReference bowl)){
 						// and are the right types...
-						if(bowl.field_2280 == AtomTypes.field_1680){
-								// transmute the gold and destroy the quicksilver
-								bowl.field_2277.method_1106(AtomTypes.field_1681, bowl.field_2278);
-								// upgrade effect for gold -> uranium
-								bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
-						}
-						if(IsHalvingLoaded && bowl.field_2280 == HalvingMetallurgy.Atoms.Quickcopper){
-								// transmute the gold and destroy the quicksilver
-								bowl.field_2277.method_1106(HalvingMetallurgy.Atoms.Beryl, bowl.field_2278);
-								// upgrade effect for gold -> uranium
-								bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
+						if(Flexibility.applyMetallificationRule(bowl.field_2280,out Demetal)){
+							// transmute the gold and destroy the quicksilver
+							bowl.field_2277.method_1106(Demetal, bowl.field_2278);
+							// upgrade effect for gold -> uranium
+							bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
 						}
 					}
 				}else if(type == Demetallification){
 					// if all the atoms exist...
+					AtomType Demetal = default(AtomType);
 					if(sim.FindAtomRelative(part, new HexIndex(0, 0)).method_99(out AtomReference bowl)){
 						// and are the right types...
-						if(bowl.field_2280 == AtomTypes.field_1681){
-								// transmute the gold and destroy the quicksilver
-								bowl.field_2277.method_1106(AtomTypes.field_1680, bowl.field_2278);
-								// upgrade effect for gold -> uranium
-								bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
-						}
-						if(IsHalvingLoaded && bowl.field_2280 == HalvingMetallurgy.Atoms.Beryl){
-								// transmute the gold and destroy the quicksilver
-								bowl.field_2277.method_1106(HalvingMetallurgy.Atoms.Quickcopper, bowl.field_2278);
-								// upgrade effect for gold -> uranium
-								bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
+						if(Flexibility.applyDemetallificationRule(bowl.field_2280,out Demetal)){
+							// transmute the gold and destroy the quicksilver
+							bowl.field_2277.method_1106(Demetal, bowl.field_2278);
+							// upgrade effect for gold -> uranium
+							bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
 						}
 					}
 				}

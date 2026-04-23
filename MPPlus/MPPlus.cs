@@ -18,12 +18,16 @@ public class MagicalParcherPlus : QuintessentialMod
 	public override void Load() {
         self = this;
         Settings = new Settei();
-		Parts.IsHalvingLoaded = QuintessentialLoader.CodeMods.Any(mod => mod.Meta.Name == "HalvingMetallurgy");
 	}
 	public override void LoadPuzzleContent() {
 		Atoms.AddNewContent();
 		Parts.AddNewContent();
 		On.MoleculeEditorScreen.method_50 += AddElementsToMoleculeEditor;
+		if (QuintessentialLoader.CodeMods.Any(mod => mod.Meta.Name == "HalvingMetallurgy"))
+		{
+			Flexibility.addMetallificationRule(HalvingMetallurgy.Atoms.Quickcopper,HalvingMetallurgy.Atoms.Beryl);
+			Flexibility.addDemetallificationRule(HalvingMetallurgy.Atoms.Beryl,HalvingMetallurgy.Atoms.Quickcopper);
+		}
 	}
 	static MethodInfo method_1130_info = typeof(MoleculeEditorScreen).GetMethod("method_1130", BindingFlags.Instance | BindingFlags.NonPublic);
 	private void AddElementsToMoleculeEditor(On.MoleculeEditorScreen.orig_method_50 orig, MoleculeEditorScreen self, float param_4858)
