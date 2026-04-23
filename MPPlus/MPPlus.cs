@@ -20,9 +20,20 @@ public class MagicalParcherPlus : QuintessentialMod
         Settings = new Settei();
 	}
 	public override void LoadPuzzleContent() {
+		if (QuintessentialLoader.CodeMods.Any(mod => mod.Meta.Name == "HalvingMetallurgy"))
+		{
+			Atoms.PTableAtoms[3] = HalvingMetallurgy.Atoms.Beryl;
+			Atoms.PTableIgnore[3] = true;
+			Atoms.PTableAtoms[27] = HalvingMetallurgy.Atoms.Nickel;
+			Atoms.PTableIgnore[27] = true;
+			Atoms.PTableAtoms[29] = HalvingMetallurgy.Atoms.Zinc;
+			Atoms.PTableIgnore[29] = true;
+			Atoms.PTableAtoms[75] = HalvingMetallurgy.Atoms.Osmium;
+			Atoms.PTableIgnore[75] = true;
+		}
 		Atoms.AddNewContent();
 		Parts.AddNewContent();
-		On.MoleculeEditorScreen.method_50 += AddElementsToMoleculeEditor;
+		//On.MoleculeEditorScreen.method_50 += AddElementsToMoleculeEditor;
 		if (QuintessentialLoader.CodeMods.Any(mod => mod.Meta.Name == "HalvingMetallurgy"))
 		{
 			Flexibility.addMetallificationRule(HalvingMetallurgy.Atoms.Quickcopper,HalvingMetallurgy.Atoms.Beryl);
@@ -30,12 +41,12 @@ public class MagicalParcherPlus : QuintessentialMod
 		}
 	}
 	static MethodInfo method_1130_info = typeof(MoleculeEditorScreen).GetMethod("method_1130", BindingFlags.Instance | BindingFlags.NonPublic);
-	private void AddElementsToMoleculeEditor(On.MoleculeEditorScreen.orig_method_50 orig, MoleculeEditorScreen self, float param_4858)
-	{
-		orig(self, param_4858);
-		// add new atoms to the editor palette
-		for (int i = 0; i < Atoms.atomsToAdd.Count(); i++) method_1130_info.Invoke(self, new object[] { new Vector2(560, 440 - 30 * i), Atoms.atomsToAdd[i], true });
-	}
+	//private void AddElementsToMoleculeEditor(On.MoleculeEditorScreen.orig_method_50 orig, MoleculeEditorScreen self, float param_4858)
+	//{
+	//	orig(self, param_4858);
+	//	// add new atoms to the editor palette
+	//	for (int i = 0; i < Atoms.atomsToAdd.Count(); i++) method_1130_info.Invoke(self, new object[] { new Vector2(560, 440 - 30 * i), Atoms.atomsToAdd[i], true });
+	//}
     public override void ApplySettings()
     {
         base.ApplySettings();

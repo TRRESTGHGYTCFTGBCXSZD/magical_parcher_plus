@@ -25,8 +25,41 @@ internal static class Atoms
     private static byte ErabukunAtomID = 255;
     private static byte WordexisAtomID = 254;
     private static byte TricAtomID = 253;
-    private static byte HeliumAtomID = 252;
-    private static byte FluorineAtomID = 251;
+    private static byte PTableAtomID = 252;
+    private static string[] PTableNaming = {
+		"Hydrogen","Helium",
+		"Lithium","Berylium","Boron","Carbon","Nitrogen","Oxygen","Fluorine","Neon",
+		"Sodium","Magnesium","Aluminium","Phosphorus","Silicon","Sulfur","Chlorine","Argon",
+		"Potassium","Calcium","Scandium","Titanium","Vanadium","Chromium","Manganese","Iron","Cobalt","Nickel","Copper","Zinc","Gallium","Germanium","Arsenic","Selenium","Bromine","Krypton",
+		"Rubidium","Strontium","Yttrium","Zirconium","Niobium","Molybdenum","Technetium","Ruthenium","Rhodium","Palladium","Silver","Cadmium","Indium","Tin","Antimony","Tellurium","Iodine","Xenon",
+		"Caesium","Barium","Lanthanum","Cerium","Praseodymium","Neodymium","Promethium","Samarium","Europium","Gadolinium","Terbium","Dysprosium","Holmium","Erbium","Thulium","Ytterbium","Lutetium","Hafnium","Tantalum","Tungsten","Rhenium","Osmium","Iridium","Platinum","Gold","Mercury","Thallium","Lead","Bismuth","Polonium","Astatine","Radon",
+		"Francium","Radium","Actinium","Thorium","Protactinium","Uranium","Neptunium","Plutonium","Americium","Curium","Berkelium","Californium","Einsteinium","Fermium","Mendelevium","Nobelium","Lawrencium","Rutherfordium","Dubnium","Seaborgium","Bohrium","Hassium","Meitnerium","Darmstadtium","Roentgenium","Copernicium","Nihonium","Flerovium","Moscovium","Livermorium","Tennessine","Oganesson"
+	};
+    public static bool[] PTableIgnore = {
+		false,false,
+		false,false,false,false,false,false,false,false,
+		false,false,false,false,false,false,false,false,
+		false,false,false,false,false,false,false,true, false,false,true, false,false,false,false,false,false,false,
+		false,false,false,false,false,false,false,false,false,false,true, false,false,true, false,false,false,false,
+		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true, true, false,true, false,false,false,false,
+		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
+	};
+    public static bool[] PTableTextured = {
+		false,true, 
+		false,false,false,false,false,false,true, false,
+		false,false,false,false,false,false,false,false,
+		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
+		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
+		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
+		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
+	};
+
+	public static T AndOr<T>(bool dind, T truedind, T falsedind) {
+        if (dind) return truedind;
+		return falsedind;
+	}
+    public static AtomType[] PTableAtoms = new AtomType[118];
+	public static Dictionary<AtomType, int> PTableAtomsReverse = new();
     //atoms that don't categorize
 	public static AtomType Wordexis, Erabukun, Tric;
     //period 1 and 2 atoms
@@ -93,48 +126,59 @@ internal static class Atoms
         	QuintAtomType = "magicalparcherplus:tric"
 		};
 
-		Helium = new AtomType()
-		{
-			/*ID, byte*/field_2283 = HeliumAtomID,
-			/*Non-local Name*/field_2284 = class_134.method_254("Helium"),
-			/*Atomic Name*/field_2285 = class_134.method_253("Helium", string.Empty),
-			/*Local name*/field_2286 = class_134.method_253("Helium", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/helium_symbol"),
-			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
-			/*Default Graphics struct*/field_2290 = new class_106()
-			{
-				field_994 = class_235.method_615("textures/atoms/helium_base"),//salt_diffuse
-				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
-			},
-        	QuintAtomType = "magicalparcherplus:helium"
-		};
-
-		Fluorine = new AtomType()
-		{
-			/*ID, byte*/field_2283 = FluorineAtomID,
-			/*Non-local Name*/field_2284 = class_134.method_254("Fluorine"),
-			/*Atomic Name*/field_2285 = class_134.method_253("Elemental Fluorine", string.Empty),
-			/*Local name*/field_2286 = class_134.method_253("Fluorine", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/fluorine_symbol"),
-			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
-			/*Default Graphics struct*/field_2290 = new class_106()
-			{
-				field_994 = class_235.method_615("textures/atoms/fluorine_base"),//salt_diffuse
-				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
-			},
-        	QuintAtomType = "magicalparcherplus:fluorine"
-		};
-
-		atomsToAdd = new List<AtomType>() { Wordexis, Erabukun, Tric, Fluorine, Helium, };
+		atomsToAdd = new List<AtomType>() { Wordexis, Erabukun, Tric, };
 
 		//add atoms to internal dictionary
-		var old_len = AtomTypes.field_1691.Length;
-		Array.Resize(ref AtomTypes.field_1691, AtomTypes.field_1691.Length + atomsToAdd.Count());
+		//var old_len = AtomTypes.field_1691.Length;
+		//Array.Resize(ref AtomTypes.field_1691, AtomTypes.field_1691.Length + atomsToAdd.Count());
 
 		for (int i = 0; i < atomsToAdd.Count(); i++)
 		{
-			AtomTypes.field_1691[old_len + i] = atomsToAdd[i];
+			//AtomTypes.field_1691[old_len + i] = atomsToAdd[i];
+			QApi.AddAtomType(atomsToAdd[i]);
 		}
+
+		atomsToAdd = new List<AtomType>() {};
+
+		for (int PTableAtomIndex = 0; PTableAtomIndex < 118; PTableAtomIndex++)
+		{
+			if (!PTableIgnore[PTableAtomIndex]) {
+				PTableAtoms[PTableAtomIndex] = new AtomType()
+				{
+					/*ID, byte*/field_2283 = PTableAtomID,
+					/*Non-local Name*/field_2284 = class_134.method_254(PTableNaming[PTableAtomIndex]),
+					/*Atomic Name*/field_2285 = class_134.method_253("Elemental "+PTableNaming[PTableAtomIndex], string.Empty),
+					/*Local name*/field_2286 = class_134.method_253(PTableNaming[PTableAtomIndex], string.Empty),
+					/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/ptableatoms/"+PTableNaming[PTableAtomIndex].ToLower()+"_symbol"),
+					/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+					/*Default Graphics struct*/field_2290 = new class_106()
+					{
+						field_994 = AndOr(PTableTextured[PTableAtomIndex],class_235.method_615("textures/atoms/magicalparcher/ptableatoms/"+PTableNaming[PTableAtomIndex].ToLower()+"_diffuse"),class_235.method_615("textures/atoms/salt_diffuse")),//salt_diffuse
+						field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+					},
+        			QuintAtomType = "magicalparcherplus:"+PTableNaming[PTableAtomIndex].ToLower()
+				};
+				atomsToAdd.Add(PTableAtoms[PTableAtomIndex]);
+			}
+		}
+
+		//add atoms to internal dictionary
+		//old_len = AtomTypes.field_1691.Length;
+		//Array.Resize(ref AtomTypes.field_1691, AtomTypes.field_1691.Length + atomsToAdd.Count());
+
+		for (int i = 0; i < atomsToAdd.Count(); i++)
+		{
+			//AtomTypes.field_1691[old_len + i] = atomsToAdd[i];
+			QApi.AddAtomType(atomsToAdd[i]);
+		}
+		//assign ptable atoms manually
+		PTableAtoms[25] = AtomTypes.field_1684;
+		PTableAtoms[28] = AtomTypes.field_1682;
+		PTableAtoms[46] = AtomTypes.field_1685;
+		PTableAtoms[49] = AtomTypes.field_1683;
+		PTableAtoms[78] = AtomTypes.field_1686;
+		PTableAtoms[79] = AtomTypes.field_1680;
+		PTableAtoms[81] = AtomTypes.field_1681;
 		On.Editor.method_927 += RenderExtraStuff;
 	}
     internal static void RenderExtraStuff(On.Editor.orig_method_927 orig, AtomType type, Vector2 position, float param_4582, float param_4583, float param_4584, float param_4585, float param_4586, float param_4587, Texture overrideShadow, Texture maskM, bool param_4590)
@@ -159,6 +203,18 @@ internal static class Atoms
 	        class_135.method_263(WordexisVisor, tecolor, position - new Vector2(30, 30), new Vector2(60, 60));
         }
     }
+
+	public static bool IsAndGetPTableAtom(AtomType WhatAtom, out int AtomIndex) {
+		for (int i = 0; i < 118; i++)
+		{
+			if (WhatAtom == PTableAtoms[i]) {
+				AtomIndex = i;
+				return true;
+			}
+		}
+		AtomIndex = 0;
+		return false;
+	}
 
 	public static void Unload()
     {
