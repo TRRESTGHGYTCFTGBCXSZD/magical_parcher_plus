@@ -19,7 +19,11 @@ using Texture = class_256;
 
 internal static class Parts
 {
+	public static bool IsHalvingLoaded = false;
+	//season 1 glyphs
 	public static PartType Cardinalification, Liquidation, Gerioification, Metallification, Demetallification;
+	//season 2 glyphs
+	public static PartType AnimisStabilizer;
 	public static Texture ProjectionBase = class_235.method_615("textures/parts/projection_glyph/base");
 	public static Texture ProjectionGlow = class_235.method_615("textures/select/double_glow");
 	public static Texture ProjectionBowl = class_235.method_615("textures/parts/projection_glyph/metal_bowl");
@@ -308,6 +312,12 @@ internal static class Parts
 								// upgrade effect for gold -> uranium
 								bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
 						}
+						if(IsHalvingLoaded && bowl.field_2280 == HalvingMetallurgy.Atoms.Quickcopper){
+								// transmute the gold and destroy the quicksilver
+								bowl.field_2277.method_1106(HalvingMetallurgy.Atoms.Beryl, bowl.field_2278);
+								// upgrade effect for gold -> uranium
+								bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
+						}
 					}
 				}else if(type == Demetallification){
 					// if all the atoms exist...
@@ -316,6 +326,12 @@ internal static class Parts
 						if(bowl.field_2280 == AtomTypes.field_1681){
 								// transmute the gold and destroy the quicksilver
 								bowl.field_2277.method_1106(AtomTypes.field_1680, bowl.field_2278);
+								// upgrade effect for gold -> uranium
+								bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
+						}
+						if(IsHalvingLoaded && bowl.field_2280 == HalvingMetallurgy.Atoms.Beryl){
+								// transmute the gold and destroy the quicksilver
+								bowl.field_2277.method_1106(HalvingMetallurgy.Atoms.Quickcopper, bowl.field_2278);
 								// upgrade effect for gold -> uranium
 								bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
 						}

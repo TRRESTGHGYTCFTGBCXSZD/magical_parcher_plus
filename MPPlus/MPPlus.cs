@@ -18,6 +18,7 @@ public class MagicalParcherPlus : QuintessentialMod
 	public override void Load() {
         self = this;
         Settings = new Settei();
+		Parts.IsHalvingLoaded = QuintessentialLoader.CodeMods.Any(mod => mod.Meta.Name == "HalvingMetallurgy");
 	}
 	public override void LoadPuzzleContent() {
 		Atoms.AddNewContent();

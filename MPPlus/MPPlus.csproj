@@ -33,6 +33,14 @@
       <HintPath>E:\SteamLibrary\steamapps\common\Opus Magnum\YamlDotNet.dll</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
+    <Reference Include="Vaca">
+      <HintPath>E:\SteamLibrary\steamapps\common\Opus Magnum\UnpackedMods\Vaca_1.0.1\Vaca.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
+    </Reference>
+    <Reference Include="HalvingMetallurgy">
+      <HintPath>E:\SteamLibrary\steamapps\common\Opus Magnum\UnpackedMods\HalvingMetallurgy_4.2.0\HalvingMetallurgy.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
