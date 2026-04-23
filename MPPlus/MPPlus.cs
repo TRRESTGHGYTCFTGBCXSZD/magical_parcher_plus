@@ -11,8 +11,17 @@ using System.IO;
 
 namespace MagicalParcherPlus;
 
+using AtomTypes = class_175;
+
 public class MagicalParcherPlus : QuintessentialMod
 {
+	internal static AtomType FindModAtom(string QuintAtom){
+		foreach(AtomType don in QApi.ModAtomTypes)
+		{
+			if (don.QuintAtomType == QuintAtom) return don;
+		}	
+		return AtomTypes.field_1675; //salt as fallback
+	}
 	public static QuintessentialMod self;
 	public override Type SettingsType => typeof(Settei);
 	public override void Load() {
@@ -30,6 +39,11 @@ public class MagicalParcherPlus : QuintessentialMod
 			Atoms.PTableIgnore[29] = true;
 			Atoms.PTableAtoms[75] = HalvingMetallurgy.Atoms.Osmium;
 			Atoms.PTableIgnore[75] = true;
+		}
+		if (QuintessentialLoader.CodeMods.Any(mod => mod.Meta.Name == "UnstableElements"))
+		{
+			Atoms.PTableAtoms[91] = FindModAtom("UnstableElements:uranium"); //why it is private
+			Atoms.PTableIgnore[91] = true;
 		}
 		Atoms.AddNewContent();
 		Parts.AddNewContent();

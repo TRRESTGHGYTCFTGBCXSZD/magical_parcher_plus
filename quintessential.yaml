@@ -10,4 +10,6 @@ Dependencies:
 OptionalDependencies:
 - Name: HalvingMetallurgy
   Version: 4.2.0
+- Name: UnstableElements
+  Version: 0.3.0
 #Mappings:
