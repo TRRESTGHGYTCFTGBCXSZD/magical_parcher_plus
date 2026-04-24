@@ -438,14 +438,14 @@ internal static class Parts
 					   && sim.FindAtomRelative(part, new(1, 0)).method_99(out AtomReference word)){
 						// and are the right types...
 						if(Atoms.IsAndGetPTableAtom(qs.field_2280, out int WinosPrime)
-						   && word.field_2280 == Atoms.Tric){
+						   && word.field_2280 == Atoms.Proton){
 							// and the quicksilver is not being consumed or held...
 							if(!word.field_2281 && !word.field_2282 && WinosPrime < 118-1){
 								// transmute the gold and destroy the quicksilver
 								qs.field_2277.method_1106(Atoms.PTableAtoms[WinosPrime+1], qs.field_2278);
 								word.field_2277.method_1107(word.field_2278);
 								// show the removal effects for qs
-								seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Tric));
+								seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Proton));
 								// upgrade effect for gold -> uranium
 								qs.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, qs.field_2280, class_238.field_1989.field_81.field_614, 30f);
 							}
@@ -462,7 +462,7 @@ internal static class Parts
 								// transmute the gold and destroy the quicksilver
 								qs.field_2277.method_1106(Atoms.PTableAtoms[WinosPrime-1], qs.field_2278);
 								Molecule molecule = new Molecule();
-								molecule.method_1105(new Atom(Atoms.Tric), part.method_1184(new(1, 0)));
+								molecule.method_1105(new Atom(Atoms.Proton), part.method_1184(new(1, 0)));
 								moleculeList.Add(molecule);
 								// show the removal effects for qs
 								//seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));

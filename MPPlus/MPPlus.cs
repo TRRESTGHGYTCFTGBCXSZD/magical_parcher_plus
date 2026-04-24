@@ -44,6 +44,19 @@ public class MagicalParcherPlus : QuintessentialMod
 		{
 			Atoms.PTableAtoms[91] = FindModAtom("UnstableElements:uranium"); //why it is private
 			Atoms.PTableIgnore[91] = true;
+			//Flexibility.addExtraAtomicException(FindModAtom("UnstableElements:uranium_0_1"),91); //it is inaccessible to this atom 
+			//Flexibility.addExtraAtomicException(FindModAtom("UnstableElements:uranium_0_2"),91); //and it has strict type checking
+			//Flexibility.addExtraAtomicException(FindModAtom("UnstableElements:uranium_1_0"),91); //so it won't detect isotopes
+			//Flexibility.addExtraAtomicException(FindModAtom("UnstableElements:uranium_1_1"),91);
+			//Flexibility.addExtraAtomicException(FindModAtom("UnstableElements:uranium_1_2"),91);
+			//Flexibility.addExtraAtomicException(FindModAtom("UnstableElements:uranium_2_0"),91);
+			//Flexibility.addExtraAtomicException(FindModAtom("UnstableElements:uranium_2_1"),91);
+			//Flexibility.addExtraAtomicException(FindModAtom("UnstableElements:uranium_2_2"),91);
+		}
+		if (QuintessentialLoader.CodeMods.Any(mod => mod.Meta.Name == "MetalQuintessence"))
+		{
+			Atoms.PTableAtoms[23] = MetalQuintessence.MetalQuintessenceAtoms.Chromium;
+			Atoms.PTableIgnore[23] = true;
 		}
 		Atoms.AddNewContent();
 		Parts.AddNewContent();

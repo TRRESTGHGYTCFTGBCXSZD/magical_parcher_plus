@@ -26,6 +26,7 @@ internal static class Atoms
     private static byte WordexisAtomID = 254;
     private static byte TricAtomID = 253;
     private static byte PTableAtomID = 252;
+    private static byte ProtonID = 251;
     private static string[] PTableNaming = {
 		"Hydrogen","Helium",
 		"Lithium","Berylium","Boron","Carbon","Nitrogen","Oxygen","Fluorine","Neon",
@@ -61,18 +62,11 @@ internal static class Atoms
     public static AtomType[] PTableAtoms = new AtomType[118];
 	public static Dictionary<AtomType, int> PTableAtomsReverse = new();
     //atoms that don't categorize
-	public static AtomType Wordexis, Erabukun, Tric;
-    //period 1 and 2 atoms
-	public static AtomType Helium, Fluorine;
-    //period 3 atoms
-    //period 4 atoms
-    //period 5 atoms
-    //period 6 atoms
-    //period 7 atoms
+	public static AtomType Wordexis, Erabukun, Tric, Proton;
 	public static List<AtomType> atomsToAdd;
-	public static Texture WordexisBackAccessories = class_235.method_615("textures/atoms/wordexis_accessoriesback");
-	public static Texture WordexisVisor = class_235.method_615("textures/atoms/wordexis_accessoriesfront");
-	public static Texture TricBackAccessories = class_235.method_615("textures/atoms/tric_accessoriesback");
+	public static Texture WordexisBackAccessories = class_235.method_615("textures/atoms/magicalparcher/wordexis_accessoriesback");
+	public static Texture WordexisVisor = class_235.method_615("textures/atoms/magicalparcher/wordexis_accessoriesfront");
+	public static Texture TricBackAccessories = class_235.method_615("textures/atoms/magicalparcher/tric_accessoriesback");
 
 	public static void AddNewContent() {
 		//
@@ -84,11 +78,11 @@ internal static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Erabukun"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Erabukun", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Erabukun", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/erabukun_face"),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/erabukun_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/erabukun_combined"),//salt_diffuse
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/erabukun_combined"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
         	QuintAtomType = "magicalparcherplus:erabukun"
@@ -100,11 +94,11 @@ internal static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Wordexis"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Wordexis", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Wordexis", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/wordexis_face"),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/wordexis_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/wordexis_base"),//salt_diffuse
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/wordexis_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
         	QuintAtomType = "magicalparcherplus:wordexis"
@@ -116,17 +110,33 @@ internal static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Tric"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Tric", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Tric", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/tric_face"),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/tric_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/tric_base"),//salt_diffuse
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/tric_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
         	QuintAtomType = "magicalparcherplus:tric"
 		};
 
-		atomsToAdd = new List<AtomType>() { Wordexis, Erabukun, Tric, };
+		Proton = new AtomType()
+		{
+			/*ID, byte*/field_2283 = ProtonID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Proton"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Proton", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Proton", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/proton_symbol"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/proton_diffuse"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+        	QuintAtomType = "magicalparcherplus:proton"
+		};
+
+		atomsToAdd = new List<AtomType>() { Wordexis, Erabukun, Tric, Proton, };
 
 		//add atoms to internal dictionary
 		//var old_len = AtomTypes.field_1691.Length;
@@ -211,6 +221,10 @@ internal static class Atoms
 				AtomIndex = i;
 				return true;
 			}
+		}
+		if (Flexibility.applyExtraAtomicException(WhatAtom,out int AtomIndexD)) {
+			AtomIndex = AtomIndexD;
+			return true;
 		}
 		AtomIndex = 0;
 		return false;

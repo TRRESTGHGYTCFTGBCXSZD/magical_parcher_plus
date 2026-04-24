@@ -12,4 +12,6 @@ OptionalDependencies:
   Version: 4.2.0
 - Name: UnstableElements
   Version: 0.3.0
+- Name: MetalQuintessence
+  Version: 1.0.0
 #Mappings:

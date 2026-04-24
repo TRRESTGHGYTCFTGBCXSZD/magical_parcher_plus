@@ -15,12 +15,15 @@ public class Flexibility
 {
 	private static Dictionary<AtomType, AtomType> MetallificationMeta = new();
 	private static Dictionary<AtomType, AtomType> DemetallificationMeta = new();
+	private static Dictionary<AtomType, int> ExtraAtomicExceptions = new();
     //reductive metal code
 	public static bool applyMetallificationRule(AtomType input, out AtomType output) => applyTRule(input, MetallificationMeta, out output);
 	public static bool applyDemetallificationRule(AtomType input, out AtomType output) => applyTRule(input, DemetallificationMeta, out output);
+	public static bool applyExtraAtomicException(AtomType input, out int output) => applyTRule(input, ExtraAtomicExceptions, out output);
 
 	public static void addMetallificationRule(AtomType hi, AtomType lo) => addTRule("metallification", hi, lo, MetallificationMeta, new List<AtomType> {});
 	public static void addDemetallificationRule(AtomType hi, AtomType lo) => addTRule("demetallification", hi, lo, DemetallificationMeta, new List<AtomType> {});
+	public static void addExtraAtomicException(AtomType atomictype, int atomicnumber) => addTRule("extraatomicexceptions", atomictype, atomicnumber, ExtraAtomicExceptions, new List<AtomType> {});
 
 	private static bool applyTRule<T>(AtomType hi, Dictionary<AtomType, T> dict, out T lo)
 	{
