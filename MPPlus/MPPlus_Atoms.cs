@@ -45,15 +45,6 @@ internal static class Atoms
 		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true, true, false,true, false,false,false,false,
 		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
 	};
-    public static bool[] PTableTextured = {
-		false,true, 
-		false,false,false,false,false,false,true, false,
-		false,false,false,false,false,false,false,false,
-		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-	};
 
 	public static T AndOr<T>(bool dind, T truedind, T falsedind) {
         if (dind) return truedind;
@@ -153,6 +144,7 @@ internal static class Atoms
 		for (int PTableAtomIndex = 0; PTableAtomIndex < 118; PTableAtomIndex++)
 		{
 			if (!PTableIgnore[PTableAtomIndex]) {
+				bool ThisImageShouldBeTextured = MagicalParcherPlus.DoesThisTextureExists("textures/atoms/magicalparcher/ptableatoms/"+PTableNaming[PTableAtomIndex].ToLower()+"_diffuse");
 				PTableAtoms[PTableAtomIndex] = new AtomType()
 				{
 					/*ID, byte*/field_2283 = PTableAtomID,
@@ -163,7 +155,7 @@ internal static class Atoms
 					/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 					/*Default Graphics struct*/field_2290 = new class_106()
 					{
-						field_994 = AndOr(PTableTextured[PTableAtomIndex],class_235.method_615("textures/atoms/magicalparcher/ptableatoms/"+PTableNaming[PTableAtomIndex].ToLower()+"_diffuse"),class_235.method_615("textures/atoms/salt_diffuse")),//salt_diffuse
+						field_994 = AndOr(ThisImageShouldBeTextured,class_235.method_615("textures/atoms/magicalparcher/ptableatoms/"+PTableNaming[PTableAtomIndex].ToLower()+"_diffuse"),class_235.method_615("textures/atoms/salt_diffuse")),//salt_diffuse
 						field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 					},
         			QuintAtomType = "magicalparcherplus:"+PTableNaming[PTableAtomIndex].ToLower()

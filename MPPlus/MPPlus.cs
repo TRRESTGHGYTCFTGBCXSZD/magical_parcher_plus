@@ -22,6 +22,48 @@ public class MagicalParcherPlus : QuintessentialMod
 		}	
 		return AtomTypes.field_1675; //salt as fallback
 	}
+	public static bool DoesThisTextureExists(string WhatTexture){
+		WhatTexture = Path.Combine("Content", WhatTexture);
+		class_256 TextureFuck = new class_256
+		{
+			field_2056 = Index2.Zero,
+			field_2057 = IntPtr.Zero,
+			field_2058 = false,
+			field_2059 = (enum_3)2,
+			field_2062 = WhatTexture,
+			field_2063 = DateTime.MinValue
+		};
+		string text = null;
+		if (TextureFuck.field_2062.method_1085())
+		{
+			text = TextureFuck.field_2062.method_1087();
+			if (TextureFuck.field_2062.method_1087().StartsWith("Content"))
+			{
+				for (int num = QuintessentialLoader.ModContentDirectories.Count - 1; num >= 0; num--)
+				{
+					string path = QuintessentialLoader.ModContentDirectories[num];
+					try
+					{
+						TextureFuck.field_2062 = Path.Combine(path, text);
+						return Renderer.orig_method_1339(TextureFuck);
+					}
+					catch (Exception e)
+					{}
+					finally
+					{
+						TextureFuck.field_2062 = text;
+					}
+				}
+			}
+		}
+		try
+		{
+			return Renderer.orig_method_1339(TextureFuck);
+		}
+		catch (Exception e2)
+		{}
+		return false;
+	}
 	public static QuintessentialMod self;
 	public override Type SettingsType => typeof(Settei);
 	public override void Load() {
