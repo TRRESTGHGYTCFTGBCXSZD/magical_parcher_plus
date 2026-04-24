@@ -14,4 +14,8 @@ OptionalDependencies:
   Version: 0.3.0
 - Name: MetalQuintessence
   Version: 1.0.0
+- Name: Neuvolics
+  Version: 1.0.1
+- Name: Alchemical Inversions
+  Version: 0.0.1
 #Mappings:

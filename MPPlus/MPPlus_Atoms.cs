@@ -19,14 +19,22 @@ using AtomTypes = class_175;
 //using PartTypes = class_191;
 using Texture = class_256;
 
-internal static class Atoms
+public static class Atoms
 {
     public static bool GerioificationVanilla = true;
-    private static byte ErabukunAtomID = 255;
-    private static byte WordexisAtomID = 254;
-    private static byte TricAtomID = 253;
-    private static byte PTableAtomID = 252;
-    private static byte ProtonID = 251;
+    public static bool GerioHasHat = false;
+    private static byte NewCharactersAtomID = 255;
+    private static byte OriginalCharactersAtomID = 254;
+    private static byte PTableAtomID = 253;
+    private static byte ProtonID = 252;
+
+	public static T AndOr<T>(bool dind, T truedind, T falsedind) {
+        if (dind) return truedind;
+		return falsedind;
+	}
+    //atoms for atomic operations
+	public static AtomType Proton;
+    public static AtomType[] PTableAtoms = new AtomType[118];
     private static string[] PTableNaming = {
 		"Hydrogen","Helium",
 		"Lithium","Berylium","Boron","Carbon","Nitrogen","Oxygen","Fluorine","Neon",
@@ -45,19 +53,31 @@ internal static class Atoms
 		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true, true, false,true, false,false,false,false,
 		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
 	};
-
-	public static T AndOr<T>(bool dind, T truedind, T falsedind) {
-        if (dind) return truedind;
-		return falsedind;
-	}
-    public static AtomType[] PTableAtoms = new AtomType[118];
-	public static Dictionary<AtomType, int> PTableAtomsReverse = new();
+    public static bool[] PTableDoNotAdd = {
+		false,false,
+		false,false,false,false,false,false,false,false,
+		false,false,false,false,false,false,false,false,
+		false,false,false,false,false,false,false,true, false,false,true, false,false,false,false,false,false,false,
+		false,false,false,false,false,false,false,false,false,false,true, false,false,true, false,false,false,false,
+		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true, true, false,true, false,false,false,false,
+		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
+	};
+	//public static Dictionary<AtomType, int> PTableAtomsReverse = new();
     //atoms that don't categorize
-	public static AtomType Wordexis, Erabukun, Tric, Proton;
+	public static AtomType Wordexis, Erabukun, Zena;
+	public static AtomType Gerio, EZGG, Gabs, Tric, Modrenity, CeminratesBestie, RedZena, BlueZena, Abomination;
 	public static List<AtomType> atomsToAdd;
 	public static Texture WordexisBackAccessories = class_235.method_615("textures/atoms/magicalparcher/wordexis_accessoriesback");
 	public static Texture WordexisVisor = class_235.method_615("textures/atoms/magicalparcher/wordexis_accessoriesfront");
 	public static Texture TricBackAccessories = class_235.method_615("textures/atoms/magicalparcher/tric_accessoriesback");
+	public static Texture GerioHair = class_235.method_615("textures/atoms/magicalparcher/gerio_hair");
+	public static Texture GerioHat = class_235.method_615("textures/atoms/magicalparcher/gerio_hat");
+	public static Texture GabsSpikes = class_235.method_615("textures/atoms/magicalparcher/gabs_spikes");
+	public static Texture EZGGHat = class_235.method_615("textures/atoms/magicalparcher/ezgg_hat");
+	public static Texture ModrenityControlSticks = class_235.method_615("textures/atoms/magicalparcher/modrenity_controlsticks");
+	public static Texture ZenaMagnets = class_235.method_615("textures/atoms/magicalparcher/zena_magnets");
+	public static Texture RedZenaMagnets = class_235.method_615("textures/atoms/magicalparcher/redzena_magnets");
+	public static Texture BlueZenaMagnets = class_235.method_615("textures/atoms/magicalparcher/bluezena_magnets");
 
 	public static void AddNewContent() {
 		//
@@ -65,7 +85,7 @@ internal static class Atoms
 
 		Erabukun = new AtomType()
 		{
-			/*ID, byte*/field_2283 = ErabukunAtomID,
+			/*ID, byte*/field_2283 = NewCharactersAtomID,
 			/*Non-local Name*/field_2284 = class_134.method_254("Erabukun"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Erabukun", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Erabukun", string.Empty),
@@ -81,7 +101,7 @@ internal static class Atoms
 
 		Wordexis = new AtomType()
 		{
-			/*ID, byte*/field_2283 = WordexisAtomID,
+			/*ID, byte*/field_2283 = NewCharactersAtomID,
 			/*Non-local Name*/field_2284 = class_134.method_254("Wordexis"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Wordexis", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Wordexis", string.Empty),
@@ -95,9 +115,25 @@ internal static class Atoms
         	QuintAtomType = "magicalparcherplus:wordexis"
 		};
 
+		Zena = new AtomType()
+		{
+			/*ID, byte*/field_2283 = NewCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Zena"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Zena", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Zena", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/zena_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/zena_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+        	QuintAtomType = "magicalparcherplus:zena"
+		};
+
 		Tric = new AtomType()
 		{
-			/*ID, byte*/field_2283 = TricAtomID,
+			/*ID, byte*/field_2283 = OriginalCharactersAtomID,
 			/*Non-local Name*/field_2284 = class_134.method_254("Tric"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Tric", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Tric", string.Empty),
@@ -109,6 +145,118 @@ internal static class Atoms
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
         	QuintAtomType = "magicalparcherplus:tric"
+		};
+
+		Gerio = new AtomType()
+		{
+			/*ID, byte*/field_2283 = OriginalCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Gerio"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Gerio", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Gerio", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/gerio_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/gerio_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+        	QuintAtomType = "magicalparcherplus:gerio"
+		};
+
+		Gabs = new AtomType()
+		{
+			/*ID, byte*/field_2283 = OriginalCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Gabs"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Gabs", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Gabs", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/gabs_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/gabs_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+        	QuintAtomType = "magicalparcherplus:gabs"
+		};
+
+		EZGG = new AtomType()
+		{
+			/*ID, byte*/field_2283 = OriginalCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("EZGG"),
+			/*Atomic Name*/field_2285 = class_134.method_253("EZGG", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("EZGG", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/ezgg_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/ezgg_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+        	QuintAtomType = "magicalparcherplus:ezgg"
+		};
+
+		Modrenity = new AtomType()
+		{
+			/*ID, byte*/field_2283 = OriginalCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Modrenity"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Modrenity", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Modrenity", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/modrenity_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/modrenity_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+        	QuintAtomType = "magicalparcherplus:modrenity"
+		};
+
+		Abomination = new AtomType()
+		{
+			/*ID, byte*/field_2283 = OriginalCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Abomination"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Abomination", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Abomination", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/abomination_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/modrenity_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+        	QuintAtomType = "magicalparcherplus:abomination"
+		};
+
+		RedZena = new AtomType()
+		{
+			/*ID, byte*/field_2283 = OriginalCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Red Zena"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Red Zena", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Red Zena", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/redzena_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/zena_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+        	QuintAtomType = "magicalparcherplus:redzena"
+		};
+
+		BlueZena = new AtomType()
+		{
+			/*ID, byte*/field_2283 = OriginalCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Blue Zena"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Blue Zena", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Blue Zena", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/bluezena_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/zena_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+        	QuintAtomType = "magicalparcherplus:bluezena"
 		};
 
 		Proton = new AtomType()
@@ -127,7 +275,7 @@ internal static class Atoms
         	QuintAtomType = "magicalparcherplus:proton"
 		};
 
-		atomsToAdd = new List<AtomType>() { Wordexis, Erabukun, Tric, Proton, };
+		atomsToAdd = new List<AtomType>() { Proton, Gerio, Gabs, Tric, EZGG, Modrenity, RedZena, BlueZena, Abomination, Wordexis, Erabukun, Zena, };
 
 		//add atoms to internal dictionary
 		//var old_len = AtomTypes.field_1691.Length;
@@ -143,9 +291,9 @@ internal static class Atoms
 
 		for (int PTableAtomIndex = 0; PTableAtomIndex < 118; PTableAtomIndex++)
 		{
-			if (!PTableIgnore[PTableAtomIndex]) {
+			if (!PTableDoNotAdd[PTableAtomIndex]) {
 				bool ThisImageShouldBeTextured = MagicalParcherPlus.DoesThisTextureExists("textures/atoms/magicalparcher/ptableatoms/"+PTableNaming[PTableAtomIndex].ToLower()+"_diffuse");
-				PTableAtoms[PTableAtomIndex] = new AtomType()
+				AtomType Whatwiyo = new AtomType()
 				{
 					/*ID, byte*/field_2283 = PTableAtomID,
 					/*Non-local Name*/field_2284 = class_134.method_254(PTableNaming[PTableAtomIndex]),
@@ -160,7 +308,13 @@ internal static class Atoms
 					},
         			QuintAtomType = "magicalparcherplus:"+PTableNaming[PTableAtomIndex].ToLower()
 				};
-				atomsToAdd.Add(PTableAtoms[PTableAtomIndex]);
+				if (!PTableIgnore[PTableAtomIndex]) {
+					PTableAtoms[PTableAtomIndex] = Whatwiyo;
+					atomsToAdd.Add(Whatwiyo);
+				} else {
+					Flexibility.addPlaceholderPTableReplacement(Whatwiyo,PTableAtomIndex);
+					atomsToAdd.Add(Whatwiyo);
+				}
 			}
 		}
 
@@ -181,28 +335,116 @@ internal static class Atoms
 		PTableAtoms[78] = AtomTypes.field_1686;
 		PTableAtoms[79] = AtomTypes.field_1680;
 		PTableAtoms[81] = AtomTypes.field_1681;
+		Flexibility.CanThisAtomTriplex.Add(AtomTypes.field_1678);
+		Flexibility.CanThisAtomTriplex.Add(EZGG);
 		On.Editor.method_927 += RenderExtraStuff;
+		QApi.RunAfterCycle((sim, first) => {
+			List<Molecule> moleculeList = sim.field_3823;
+
+			foreach(var molecule in moleculeList){
+				foreach(KeyValuePair<HexIndex, Atom> entry in molecule.method_1100()){
+					if (Flexibility.applyPlaceholderPTableReplacement(entry.Value.field_2275,out int WinosPrime))
+								molecule.method_1106(PTableAtoms[WinosPrime], entry.Key);
+				}
+			}
+		});
 	}
     internal static void RenderExtraStuff(On.Editor.orig_method_927 orig, AtomType type, Vector2 position, float param_4582, float param_4583, float param_4584, float param_4585, float param_4586, float param_4587, Texture overrideShadow, Texture maskM, bool param_4590)
     {
-        if (GerioificationVanilla && type == AtomTypes.field_1677) //visuallize earth as tric
+		if (GerioificationVanilla)
+		{
+        	if (type == AtomTypes.field_1677) //visuallize earth as tric
+        	{
+        	    RenderExtraStuff(orig, Tric, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+        	    return;
+        	}
+        	if (type == AtomTypes.field_1679) //visuallize water as gabs
+        	{
+        	    RenderExtraStuff(orig, Gabs, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+        	    return;
+        	}
+        	if (type == AtomTypes.field_1678) //visuallize fire as ezgg
+        	{
+        	    RenderExtraStuff(orig, EZGG, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+        	    return;
+        	}
+        	if (type == AtomTypes.field_1676) //visuallize air as modrenity
+        	{
+        	    RenderExtraStuff(orig, Modrenity, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+        	    return;
+        	}
+        	if (type == AtomTypes.field_1675) //visuallize salt as gerio
+        	{
+        	    RenderExtraStuff(orig, Gerio, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+        	    return;
+        	}
+        	if (type == AtomTypes.field_1687) //visuallize vitae as red zena
+        	{
+        	    RenderExtraStuff(orig, RedZena, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+        	    return;
+        	}
+        	if (type == AtomTypes.field_1688) //visuallize mors as blue zena
+        	{
+        	    RenderExtraStuff(orig, BlueZena, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+        	    return;
+        	}
+        	if (type == AtomTypes.field_1690) //visuallize quint as abomination
+        	{
+        	    RenderExtraStuff(orig, Abomination, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+        	    return;
+        	}
+		}
+        Color tecolor = Color.White.WithAlpha(param_4583);
+        if (type == Wordexis)
         {
-            RenderExtraStuff(orig, Tric, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
-            return;
+	        class_135.method_263(WordexisBackAccessories, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
         }
-        Color tecolor = Color.White.WithAlpha(param_4583 * param_4585);
-        if (type.QuintAtomType == "magicalparcherplus:wordexis")
+        if (type == Tric)
         {
-	        class_135.method_263(WordexisBackAccessories, tecolor, position - new Vector2(60, 60), new Vector2(120, 120));
+	        class_135.method_263(TricBackAccessories, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
         }
-        if (type.QuintAtomType == "magicalparcherplus:tric")
+        if (type == Gabs)
         {
-	        class_135.method_263(TricBackAccessories, tecolor, position - new Vector2(60, 60), new Vector2(120, 120));
+	        class_135.method_263(GabsSpikes, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
         }
+        if (type == Modrenity)
+        {
+	        class_135.method_263(ModrenityControlSticks, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+        }
+        if (type == Zena)
+        {
+	        class_135.method_263(ZenaMagnets, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+        }
+        if (type == RedZena)
+        {
+	        class_135.method_263(RedZenaMagnets, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+        }
+        if (type == BlueZena)
+        {
+	        class_135.method_263(BlueZenaMagnets, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+        }
+        if (type == Abomination)
+        {
+	        class_135.method_263(TricBackAccessories, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+	        class_135.method_263(GabsSpikes, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+	        class_135.method_263(ModrenityControlSticks, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+        }
+		//behind atom
         orig(type, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
-        if (type.QuintAtomType == "magicalparcherplus:wordexis")
+		//in front of atom
+        if (type == Wordexis)
         {
-	        class_135.method_263(WordexisVisor, tecolor, position - new Vector2(30, 30), new Vector2(60, 60));
+	        class_135.method_263(WordexisVisor, tecolor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
+        }
+        if (type == Gerio)
+        {
+	        class_135.method_263(GerioHair, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+			if (GerioHasHat)
+	        	class_135.method_263(GerioHat, tecolor, position - new Vector2(60, 30) * param_4582, new Vector2(120, 120) * param_4582);
+        }
+        if (type == EZGG)
+        {
+	        class_135.method_263(EZGGHat, tecolor, position - new Vector2(60, 30) * param_4582, new Vector2(120, 120) * param_4582);
         }
     }
 

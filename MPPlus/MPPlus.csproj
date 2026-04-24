@@ -34,19 +34,27 @@
       <CopyLocal>False</CopyLocal>
     </Reference>
     <Reference Include="Vaca">
-      <HintPath>E:\SteamLibrary\steamapps\common\Opus Magnum\UnpackedMods\Vaca_1.0.1\Vaca.dll</HintPath>
+      <HintPath>..\..\compile_needed\Vaca.dll</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
     <Reference Include="HalvingMetallurgy">
-      <HintPath>E:\SteamLibrary\steamapps\common\Opus Magnum\UnpackedMods\HalvingMetallurgy_4.2.0\HalvingMetallurgy.dll</HintPath>
+      <HintPath>..\..\compile_needed\HalvingMetallurgy.dll</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
     <Reference Include="UnstableElements">
-      <HintPath>E:\SteamLibrary\steamapps\common\Opus Magnum\UnpackedMods\UnstableElementsV0.3.0\UnstableElements\bin\Debug\net452\UnstableElements.dll</HintPath>
+      <HintPath>..\..\compile_needed\UnstableElements.dll</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
     <Reference Include="MetalQuintessence">
-      <HintPath>E:\SteamLibrary\steamapps\common\Opus Magnum\UnpackedMods\MetalQuintessence\MetalQuintessence.dll</HintPath>
+      <HintPath>..\..\compile_needed\MetalQuintessence.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
+    </Reference>
+    <Reference Include="Neuvolics">
+      <HintPath>..\..\compile_needed\Neuvolics.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
+    </Reference>
+    <Reference Include="AlchemicalInversions">
+      <HintPath>..\..\compile_needed\AlchemicalInversions.dll</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
   </ItemGroup>

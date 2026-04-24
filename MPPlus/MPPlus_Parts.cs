@@ -17,7 +17,7 @@ using Permissions = enum_149;
 using AtomTypes = class_175;
 using Texture = class_256;
 
-internal static class Parts
+public static class Parts
 {
 	public static bool IsHalvingLoaded = false;
 	//season 1 glyphs
@@ -251,7 +251,7 @@ internal static class Parts
 	    AtomicProjection = new(){
 	    	field_1528 = "magical-parcher-plus-atomicprojection", // ID
 	    	field_1529 = class_134.method_253("Haxior Projection", string.Empty), // Name
-	    	field_1530 = class_134.method_253("Promotes the atom into next atomic number using Tric.", string.Empty), // Description
+	    	field_1530 = class_134.method_253("Promotes the atom into next atomic number using Proton.", string.Empty), // Description
 	    	field_1531 = 40, // Cost
 	    	field_1539 = true, // Is a glyph (?)
 	    	field_1549 = class_238.field_1989.field_97.field_382, // Shadow/glow
@@ -298,7 +298,7 @@ internal static class Parts
 	    AtomicRejection = new(){
 	    	field_1528 = "magical-parcher-plus-atomicrejection", // ID
 	    	field_1529 = class_134.method_253("Haxior Rejection", string.Empty), // Name
-	    	field_1530 = class_134.method_253("Demotes the atom into previous atomic number, Expelling Tric.", string.Empty), // Description
+	    	field_1530 = class_134.method_253("Demotes the atom into previous atomic number, Expelling Proton.", string.Empty), // Description
 	    	field_1531 = 40, // Cost
 	    	field_1539 = true, // Is a glyph (?)
 	    	field_1549 = class_238.field_1989.field_97.field_382, // Shadow/glow
@@ -471,7 +471,25 @@ internal static class Parts
 							}
 						}
 					}
-				}
+				}else if(type == class_191.field_1775)/* Triplex bonder */{
+                    foreach (class_222 bonder in type.field_1538)
+                    {
+                        if (!sim.FindAtomRelative(part, bonder.field_1920).method_99(out AtomReference leftAtom) || !sim.FindAtomRelative(part, bonder.field_1921).method_99(out AtomReference rightAtom))
+                        {
+                            continue;
+                        }
+                        if (Flexibility.CanThisAtomTriplex.Contains(leftAtom.field_2280) && Flexibility.CanThisAtomTriplex.Contains(rightAtom.field_2280))
+                        {
+							if (leftAtom.field_2277 != rightAtom.field_2277){
+								sim.field_3823.Remove(leftAtom.field_2277);
+								sim.field_3823.Remove(rightAtom.field_2277);
+								sim.field_3823.Add(leftAtom.field_2277.method_1119(rightAtom.field_2277));
+							}
+							BondEffect bondEffect = new BondEffect(sim.field_3818, (enum_7)1, bonder.field_1922.method_779().field_1817, 60f, bonder.field_1922.method_779().field_1818);
+							leftAtom.field_2277.method_1112(bonder.field_1922.method_779().field_1814, leftAtom.field_2278, rightAtom.field_2278, bondEffect);
+                        }
+                    }
+                }
 			}
 		});
 	}

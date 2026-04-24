@@ -8,4 +8,6 @@ public class Settei
 
     [SettingsLabel("Gerioification Version 2")]
     public bool GerioificationVanilla = true;
+    [SettingsLabel("Wear Gerio's Hat")]
+    public bool GerioHasHat = false;
 }
