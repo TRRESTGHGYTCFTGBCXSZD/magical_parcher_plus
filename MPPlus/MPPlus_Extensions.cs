@@ -56,4 +56,8 @@ internal class MPPlusExtensions
 		Atoms.PTableAtoms[76] = Neuvolics.Atoms.Iridium;
 		Atoms.PTableIgnore[76] = true;
     }
+	public static void AddVacancy_ExtHalvingMetallurgy() {
+		Flexibility.addMetallificationRule(HalvingMetallurgy.Atoms.Quicklime,Vaca.MainClass.VacaAtom);
+		Flexibility.addDemetallificationRule(Vaca.MainClass.VacaAtom,HalvingMetallurgy.Atoms.Quicklime);
+    }
 }

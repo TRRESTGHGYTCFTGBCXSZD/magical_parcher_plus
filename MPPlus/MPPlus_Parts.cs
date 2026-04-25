@@ -23,21 +23,23 @@ public static class Parts
 	//season 1 glyphs
 	public static PartType Cardinalification, Liquidation, Gerioification, Metallification, Demetallification;
 	//season 2 glyphs
-	public static PartType AnimisStabilizer, AtomicProjection, AtomicRejection;
-	public static Texture ProjectionBase = class_235.method_615("textures/parts/projection_glyph/base");
-	public static Texture ProjectionGlow = class_235.method_615("textures/select/double_glow");
-	public static Texture ProjectionBowl = class_235.method_615("textures/parts/projection_glyph/metal_bowl");
-	public static Texture ProjectionHole = class_235.method_615("textures/parts/projection_glyph/quicksilver_input");
+	public static PartType AnimisStabilizer, AtomicProjection, AtomicRejection, MagneticDepolarizer, MagneticPolarizer;
+	public static readonly Texture ProjectionBase = class_238.field_1989.field_90.field_255.field_288;
+	public static readonly Texture ProjectionGlow = class_235.method_615("textures/select/double_glow");
+	public static readonly Texture ProjectionBowl = class_238.field_1989.field_90.field_255.field_292;
+	public static readonly Texture ProjectionHole = class_238.field_1989.field_90.field_255.field_293;
     
-	public static Texture Wordexis_Input = class_235.method_615("textures/parts/magicalparcher/inputs/wordexis_input");
-	public static Texture Tric_Input = class_235.method_615("textures/parts/magicalparcher/inputs/tric_input");
-	public static Texture QuicksilverSymbol = class_235.method_615("textures/parts/projection_glyph/quicksilver_symbol");
-	public static Texture SaltSymbol = class_235.method_615("textures/parts/animismus/symbol_salt");
-	public static Texture QuintessenceSymbol = class_235.method_615("textures/parts/dispersion/symbol_quintessence");
-	public static Texture LeadSymbol = class_235.method_615("textures/atoms/lead_symbol");
+	public static readonly Texture Wordexis_Input = class_235.method_615("textures/parts/magicalparcher/inputs/wordexis_input");
+	public static readonly Texture Tric_Input = class_235.method_615("textures/parts/magicalparcher/inputs/tric_input");
+	public static readonly Texture QuicksilverSymbol = class_238.field_1989.field_90.field_255.field_294;
+	public static readonly Texture SaltSymbol = class_238.field_1989.field_90.field_228.field_275;
+	public static readonly Texture QuintessenceSymbol = class_238.field_1989.field_90.field_238.field_341;
+	public static readonly Texture LeadSymbol = class_238.field_1989.field_90.field_255.field_291;
 
-	public static Texture CalcinatorBase = class_235.method_615("textures/parts/calcinator_base");
-	public static Texture RejectionBowl = class_235.method_615("textures/parts/rejection_glyph/metal_bowl");
+	public static readonly Texture DiamondBase = class_238.field_1989.field_90.field_228.field_265;
+
+	public static readonly Texture CalcinatorBase = class_238.field_1989.field_90.field_169;
+	public static readonly Texture RejectionBowl = class_235.method_615("textures/parts/rejection_glyph/metal_bowl");
 
 	private static bool ContentLoaded = false;
 	public static void AddNewContent() {
@@ -53,8 +55,8 @@ public static class Parts
 	    	field_1530 = class_134.method_253("Transforms Quicksilver into Salt Using Wordexis.", string.Empty), // Description
 	    	field_1531 = 40, // Cost
 	    	field_1539 = true, // Is a glyph (?)
-	    	field_1549 = class_238.field_1989.field_97.field_382, // Shadow/glow
-	    	field_1550 = class_238.field_1989.field_97.field_383, // Stroke/outline
+	    	field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
+	    	field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
 	    	field_1547 = SaltSymbol, // Panel icon
 	    	field_1548 = SaltSymbol, // Hovered panel icon
 	    	field_1540 = new HexIndex[]{
@@ -101,8 +103,8 @@ public static class Parts
 	    	field_1530 = class_134.method_253("Transforms Salt into Quicksilver Using Wordexis.", string.Empty), // Description
 	    	field_1531 = 40, // Cost
 	    	field_1539 = true, // Is a glyph (?)
-	    	field_1549 = class_238.field_1989.field_97.field_382, // Shadow/glow
-	    	field_1550 = class_238.field_1989.field_97.field_383, // Stroke/outline
+	    	field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
+	    	field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
 	    	field_1547 = QuicksilverSymbol, // Panel icon
 	    	field_1548 = QuicksilverSymbol, // Hovered panel icon
 	    	field_1540 = new HexIndex[]{
@@ -149,8 +151,8 @@ public static class Parts
 	    	field_1530 = class_134.method_253("Transforms Salt or Quicksilver Into Wordexis Using Quintessence.", string.Empty), // Description
 	    	field_1531 = 40, // Cost
 	    	field_1539 = true, // Is a glyph (?)
-	    	field_1549 = class_238.field_1989.field_97.field_382, // Shadow/glow
-	    	field_1550 = class_238.field_1989.field_97.field_383, // Stroke/outline
+	    	field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
+	    	field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
 	    	field_1547 = Wordexis_Input, // Panel icon
 	    	field_1548 = Wordexis_Input, // Hovered panel icon
 	    	field_1540 = new HexIndex[]{
@@ -248,14 +250,52 @@ public static class Parts
 
 
 
+	    AnimisStabilizer = new(){
+	    	field_1528 = "magical-parcher-plus-animisstabilizer", // ID
+	    	field_1529 = class_134.method_253("Glyph of Anti-Animismus", string.Empty), // Name
+	    	field_1530 = class_134.method_253("Takes Vitae and Mors and expells 2 Salt Atoms.", string.Empty), // Description
+	    	field_1531 = 40, // Cost
+	    	field_1539 = true, // Is a glyph (?)
+	    	field_1549 = class_238.field_1989.field_97.field_368, // Shadow/glow
+	    	field_1550 = class_238.field_1989.field_97.field_369, // Stroke/outline
+	    	field_1547 = SaltSymbol, // Panel icon
+	    	field_1548 = SaltSymbol, // Hovered panel icon
+	    	field_1540 = new HexIndex[]{
+	    		new(0, 0),
+	    		new(1, 0),
+	    		new(0, 1),
+	    		new(1, -1)
+	    	}, // Spaces used
+	    	field_1551 = Permissions.None,
+	    	CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:animisstabilizer")
+	    };
+
+		QApi.AddPartType(AnimisStabilizer, (part, pos, editor, renderer) => {
+			Vector2 vector2 = new(41f, 48f);
+			renderer.method_523(DiamondBase, new Vector2(0.0f, 0.0f), vector2, 0.0f);
+			foreach(HexIndex idx in part.method_1159().field_1540){
+				if(idx is { Q: 0, R: 0 }){
+					renderer.method_528(ProjectionBowl, idx, Vector2.Zero);
+				}
+				else{
+					renderer.method_528(RejectionBowl /*quicksilver_input*/, idx, Vector2.Zero);
+					// should be 272?
+					//renderer.method_529(Wordexis_Input /*quicksilver_symbol*/, idx, Vector2.Zero);
+				}
+			}
+		});
+		QApi.AddPartTypeToPanel(AnimisStabilizer, PartTypes.field_1775);
+		
+		QApi.AddPuzzlePermission("magicalparcherplus:animisstabilizer", "Glyph of Anti-Animismus", "Magical Parcher+");
+
 	    AtomicProjection = new(){
 	    	field_1528 = "magical-parcher-plus-atomicprojection", // ID
 	    	field_1529 = class_134.method_253("Haxior Projection", string.Empty), // Name
 	    	field_1530 = class_134.method_253("Promotes the atom into next atomic number using Proton.", string.Empty), // Description
 	    	field_1531 = 40, // Cost
 	    	field_1539 = true, // Is a glyph (?)
-	    	field_1549 = class_238.field_1989.field_97.field_382, // Shadow/glow
-	    	field_1550 = class_238.field_1989.field_97.field_383, // Stroke/outline
+	    	field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
+	    	field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
 	    	field_1547 = SaltSymbol, // Panel icon
 	    	field_1548 = SaltSymbol, // Hovered panel icon
 	    	field_1540 = new HexIndex[]{
@@ -301,8 +341,8 @@ public static class Parts
 	    	field_1530 = class_134.method_253("Demotes the atom into previous atomic number, Expelling Proton.", string.Empty), // Description
 	    	field_1531 = 40, // Cost
 	    	field_1539 = true, // Is a glyph (?)
-	    	field_1549 = class_238.field_1989.field_97.field_382, // Shadow/glow
-	    	field_1550 = class_238.field_1989.field_97.field_383, // Stroke/outline
+	    	field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
+	    	field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
 	    	field_1547 = SaltSymbol, // Panel icon
 	    	field_1548 = SaltSymbol, // Hovered panel icon
 	    	field_1540 = new HexIndex[]{
@@ -341,6 +381,61 @@ public static class Parts
 		QApi.AddPartTypeToPanel(AtomicRejection, PartTypes.field_1775);
 		
 		QApi.AddPuzzlePermission("magicalparcherplus:atomicrejection", "Haxior Rejection", "Magical Parcher+");
+
+	    MagneticPolarizer = new(){
+	    	field_1528 = "magical-parcher-plus-magneticpolarizer", // ID
+	    	field_1529 = class_134.method_253("Glyph Of Polarizer", string.Empty), // Name
+	    	field_1530 = class_134.method_253("Polarizes 2 Zenas into Red and Blue Zena.", string.Empty), // Description
+	    	field_1531 = 40, // Cost
+	    	field_1539 = true, // Is a glyph (?)
+	    	field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
+	    	field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
+	    	field_1547 = SaltSymbol, // Panel icon
+	    	field_1548 = SaltSymbol, // Hovered panel icon
+	    	field_1540 = new HexIndex[]{
+	    		new(0, 0),
+	    		new(1, 0)
+	    	}, // Spaces used
+	    	field_1551 = Permissions.None,
+	    	CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:magneticpolarizer")
+	    };
+
+		QApi.AddPartType(MagneticPolarizer, (part, pos, editor, renderer) => {
+			Vector2 vector2 = new(41f, 48f);
+			renderer.method_523(ProjectionBase, new Vector2(0.0f, 0.0f), vector2, 0.0f);
+			renderer.method_528(ProjectionBowl, new HexIndex(0, 0), Vector2.Zero);
+			renderer.method_528(ProjectionBowl, new HexIndex(1, 0), Vector2.Zero);
+		});
+		QApi.AddPartTypeToPanel(MagneticPolarizer, PartTypes.field_1775);
+		
+
+	    MagneticDepolarizer = new(){
+	    	field_1528 = "magical-parcher-plus-magneticdepolarizer", // ID
+	    	field_1529 = class_134.method_253("Glyph Of Depolarizer", string.Empty), // Name
+	    	field_1530 = class_134.method_253("Depolarized Red And Blue Zena into 2 Zenas.", string.Empty), // Description
+	    	field_1531 = 40, // Cost
+	    	field_1539 = true, // Is a glyph (?)
+	    	field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
+	    	field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
+	    	field_1547 = SaltSymbol, // Panel icon
+	    	field_1548 = SaltSymbol, // Hovered panel icon
+	    	field_1540 = new HexIndex[]{
+	    		new(0, 0),
+	    		new(1, 0)
+	    	}, // Spaces used
+	    	field_1551 = Permissions.None,
+	    	CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:magneticpolarizer")
+	    };
+
+		QApi.AddPartType(MagneticDepolarizer, (part, pos, editor, renderer) => {
+			Vector2 vector2 = new(41f, 48f);
+			renderer.method_523(ProjectionBase, new Vector2(0.0f, 0.0f), vector2, 0.0f);
+			renderer.method_528(RejectionBowl, new HexIndex(0, 0), Vector2.Zero);
+			renderer.method_528(RejectionBowl, new HexIndex(1, 0), Vector2.Zero);
+		});
+		QApi.AddPartTypeToPanel(MagneticDepolarizer, PartTypes.field_1775);
+		
+		QApi.AddPuzzlePermission("magicalparcherplus:magneticpolarizer", "Glyphs Of Magnetic Manipulation", "Magical Parcher+");
         // the that code runs below
 		QApi.RunAfterCycle((sim, first) => {
 			var seb = sim.field_3818;
@@ -359,15 +454,16 @@ public static class Parts
 				// look for 3 unheld QSs and free gold
 				if(type == Cardinalification){
 					// if all the atoms exist...
+					AtomType Demetal = default(AtomType);
 					if(sim.FindAtomRelative(part, new HexIndex(0, 0)).method_99(out AtomReference qs)
 					   && sim.FindAtomRelative(part, new(1, 0)).method_99(out AtomReference word)){
 						// and are the right types...
-						if(qs.field_2280 == AtomTypes.field_1680
+						if(Flexibility.applyCardinalificationRule(qs.field_2280,out Demetal)
 						   && word.field_2280 == Atoms.Wordexis){
 							// and the quicksilver is not being consumed or held...
 							if(!word.field_2281 && !word.field_2282){
 								// transmute the gold and destroy the quicksilver
-								qs.field_2277.method_1106(AtomTypes.field_1675, qs.field_2278);
+								qs.field_2277.method_1106(Demetal, qs.field_2278);
 								word.field_2277.method_1107(word.field_2278);
 								// show the removal effects for qs
 								seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
@@ -379,15 +475,16 @@ public static class Parts
 					}
 				}else if(type == Liquidation){
 					// if all the atoms exist...
+					AtomType Demetal = default(AtomType);
 					if(sim.FindAtomRelative(part, new HexIndex(0, 0)).method_99(out AtomReference qs)
 					   && sim.FindAtomRelative(part, new(1, 0)).method_99(out AtomReference word)){
 						// and are the right types...
-						if(qs.field_2280 == AtomTypes.field_1675
+						if(Flexibility.applyLiquidationRule(qs.field_2280,out Demetal)
 						   && word.field_2280 == Atoms.Wordexis){
 							// and the quicksilver is not being consumed or held...
 							if(!word.field_2281 && !word.field_2282){
 								// transmute the gold and destroy the quicksilver
-								qs.field_2277.method_1106(AtomTypes.field_1680, qs.field_2278);
+								qs.field_2277.method_1106(Demetal, qs.field_2278);
 								word.field_2277.method_1107(word.field_2278);
 								// show the removal effects for qs
 								seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
@@ -484,6 +581,43 @@ public static class Parts
 							}
 						}
 					}
+				}else if(type == MagneticPolarizer){
+					// if all the atoms exist...
+					if(sim.FindAtomRelative(part, new HexIndex(0, 0)).method_99(out AtomReference zena1)
+					   && sim.FindAtomRelative(part, new (1, 0)).method_99(out AtomReference zena2)){
+						// and are the right types...
+						if(zena1.field_2280 == Atoms.Zena && zena2.field_2280 == Atoms.Zena){
+							// transmute the gold and destroy the quicksilver
+							zena1.field_2277.method_1106(Atoms.RedZena, zena1.field_2278);
+							zena2.field_2277.method_1106(Atoms.BlueZena, zena2.field_2278);
+							// show the removal effects for qs
+							//seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
+							// upgrade effect for gold -> uranium
+							Texture[] disposalFlashAnimation = class_238.field_1989.field_90.field_240;
+							seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(0, 0))+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+							seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(1, 0))+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+							YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1860);
+						}
+					}
+				}else if(type == MagneticDepolarizer){
+					// if all the atoms exist...
+					if(sim.FindAtomRelative(part, new HexIndex(0, 0)).method_99(out AtomReference zena1)
+					   && sim.FindAtomRelative(part, new (1, 0)).method_99(out AtomReference zena2)){
+						// and are the right types...
+						if((zena1.field_2280 == Atoms.RedZena && zena2.field_2280 == Atoms.BlueZena)
+						||(zena2.field_2280 == Atoms.RedZena && zena1.field_2280 == Atoms.BlueZena)){
+							// transmute the gold and destroy the quicksilver
+							zena1.field_2277.method_1106(Atoms.Zena, zena1.field_2278);
+							zena2.field_2277.method_1106(Atoms.Zena, zena2.field_2278);
+							// show the removal effects for qs
+							//seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
+							// upgrade effect for gold -> uranium
+							Texture[] disposalFlashAnimation = class_238.field_1989.field_90.field_240;
+							seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(0, 0))+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+							seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(1, 0))+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+							YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1860);
+						}
+					}
 				}else if(type == class_191.field_1775)/* Triplex bonder */{
                     foreach (class_222 bonder in type.field_1538)
                     {
@@ -499,8 +633,8 @@ public static class Parts
 								sim.field_3823.Add(leftAtom.field_2277.method_1119(rightAtom.field_2277));
 							}
 							BondEffect bondEffect = new BondEffect(sim.field_3818, (enum_7)1, bonder.field_1922.method_779().field_1817, 60f, bonder.field_1922.method_779().field_1818);
-							leftAtom.field_2277.method_1112(bonder.field_1922.method_779().field_1814, leftAtom.field_2278, rightAtom.field_2278, bondEffect);
-							YOUARENOTAPRIVATEEYENOWPLAYSOUND(bonder.field_1922.method_779().field_1820);
+							if (leftAtom.field_2277.method_1112(bonder.field_1922.method_779().field_1814, part.method_1184(bonder.field_1920), part.method_1184(bonder.field_1921), bondEffect))
+								YOUARENOTAPRIVATEEYENOWPLAYSOUND(bonder.field_1922.method_779().field_1820);
                         }
                     }
                 }else if(type == class_191.field_1783)/* Unification */{
@@ -581,6 +715,99 @@ public static class Parts
 							ToBeRemoved.field_2277.method_1107(ToBeRemoved.field_2278);
 						Molecule molecule = new Molecule();
 						molecule.method_1105(new Atom(pss.field_2744[4]), part.method_1184(new(0, 0)));
+						moleculeList.Add(molecule);
+                    }
+                }else if(type == class_191.field_1784)/* Dispersion */{
+					// vanilla code runs first, so what if i do a hacky workaround
+					if (first && pss.field_2743)
+					{
+						try
+						{
+							if (pss.field_2744.Length < 4)
+								pss.field_2744 = new AtomType[4] { class_175.field_1676, class_175.field_1678, class_175.field_1679, class_175.field_1677 };
+						}
+						catch (Exception _)
+						{
+							pss.field_2744 = new AtomType[4] { class_175.field_1676, class_175.field_1678, class_175.field_1679, class_175.field_1677 };
+						}
+					}
+                    else if (first)
+                    {
+						if(!sim.FindAtomRelative(part, new HexIndex(-1, 0)).method_99(out _)
+						   && !sim.FindAtomRelative(part, new (0, -1)).method_99(out _)
+						   && !sim.FindAtomRelative(part, new (1, -1)).method_99(out _)
+						   && !sim.FindAtomRelative(part, new (1, 0)).method_99(out _)
+						   && sim.FindAtomRelative(part, new (0, 0)).method_99(out AtomReference Input)){
+							// and are the right types...
+							if(Input.field_2280 == Atoms.Abomination){
+								// and the quicksilver is not being consumed or held...
+								if(!Input.field_2281 && !Input.field_2282){
+									// transmute the gold and destroy the quicksilver
+									Input.field_2277.method_1107(Input.field_2278);
+									//Molecule molecule = new Molecule();
+									//molecule.method_1105(new Atom(Atoms.Abomination), part.method_1184(new(0, 0)));
+									//moleculeList.Add(molecule);
+									// show the removal effects for qs
+									Texture[] disposalFlashAnimation = class_238.field_1989.field_90.field_240;
+									//seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(1, 1))), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+									//seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(1, -1))), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+									//seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(0, 1))), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+									//seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(2, -1))), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+									sim.field_3826.Add(new()
+									{
+									    field_3850 = (Sim.enum_190)0,
+									    field_3851 = class_187.field_1742.method_492(part.method_1184(new(-1, 0))),
+									    field_3852 = 15f
+									});
+									sim.field_3826.Add(new()
+									{
+									    field_3850 = (Sim.enum_190)0,
+									    field_3851 = class_187.field_1742.method_492(part.method_1184(new(0, -1))),
+									    field_3852 = 15f
+									});
+									sim.field_3826.Add(new()
+									{
+									    field_3850 = (Sim.enum_190)0,
+									    field_3851 = class_187.field_1742.method_492(part.method_1184(new(1, -1))),
+									    field_3852 = 15f
+									});
+									sim.field_3826.Add(new()
+									{
+									    field_3850 = (Sim.enum_190)0,
+									    field_3851 = class_187.field_1742.method_492(part.method_1184(new(1, 0))),
+									    field_3852 = 15f
+									});
+									YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1860);
+									pss.field_2743 = true;
+									pss.field_2744 = new AtomType[4] { Atoms.Modrenity, Atoms.EZGG, Atoms.Gabs, Atoms.Tric };
+									//seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
+									// upgrade effect for gold -> uranium
+									//qs.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, qs.field_2280, class_238.field_1989.field_81.field_614, 30f);
+								}
+							}
+						}
+					}
+                    else if (pss.field_2743)
+                    {
+						if(sim.FindAtomRelative(part, new HexIndex(-1, 0)).method_99(out AtomReference ToBeRemoved)) 
+							ToBeRemoved.field_2277.method_1107(ToBeRemoved.field_2278);
+						if(sim.FindAtomRelative(part, new HexIndex(0, -1)).method_99(out AtomReference ToBeRemoved2)) 
+							ToBeRemoved2.field_2277.method_1107(ToBeRemoved2.field_2278);
+						if(sim.FindAtomRelative(part, new HexIndex(1, -1)).method_99(out AtomReference ToBeRemoved3)) 
+							ToBeRemoved3.field_2277.method_1107(ToBeRemoved3.field_2278);
+						if(sim.FindAtomRelative(part, new HexIndex(1, 0)).method_99(out AtomReference ToBeRemoved4)) 
+							ToBeRemoved4.field_2277.method_1107(ToBeRemoved4.field_2278);
+						Molecule molecule = new Molecule();
+						molecule.method_1105(new Atom(pss.field_2744[0]), part.method_1184(new(-1, 0)));
+						moleculeList.Add(molecule);
+						molecule = new Molecule();
+						molecule.method_1105(new Atom(pss.field_2744[1]), part.method_1184(new(0, -1)));
+						moleculeList.Add(molecule);
+						molecule = new Molecule();
+						molecule.method_1105(new Atom(pss.field_2744[2]), part.method_1184(new(1, -1)));
+						moleculeList.Add(molecule);
+						molecule = new Molecule();
+						molecule.method_1105(new Atom(pss.field_2744[3]), part.method_1184(new(1, 0)));
 						moleculeList.Add(molecule);
                     }
                 }

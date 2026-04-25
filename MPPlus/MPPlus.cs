@@ -77,6 +77,11 @@ public class MagicalParcherPlus : QuintessentialMod
 		{
 			Logger.Log("[MP+] Detected Halving Metallurgy, Adding 5 Elements");
 			MPPlusExtensions.AddHalvingMetallurgy();
+			if (QuintessentialLoader.CodeMods.Any(mod => mod.Meta.Name == "Vacancy"))
+			{
+				Logger.Log("[MP+] Detected Vacancy Extension for Halving Metallurgy");
+				MPPlusExtensions.AddVacancy_ExtHalvingMetallurgy();
+			}
 		}
 		if (QuintessentialLoader.CodeMods.Any(mod => mod.Meta.Name == "UnstableElements"))
 		{
@@ -120,6 +125,7 @@ public class MagicalParcherPlus : QuintessentialMod
 
         Atoms.GerioificationVanilla = SET.GerioificationVanilla;
 		Atoms.GerioHasHat = SET.GerioHasHat;
+		Atoms.TricHasHeadphones = SET.TricHasHeadphones;
     }
 	public override void Unload() {
 		Atoms.Unload();

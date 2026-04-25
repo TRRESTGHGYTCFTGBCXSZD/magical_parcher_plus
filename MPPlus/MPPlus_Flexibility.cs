@@ -13,17 +13,23 @@ namespace MagicalParcherPlus;
 
 public class Flexibility
 {
+	private static Dictionary<AtomType, AtomType> CardinalificationMeta = new();
+	private static Dictionary<AtomType, AtomType> LiquidationMeta = new();
 	private static Dictionary<AtomType, AtomType> MetallificationMeta = new();
 	private static Dictionary<AtomType, AtomType> DemetallificationMeta = new();
 	private static Dictionary<AtomType, int> ExtraAtomicExceptions = new();
 	private static Dictionary<AtomType, int> PlaceholderPTableReplacements = new();
 	private static Dictionary<AtomType,List<AtomType>> CanThisAtomTriplex = new();
     //reductive metal code
+	public static bool applyCardinalificationRule(AtomType input, out AtomType output) => applyTRule(input, CardinalificationMeta, out output);
+	public static bool applyLiquidationRule(AtomType input, out AtomType output) => applyTRule(input, LiquidationMeta, out output);
 	public static bool applyMetallificationRule(AtomType input, out AtomType output) => applyTRule(input, MetallificationMeta, out output);
 	public static bool applyDemetallificationRule(AtomType input, out AtomType output) => applyTRule(input, DemetallificationMeta, out output);
 	public static bool applyExtraAtomicException(AtomType input, out int output) => applyTRule(input, ExtraAtomicExceptions, out output);
 	public static bool applyPlaceholderPTableReplacement(AtomType input, out int output) => applyTRule(input, PlaceholderPTableReplacements, out output);
 
+	public static void addCardinalificationRule(AtomType hi, AtomType lo) => addTRule("cardinalificationMeta", hi, lo, CardinalificationMeta, new List<AtomType> {});
+	public static void addLiquidationRule(AtomType hi, AtomType lo) => addTRule("liquidationMeta", hi, lo, LiquidationMeta, new List<AtomType> {});
 	public static void addMetallificationRule(AtomType hi, AtomType lo) => addTRule("metallification", hi, lo, MetallificationMeta, new List<AtomType> {});
 	public static void addDemetallificationRule(AtomType hi, AtomType lo) => addTRule("demetallification", hi, lo, DemetallificationMeta, new List<AtomType> {});
 	public static void addExtraAtomicException(AtomType atomictype, int atomicnumber) => addTRule("extraatomicexceptions", atomictype, atomicnumber, ExtraAtomicExceptions, new List<AtomType> {});

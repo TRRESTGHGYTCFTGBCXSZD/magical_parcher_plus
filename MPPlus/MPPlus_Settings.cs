@@ -10,4 +10,6 @@ public class Settei
     public bool GerioificationVanilla = true;
     [SettingsLabel("Wear Gerio's Hat")]
     public bool GerioHasHat = false;
+    [SettingsLabel("Wear Tric's Headphones")]
+    public bool TricHasHeadphones = true;
 }

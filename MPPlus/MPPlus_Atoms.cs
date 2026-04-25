@@ -23,6 +23,7 @@ public static class Atoms
 {
     public static bool GerioificationVanilla = true;
     public static bool GerioHasHat = false;
+    public static bool TricHasHeadphones = true;
     private static byte NewCharactersAtomID = 255;
     private static byte OriginalCharactersAtomID = 254;
     private static byte PTableAtomID = 253;
@@ -69,6 +70,7 @@ public static class Atoms
 	public static List<AtomType> atomsToAdd;
 	public static Texture WordexisBackAccessories = class_235.method_615("textures/atoms/magicalparcher/wordexis_accessoriesback");
 	public static Texture WordexisVisor = class_235.method_615("textures/atoms/magicalparcher/wordexis_accessoriesfront");
+	public static Texture TricEars = class_235.method_615("textures/atoms/magicalparcher/tric_ears");
 	public static Texture TricBackAccessories = class_235.method_615("textures/atoms/magicalparcher/tric_accessoriesback");
 	public static Texture GerioHair = class_235.method_615("textures/atoms/magicalparcher/gerio_hair");
 	public static Texture GerioHat = class_235.method_615("textures/atoms/magicalparcher/gerio_hat");
@@ -78,6 +80,8 @@ public static class Atoms
 	public static Texture ZenaMagnets = class_235.method_615("textures/atoms/magicalparcher/zena_magnets");
 	public static Texture RedZenaMagnets = class_235.method_615("textures/atoms/magicalparcher/redzena_magnets");
 	public static Texture BlueZenaMagnets = class_235.method_615("textures/atoms/magicalparcher/bluezena_magnets");
+	public static Texture CeminratesBestieEars = class_235.method_615("textures/atoms/magicalparcher/ceminratesbestie_ears");
+	public static Texture CeminratesBestieFrontAccessories = class_235.method_615("textures/atoms/magicalparcher/ceminratesbestie_accessoriesfront");
 
 	public static void AddNewContent() {
 		//
@@ -259,6 +263,22 @@ public static class Atoms
         	QuintAtomType = "magicalparcherplus:bluezena"
 		};
 
+		CeminratesBestie = new AtomType()
+		{
+			/*ID, byte*/field_2283 = OriginalCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Qix"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Qix", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Qix", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/ceminratesbestie_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/ceminratesbestie_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+        	QuintAtomType = "magicalparcherplus:CeminratesBestie"
+		};
+
 		Proton = new AtomType()
 		{
 			/*ID, byte*/field_2283 = ProtonID,
@@ -275,7 +295,7 @@ public static class Atoms
         	QuintAtomType = "magicalparcherplus:proton"
 		};
 
-		atomsToAdd = new List<AtomType>() { Proton, Gerio, Gabs, Tric, EZGG, Modrenity, RedZena, BlueZena, Abomination, Wordexis, Erabukun, Zena, };
+		atomsToAdd = new List<AtomType>() { Proton, Gerio, Gabs, Tric, EZGG, Modrenity, CeminratesBestie, RedZena, BlueZena, Abomination, Wordexis, Erabukun, Zena, };
 
 		//add atoms to internal dictionary
 		//var old_len = AtomTypes.field_1691.Length;
@@ -339,6 +359,10 @@ public static class Atoms
 		Flexibility.addTriplexCondition(EZGG,EZGG);
 		Flexibility.addTriplexCondition(Abomination,EZGG);
 		Flexibility.addTriplexCondition(Abomination,Abomination);
+		Flexibility.addCardinalificationRule(AtomTypes.field_1680,AtomTypes.field_1675);
+		Flexibility.addLiquidationRule(AtomTypes.field_1675,AtomTypes.field_1680);
+		Flexibility.addCardinalificationRule(CeminratesBestie,Gerio);
+		Flexibility.addLiquidationRule(Gerio,CeminratesBestie);
 		On.Editor.method_927 += RenderExtraStuff;
 		QApi.RunAfterCycle((sim, first) => {
 			List<Molecule> moleculeList = sim.field_3823;
@@ -403,7 +427,13 @@ public static class Atoms
         }
         if (type == Tric)
         {
-	        class_135.method_263(TricBackAccessories, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+	        class_135.method_263(TricEars, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+			if (TricHasHeadphones)
+	        	class_135.method_263(TricBackAccessories, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+        }
+        if (type == CeminratesBestie)
+        {
+	        class_135.method_263(CeminratesBestieEars, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
         }
         if (type == Gabs)
         {
@@ -427,7 +457,7 @@ public static class Atoms
         }
         if (type == Abomination)
         {
-	        class_135.method_263(TricBackAccessories, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+	        class_135.method_263(TricEars, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
 	        class_135.method_263(GabsSpikes, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
 	        class_135.method_263(ModrenityControlSticks, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
         }
@@ -447,6 +477,10 @@ public static class Atoms
         if (type == EZGG)
         {
 	        class_135.method_263(EZGGHat, tecolor, position - new Vector2(60, 30) * param_4582, new Vector2(120, 120) * param_4582);
+        }
+        if (type == CeminratesBestie)
+        {
+	        class_135.method_263(CeminratesBestieFrontAccessories, tecolor, position - new Vector2(0, 30) * param_4582, new Vector2(60, 60) * param_4582);
         }
     }
 
