@@ -39,7 +39,7 @@ public static class Parts
 	public static readonly Texture DiamondBase = class_238.field_1989.field_90.field_228.field_265;
 
 	public static readonly Texture CalcinatorBase = class_238.field_1989.field_90.field_169;
-	public static readonly Texture RejectionBowl = class_235.method_615("textures/parts/rejection_glyph/metal_bowl");
+	public static readonly Texture RejectionBowl = class_238.field_1989.field_90.field_170;
 
 	private static bool ContentLoaded = false;
 	public static void AddNewContent() {
