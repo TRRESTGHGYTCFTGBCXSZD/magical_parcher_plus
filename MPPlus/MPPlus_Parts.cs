@@ -248,6 +248,8 @@ public static class Parts
 		
 		QApi.AddPuzzlePermission("magicalparcherplus:demetallification", "Glyph of Demetallification", "Magical Parcher+");
 
+		QApi.AddPuzzlePermission("magicalparcherplus:unsafedemetallification", "Unsafe Demetallification", "Magical Parcher+");
+
 
 
 	    AnimisStabilizer = new(){
@@ -435,7 +437,7 @@ public static class Parts
 		});
 		QApi.AddPartTypeToPanel(MagneticDepolarizer, PartTypes.field_1775);
 		
-		QApi.AddPuzzlePermission("magicalparcherplus:magneticpolarizer", "Glyphs Of Magnetic Manipulation", "Magical Parcher+");
+		QApi.AddPuzzlePermission("magicalparcherplus:magneticpolarizer", "Glyphs Of Magnets", "Magical Parcher+");
         // the that code runs below
 		QApi.RunAfterCycle((sim, first) => {
 			var seb = sim.field_3818;
@@ -538,6 +540,9 @@ public static class Parts
 							// upgrade effect for gold -> uranium
 							bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
 							YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1844);
+						}
+						if(true && Flexibility.DemetallificationExplosionMeta.Contains(bowl.field_2280)){ //make it as part of rule
+							seb.method_518(0f, class_134.method_253("Spontaneous quicksilver explosion is not allowed.", string.Empty), new Vector2[1] { class_187.field_1742.method_492(part.method_1184(new(0, 0))) });
 						}
 					}
 				}else if(type == AtomicProjection){

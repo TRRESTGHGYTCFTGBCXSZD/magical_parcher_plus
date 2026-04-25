@@ -363,9 +363,15 @@ public static class Atoms
 		Flexibility.addLiquidationRule(AtomTypes.field_1675,AtomTypes.field_1680);
 		Flexibility.addCardinalificationRule(CeminratesBestie,Gerio);
 		Flexibility.addLiquidationRule(Gerio,CeminratesBestie);
+		Flexibility.DemetallificationExplosionMeta.Add(AtomTypes.field_1684);
+		Flexibility.DemetallificationExplosionMeta.Add(AtomTypes.field_1682);
+		Flexibility.DemetallificationExplosionMeta.Add(AtomTypes.field_1685);
+		Flexibility.DemetallificationExplosionMeta.Add(AtomTypes.field_1683);
+		Flexibility.DemetallificationExplosionMeta.Add(AtomTypes.field_1686);
 		On.Editor.method_927 += RenderExtraStuff;
 		QApi.RunAfterCycle((sim, first) => {
 			List<Molecule> moleculeList = sim.field_3823;
+			var seb = sim.field_3818;
 
 			foreach(var molecule in moleculeList){
 				foreach(KeyValuePair<HexIndex, Atom> entry in molecule.method_1100()){

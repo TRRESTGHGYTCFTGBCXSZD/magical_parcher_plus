@@ -17,6 +17,7 @@ public class Flexibility
 	private static Dictionary<AtomType, AtomType> LiquidationMeta = new();
 	private static Dictionary<AtomType, AtomType> MetallificationMeta = new();
 	private static Dictionary<AtomType, AtomType> DemetallificationMeta = new();
+	public static List<AtomType> DemetallificationExplosionMeta = new();
 	private static Dictionary<AtomType, int> ExtraAtomicExceptions = new();
 	private static Dictionary<AtomType, int> PlaceholderPTableReplacements = new();
 	private static Dictionary<AtomType,List<AtomType>> CanThisAtomTriplex = new();

@@ -28,6 +28,12 @@ internal class MPPlusExtensions
 		Atoms.PTableIgnore[75] = true;
 		Flexibility.addMetallificationRule(HalvingMetallurgy.Atoms.Quickcopper,HalvingMetallurgy.Atoms.Beryl);
 		Flexibility.addDemetallificationRule(HalvingMetallurgy.Atoms.Beryl,HalvingMetallurgy.Atoms.Quickcopper);
+		Flexibility.DemetallificationExplosionMeta.Add(HalvingMetallurgy.Atoms.Nickel);
+		Flexibility.DemetallificationExplosionMeta.Add(HalvingMetallurgy.Atoms.Zinc);
+		Flexibility.DemetallificationExplosionMeta.Add(HalvingMetallurgy.Atoms.Wolfram);
+		Flexibility.DemetallificationExplosionMeta.Add(HalvingMetallurgy.Atoms.Osmium);
+		Flexibility.DemetallificationExplosionMeta.Add(HalvingMetallurgy.Atoms.Sednum);
+		Flexibility.DemetallificationExplosionMeta.Add(HalvingMetallurgy.Atoms.Vulcan);
     }
 	public static void AddHalvingMetallurgyLater() {
 		Flexibility.addTriplexCondition(Atoms.EZGG,HalvingMetallurgy.Atoms.Vulcan);
@@ -35,6 +41,7 @@ internal class MPPlusExtensions
 	public static void AddUnstableElements() {
 		Atoms.PTableAtoms[91] = MagicalParcherPlus.FindModAtom("UnstableElements:uranium"); //why it is private
 		Atoms.PTableIgnore[91] = true;
+		Flexibility.DemetallificationExplosionMeta.Add(Atoms.PTableAtoms[91]);
 		//Flexibility.addExtraAtomicException(FindModAtom("UnstableElements:uranium_0_1"),91); //it is inaccessible to this atom 
 		//Flexibility.addExtraAtomicException(FindModAtom("UnstableElements:uranium_0_2"),91); //and it has strict type checking
 		//Flexibility.addExtraAtomicException(FindModAtom("UnstableElements:uranium_1_0"),91); //so it won't detect isotopes
@@ -47,6 +54,7 @@ internal class MPPlusExtensions
 	public static void AddMetalQuintessence() {
 		Atoms.PTableAtoms[23] = MetalQuintessence.MetalQuintessenceAtoms.Chromium;
 		Atoms.PTableIgnore[23] = true;
+		Flexibility.DemetallificationExplosionMeta.Add(MetalQuintessence.MetalQuintessenceAtoms.Chromium);
     }
 	public static void AddAlchemicalInversions() {
 		Atoms.PTableAtoms[38] = AlchemicalInversions.Atoms.Yttrium;
