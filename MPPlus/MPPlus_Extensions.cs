@@ -28,7 +28,9 @@ internal class MPPlusExtensions
 		Atoms.PTableIgnore[75] = true;
 		Flexibility.addMetallificationRule(HalvingMetallurgy.Atoms.Quickcopper,HalvingMetallurgy.Atoms.Beryl);
 		Flexibility.addDemetallificationRule(HalvingMetallurgy.Atoms.Beryl,HalvingMetallurgy.Atoms.Quickcopper);
-		Flexibility.CanThisAtomTriplex.Add(HalvingMetallurgy.Atoms.Vulcan);
+    }
+	public static void AddHalvingMetallurgyLater() {
+		Flexibility.addTriplexCondition(Atoms.EZGG,HalvingMetallurgy.Atoms.Vulcan);
     }
 	public static void AddUnstableElements() {
 		Atoms.PTableAtoms[91] = MagicalParcherPlus.FindModAtom("UnstableElements:uranium"); //why it is private

@@ -345,10 +345,16 @@ public static class Parts
 		QApi.RunAfterCycle((sim, first) => {
 			var seb = sim.field_3818;
 			List<Part> allParts = seb.method_502().field_3919;
+            Dictionary<Part, PartSimState> partSimStates = sim.field_3821;
 			var simStates = sim.field_3821;
 			var moleculeList = sim.field_3823;
+			void YOUARENOTAPRIVATEEYENOWPLAYSOUND(Sound S)
+			{
+				S.method_28(seb.method_506());
+			}
 
 			foreach(var part in allParts){
+                PartSimState pss = partSimStates[part];
 				var type = part.method_1159();
 				// look for 3 unheld QSs and free gold
 				if(type == Cardinalification){
@@ -367,6 +373,7 @@ public static class Parts
 								seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
 								// upgrade effect for gold -> uranium
 								qs.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, qs.field_2280, class_238.field_1989.field_81.field_614, 30f);
+								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1844);
 							}
 						}
 					}
@@ -386,6 +393,7 @@ public static class Parts
 								seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
 								// upgrade effect for gold -> uranium
 								qs.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, qs.field_2280, class_238.field_1989.field_81.field_614, 30f);
+								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1844);
 							}
 						}
 					}
@@ -405,6 +413,7 @@ public static class Parts
 								seb.field_3937.Add(new class_286(seb, word.field_2278, AtomTypes.field_1690));
 								// upgrade effect for gold -> uranium
 								qs.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, qs.field_2280, class_238.field_1989.field_81.field_614, 30f);
+								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1844);
 							}
 						}
 					}
@@ -418,6 +427,7 @@ public static class Parts
 							bowl.field_2277.method_1106(Demetal, bowl.field_2278);
 							// upgrade effect for gold -> uranium
 							bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
+							YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1844);
 						}
 					}
 				}else if(type == Demetallification){
@@ -430,6 +440,7 @@ public static class Parts
 							bowl.field_2277.method_1106(Demetal, bowl.field_2278);
 							// upgrade effect for gold -> uranium
 							bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
+							YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1844);
 						}
 					}
 				}else if(type == AtomicProjection){
@@ -448,6 +459,7 @@ public static class Parts
 								seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Proton));
 								// upgrade effect for gold -> uranium
 								qs.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, qs.field_2280, class_238.field_1989.field_81.field_614, 30f);
+								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1844);
 							}
 						}
 					}
@@ -468,6 +480,7 @@ public static class Parts
 								//seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
 								// upgrade effect for gold -> uranium
 								qs.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, qs.field_2280, class_238.field_1989.field_81.field_614, 30f);
+								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1860);
 							}
 						}
 					}
@@ -478,7 +491,7 @@ public static class Parts
                         {
                             continue;
                         }
-                        if (Flexibility.CanThisAtomTriplex.Contains(leftAtom.field_2280) && Flexibility.CanThisAtomTriplex.Contains(rightAtom.field_2280))
+                        if (Flexibility.checkTriplexCondition(leftAtom.field_2280,rightAtom.field_2280) || Flexibility.checkTriplexCondition(rightAtom.field_2280,leftAtom.field_2280))
                         {
 							if (leftAtom.field_2277 != rightAtom.field_2277){
 								sim.field_3823.Remove(leftAtom.field_2277);
@@ -487,7 +500,88 @@ public static class Parts
 							}
 							BondEffect bondEffect = new BondEffect(sim.field_3818, (enum_7)1, bonder.field_1922.method_779().field_1817, 60f, bonder.field_1922.method_779().field_1818);
 							leftAtom.field_2277.method_1112(bonder.field_1922.method_779().field_1814, leftAtom.field_2278, rightAtom.field_2278, bondEffect);
+							YOUARENOTAPRIVATEEYENOWPLAYSOUND(bonder.field_1922.method_779().field_1820);
                         }
+                    }
+                }else if(type == class_191.field_1783)/* Unification */{
+					// vanilla code runs first, so what if i do a hacky workaround
+					if (first && pss.field_2743)
+					{
+						if (pss.field_2744.Length < 5)
+							pss.field_2744 = new AtomType[5] { pss.field_2744[0], pss.field_2744[1], pss.field_2744[2], pss.field_2744[3], class_175.field_1690 };
+					}
+                    else if (first)
+                    {
+						if(sim.FindAtomRelative(part, new HexIndex(0, 1)).method_99(out AtomReference Input1)
+						   && sim.FindAtomRelative(part, new (0, -1)).method_99(out AtomReference Input2)
+						   && sim.FindAtomRelative(part, new (-1, 1)).method_99(out AtomReference Input3)
+						   && sim.FindAtomRelative(part, new (1, -1)).method_99(out AtomReference Input4)
+						   && !sim.FindAtomRelative(part, new (0, 0)).method_99(out _)){
+							bool EZGGInserted = false;
+							bool TricInserted = false;
+							bool ModrenityInserted = false;
+							bool GabsInserted = false;
+							AtomType Reference = Atoms.EZGG;
+							if (Input1.field_2280 == Reference || Input2.field_2280 == Reference || Input3.field_2280 == Reference || Input4.field_2280 == Reference){
+								EZGGInserted = true;
+							}
+							Reference = Atoms.Tric;
+							if (Input1.field_2280 == Reference || Input2.field_2280 == Reference || Input3.field_2280 == Reference || Input4.field_2280 == Reference){
+								TricInserted = true;
+							}
+							Reference = Atoms.Modrenity;
+							if (Input1.field_2280 == Reference || Input2.field_2280 == Reference || Input3.field_2280 == Reference || Input4.field_2280 == Reference){
+								ModrenityInserted = true;
+							}
+							Reference = Atoms.Gabs;
+							if (Input1.field_2280 == Reference || Input2.field_2280 == Reference || Input3.field_2280 == Reference || Input4.field_2280 == Reference){
+								GabsInserted = true;
+							}
+							// and are the right types...
+							if(EZGGInserted && TricInserted && ModrenityInserted && GabsInserted){
+								// and the quicksilver is not being consumed or held...
+								if(!Input1.field_2281 && !Input1.field_2282
+								&& !Input2.field_2281 && !Input2.field_2282
+								&& !Input3.field_2281 && !Input3.field_2282
+								&& !Input4.field_2281 && !Input4.field_2282
+								){
+									// transmute the gold and destroy the quicksilver
+									Input1.field_2277.method_1107(Input1.field_2278);
+									Input2.field_2277.method_1107(Input2.field_2278);
+									Input3.field_2277.method_1107(Input3.field_2278);
+									Input4.field_2277.method_1107(Input4.field_2278);
+									//Molecule molecule = new Molecule();
+									//molecule.method_1105(new Atom(Atoms.Abomination), part.method_1184(new(0, 0)));
+									//moleculeList.Add(molecule);
+									// show the removal effects for qs
+									Texture[] disposalFlashAnimation = class_238.field_1989.field_90.field_240;
+									//seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(1, 1))), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+									//seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(1, -1))), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+									//seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(0, 1))), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+									//seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(2, -1))), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+									sim.field_3826.Add(new()
+									{
+									    field_3850 = (Sim.enum_190)0,
+									    field_3851 = class_187.field_1742.method_492(part.method_1184(new(0, 0))),
+									    field_3852 = 15f
+									});
+									YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1860);
+									pss.field_2743 = true;
+									pss.field_2744 = new AtomType[5] { Input3.field_2280, Input1.field_2280, Input2.field_2280, Input4.field_2280, Atoms.Abomination };
+									//seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
+									// upgrade effect for gold -> uranium
+									//qs.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, qs.field_2280, class_238.field_1989.field_81.field_614, 30f);
+								}
+							}
+						}
+					}
+                    else if (pss.field_2743)
+                    {
+						if(sim.FindAtomRelative(part, new HexIndex(0, 0)).method_99(out AtomReference ToBeRemoved)) 
+							ToBeRemoved.field_2277.method_1107(ToBeRemoved.field_2278);
+						Molecule molecule = new Molecule();
+						molecule.method_1105(new Atom(pss.field_2744[4]), part.method_1184(new(0, 0)));
+						moleculeList.Add(molecule);
                     }
                 }
 			}

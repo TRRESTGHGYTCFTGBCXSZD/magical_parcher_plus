@@ -335,8 +335,10 @@ public static class Atoms
 		PTableAtoms[78] = AtomTypes.field_1686;
 		PTableAtoms[79] = AtomTypes.field_1680;
 		PTableAtoms[81] = AtomTypes.field_1681;
-		Flexibility.CanThisAtomTriplex.Add(AtomTypes.field_1678);
-		Flexibility.CanThisAtomTriplex.Add(EZGG);
+		Flexibility.addTriplexCondition(EZGG,AtomTypes.field_1678);
+		Flexibility.addTriplexCondition(EZGG,EZGG);
+		Flexibility.addTriplexCondition(Abomination,EZGG);
+		Flexibility.addTriplexCondition(Abomination,Abomination);
 		On.Editor.method_927 += RenderExtraStuff;
 		QApi.RunAfterCycle((sim, first) => {
 			List<Molecule> moleculeList = sim.field_3823;

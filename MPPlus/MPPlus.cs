@@ -64,6 +64,7 @@ public class MagicalParcherPlus : QuintessentialMod
 		{}
 		return false;
 	}
+	public static MethodInfo PrivateMethod<T>(string method) => typeof(T).GetMethod(method, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
 	public static QuintessentialMod self;
 	public override Type SettingsType => typeof(Settei);
 	public override void Load() {
@@ -99,6 +100,10 @@ public class MagicalParcherPlus : QuintessentialMod
 		}
 		Atoms.AddNewContent();
 		Parts.AddNewContent();
+		if (QuintessentialLoader.CodeMods.Any(mod => mod.Meta.Name == "HalvingMetallurgy"))
+		{
+			MPPlusExtensions.AddHalvingMetallurgyLater();
+		}
 		//On.MoleculeEditorScreen.method_50 += AddElementsToMoleculeEditor;
 	}
 	static MethodInfo method_1130_info = typeof(MoleculeEditorScreen).GetMethod("method_1130", BindingFlags.Instance | BindingFlags.NonPublic);

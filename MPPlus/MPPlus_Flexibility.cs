@@ -17,7 +17,7 @@ public class Flexibility
 	private static Dictionary<AtomType, AtomType> DemetallificationMeta = new();
 	private static Dictionary<AtomType, int> ExtraAtomicExceptions = new();
 	private static Dictionary<AtomType, int> PlaceholderPTableReplacements = new();
-	public static List<AtomType> CanThisAtomTriplex = new();
+	private static Dictionary<AtomType,List<AtomType>> CanThisAtomTriplex = new();
     //reductive metal code
 	public static bool applyMetallificationRule(AtomType input, out AtomType output) => applyTRule(input, MetallificationMeta, out output);
 	public static bool applyDemetallificationRule(AtomType input, out AtomType output) => applyTRule(input, DemetallificationMeta, out output);
@@ -28,6 +28,25 @@ public class Flexibility
 	public static void addDemetallificationRule(AtomType hi, AtomType lo) => addTRule("demetallification", hi, lo, DemetallificationMeta, new List<AtomType> {});
 	public static void addExtraAtomicException(AtomType atomictype, int atomicnumber) => addTRule("extraatomicexceptions", atomictype, atomicnumber, ExtraAtomicExceptions, new List<AtomType> {});
 	public static void addPlaceholderPTableReplacement(AtomType atomictype, int atomicnumber) => addTRule("placeholderptablereplacements", atomictype, atomicnumber, PlaceholderPTableReplacements, new List<AtomType> {});
+
+	public static bool checkTriplexCondition(AtomType triplexcatalyst, AtomType triplexattach){
+		if (!CanThisAtomTriplex.ContainsKey(triplexcatalyst)) //safeguard to prevent uninitialized data
+		{
+			return false;
+		}
+		foreach (AtomType atomie in CanThisAtomTriplex[triplexcatalyst])
+		{
+			if (atomie == triplexattach) return true; // this is found
+		}
+		return false;
+	}
+	public static void addTriplexCondition(AtomType triplexcatalyst, AtomType triplexattach){
+		if (!CanThisAtomTriplex.ContainsKey(triplexcatalyst)) //safeguard to prevent uninitialized data
+		{
+			CanThisAtomTriplex.Add(triplexcatalyst,new List<AtomType>());
+		}
+		CanThisAtomTriplex[triplexcatalyst].Add(triplexattach);
+	}
 
 	private static bool applyTRule<T>(AtomType hi, Dictionary<AtomType, T> dict, out T lo)
 	{
