@@ -7,6 +7,8 @@ DLL: "MPPlus.dll"
 Dependencies:
 - Name: Quintessential
   Version: 0.5.5
+- Name: Zena_GerioLib
+  Version: 1.0.0
 OptionalDependencies:
 - Name: HalvingMetallurgy
   Version: 4.2.0

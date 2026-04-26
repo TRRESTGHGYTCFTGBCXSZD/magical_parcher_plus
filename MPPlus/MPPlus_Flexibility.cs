@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.IO;
 
+using ZenaLib;
+
 namespace MagicalParcherPlus;
 
 public class Flexibility
@@ -21,7 +23,11 @@ public class Flexibility
 	private static Dictionary<AtomType, int> ExtraAtomicExceptions = new();
 	private static Dictionary<AtomType, int> PlaceholderPTableReplacements = new();
 	private static Dictionary<AtomType,List<AtomType>> CanThisAtomTriplex = new();
-    //reductive metal code
+	public static List<Recipe> UnifyRecipes = new();
+	public static List<Recipe> DisperseRecipes = new();
+	public static List<Recipe> AnimismusRecipes = new();
+	public static List<Recipe> AntiAnimismusRecipes = new();
+	//reductive metal code
 	public static bool applyCardinalificationRule(AtomType input, out AtomType output) => applyTRule(input, CardinalificationMeta, out output);
 	public static bool applyLiquidationRule(AtomType input, out AtomType output) => applyTRule(input, LiquidationMeta, out output);
 	public static bool applyMetallificationRule(AtomType input, out AtomType output) => applyTRule(input, MetallificationMeta, out output);

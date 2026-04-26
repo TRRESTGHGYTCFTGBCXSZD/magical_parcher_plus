@@ -7,54 +7,65 @@
   <PropertyGroup>
     <LangVersion>10</LangVersion>
   </PropertyGroup>
+  
+  <PropertyGroup>
+    <OpusTargetDir>E:\SteamLibrary\steamapps\common\Opus Magnum</OpusTargetDir>
+    <ModDllDir>..\..\compile_needed</ModDllDir>
+  </PropertyGroup>
 
   <ItemGroup>
     <Reference Include="Lightning">
-      <HintPath>E:\SteamLibrary\steamapps\common\Opus Magnum\ModdedLightning.exe</HintPath>
+      <HintPath>$(OpusTargetDir)\ModdedLightning.exe</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
     <Reference Include="MMHOOK_ModdedLightning">
-      <HintPath>E:\SteamLibrary\steamapps\common\Opus Magnum\MMHOOK_ModdedLightning.dll</HintPath>
+      <HintPath>$(OpusTargetDir)\MMHOOK_ModdedLightning.dll</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
     <Reference Include="Mono.Cecil">
-      <HintPath>E:\SteamLibrary\steamapps\common\Opus Magnum\Mono.Cecil.dll</HintPath>
+      <HintPath>$(OpusTargetDir)\Mono.Cecil.dll</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
     <Reference Include="MonoMod.RuntimeDetour">
-      <HintPath>E:\SteamLibrary\steamapps\common\Opus Magnum\MonoMod.RuntimeDetour.dll</HintPath>
+      <HintPath>$(OpusTargetDir)\MonoMod.RuntimeDetour.dll</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
     <Reference Include="MonoMod.Utils">
-      <HintPath>E:\SteamLibrary\steamapps\common\Opus Magnum\MonoMod.Utils.dll</HintPath>
+      <HintPath>$(OpusTargetDir)\MonoMod.Utils.dll</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
     <Reference Include="YamlDotNet">
-      <HintPath>E:\SteamLibrary\steamapps\common\Opus Magnum\YamlDotNet.dll</HintPath>
+      <HintPath>$(OpusTargetDir)\YamlDotNet.dll</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
     <Reference Include="Vaca">
-      <HintPath>..\..\compile_needed\Vaca.dll</HintPath>
+      <HintPath>$(ModDllDir)\Vaca.dll</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
     <Reference Include="HalvingMetallurgy">
-      <HintPath>..\..\compile_needed\HalvingMetallurgy.dll</HintPath>
+      <HintPath>$(ModDllDir)\HalvingMetallurgy.dll</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
     <Reference Include="UnstableElements">
-      <HintPath>..\..\compile_needed\UnstableElements.dll</HintPath>
+      <HintPath>$(ModDllDir)\UnstableElements.dll</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
     <Reference Include="MetalQuintessence">
-      <HintPath>..\..\compile_needed\MetalQuintessence.dll</HintPath>
+      <HintPath>$(ModDllDir)\MetalQuintessence.dll</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
     <Reference Include="Neuvolics">
-      <HintPath>..\..\compile_needed\Neuvolics.dll</HintPath>
+      <HintPath>$(ModDllDir)\Neuvolics.dll</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
     <Reference Include="AlchemicalInversions">
-      <HintPath>..\..\compile_needed\AlchemicalInversions.dll</HintPath>
+      <HintPath>$(ModDllDir)\AlchemicalInversions.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="ZenaLib">
+      <HintPath>..\..\zena\ZenaLib.dll</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
   </ItemGroup>

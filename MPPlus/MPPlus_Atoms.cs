@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.IO;
 
+using ZenaLib;
+
 namespace MagicalParcherPlus;
 
 //using PartType = class_139;
@@ -21,22 +23,21 @@ using Texture = class_256;
 
 public static class Atoms
 {
-    public static bool GerioificationVanilla = true;
-    public static bool GerioHasHat = false;
-    public static bool TricHasHeadphones = true;
-    private static byte NewCharactersAtomID = 255;
-    private static byte OriginalCharactersAtomID = 254;
-    private static byte PTableAtomID = 253;
-    private static byte ProtonID = 252;
+	public static bool GerioificationVanilla = true;
+	public static bool GerioHasHat = false;
+	public static bool TricHasHeadphones = true;
+	private static byte NewCharactersAtomID = 255;
+	private static byte OriginalCharactersAtomID = 254;
+	private static byte PTableAtomID = 253;
+	private static byte ProtonID = 252;
 
 	public static T AndOr<T>(bool dind, T truedind, T falsedind) {
-        if (dind) return truedind;
-		return falsedind;
+		return dind ? truedind : falsedind;
 	}
-    //atoms for atomic operations
+	//atoms for atomic operations
 	public static AtomType Proton;
-    public static AtomType[] PTableAtoms = new AtomType[118];
-    private static string[] PTableNaming = {
+	public static AtomType[] PTableAtoms = new AtomType[118];
+	private static string[] PTableNaming = {
 		"Hydrogen","Helium",
 		"Lithium","Berylium","Boron","Carbon","Nitrogen","Oxygen","Fluorine","Neon",
 		"Sodium","Magnesium","Aluminium","Phosphorus","Silicon","Sulfur","Chlorine","Argon",
@@ -45,7 +46,7 @@ public static class Atoms
 		"Caesium","Barium","Lanthanum","Cerium","Praseodymium","Neodymium","Promethium","Samarium","Europium","Gadolinium","Terbium","Dysprosium","Holmium","Erbium","Thulium","Ytterbium","Lutetium","Hafnium","Tantalum","Tungsten","Rhenium","Osmium","Iridium","Platinum","Gold","Mercury","Thallium","Lead","Bismuth","Polonium","Astatine","Radon",
 		"Francium","Radium","Actinium","Thorium","Protactinium","Uranium","Neptunium","Plutonium","Americium","Curium","Berkelium","Californium","Einsteinium","Fermium","Mendelevium","Nobelium","Lawrencium","Rutherfordium","Dubnium","Seaborgium","Bohrium","Hassium","Meitnerium","Darmstadtium","Roentgenium","Copernicium","Nihonium","Flerovium","Moscovium","Livermorium","Tennessine","Oganesson"
 	};
-    public static bool[] PTableIgnore = {
+	public static bool[] PTableIgnore = {
 		false,false,
 		false,false,false,false,false,false,false,false,
 		false,false,false,false,false,false,false,false,
@@ -54,7 +55,7 @@ public static class Atoms
 		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true, true, false,true, false,false,false,false,
 		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
 	};
-    public static bool[] PTableDoNotAdd = {
+	public static bool[] PTableDoNotAdd = {
 		false,false,
 		false,false,false,false,false,false,false,false,
 		false,false,false,false,false,false,false,false,
@@ -64,7 +65,7 @@ public static class Atoms
 		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
 	};
 	//public static Dictionary<AtomType, int> PTableAtomsReverse = new();
-    //atoms that don't categorize
+	//atoms that don't categorize
 	public static AtomType Wordexis, Erabukun, Zena;
 	public static AtomType Gerio, EZGG, Gabs, Tric, Modrenity, CeminratesBestie, RedZena, BlueZena, Abomination;
 	public static List<AtomType> atomsToAdd;
@@ -100,7 +101,7 @@ public static class Atoms
 				field_994 = class_235.method_615("textures/atoms/magicalparcher/erabukun_combined"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
-        	QuintAtomType = "magicalparcherplus:erabukun"
+			QuintAtomType = "magicalparcherplus:erabukun"
 		};
 
 		Wordexis = new AtomType()
@@ -116,7 +117,7 @@ public static class Atoms
 				field_994 = class_235.method_615("textures/atoms/magicalparcher/wordexis_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
-        	QuintAtomType = "magicalparcherplus:wordexis"
+			QuintAtomType = "magicalparcherplus:wordexis"
 		};
 
 		Zena = new AtomType()
@@ -132,7 +133,7 @@ public static class Atoms
 				field_994 = class_235.method_615("textures/atoms/magicalparcher/zena_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
-        	QuintAtomType = "magicalparcherplus:zena"
+			QuintAtomType = "magicalparcherplus:zena"
 		};
 
 		Tric = new AtomType()
@@ -148,7 +149,7 @@ public static class Atoms
 				field_994 = class_235.method_615("textures/atoms/magicalparcher/tric_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
-        	QuintAtomType = "magicalparcherplus:tric"
+			QuintAtomType = "magicalparcherplus:tric"
 		};
 
 		Gerio = new AtomType()
@@ -164,7 +165,7 @@ public static class Atoms
 				field_994 = class_235.method_615("textures/atoms/magicalparcher/gerio_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
-        	QuintAtomType = "magicalparcherplus:gerio"
+			QuintAtomType = "magicalparcherplus:gerio"
 		};
 
 		Gabs = new AtomType()
@@ -180,7 +181,7 @@ public static class Atoms
 				field_994 = class_235.method_615("textures/atoms/magicalparcher/gabs_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
-        	QuintAtomType = "magicalparcherplus:gabs"
+			QuintAtomType = "magicalparcherplus:gabs"
 		};
 
 		EZGG = new AtomType()
@@ -196,7 +197,7 @@ public static class Atoms
 				field_994 = class_235.method_615("textures/atoms/magicalparcher/ezgg_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
-        	QuintAtomType = "magicalparcherplus:ezgg"
+			QuintAtomType = "magicalparcherplus:ezgg"
 		};
 
 		Modrenity = new AtomType()
@@ -212,7 +213,7 @@ public static class Atoms
 				field_994 = class_235.method_615("textures/atoms/magicalparcher/modrenity_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
-        	QuintAtomType = "magicalparcherplus:modrenity"
+			QuintAtomType = "magicalparcherplus:modrenity"
 		};
 
 		Abomination = new AtomType()
@@ -228,7 +229,7 @@ public static class Atoms
 				field_994 = class_235.method_615("textures/atoms/magicalparcher/modrenity_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
-        	QuintAtomType = "magicalparcherplus:abomination"
+			QuintAtomType = "magicalparcherplus:abomination"
 		};
 
 		RedZena = new AtomType()
@@ -244,7 +245,7 @@ public static class Atoms
 				field_994 = class_235.method_615("textures/atoms/magicalparcher/zena_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
-        	QuintAtomType = "magicalparcherplus:redzena"
+			QuintAtomType = "magicalparcherplus:redzena"
 		};
 
 		BlueZena = new AtomType()
@@ -260,7 +261,7 @@ public static class Atoms
 				field_994 = class_235.method_615("textures/atoms/magicalparcher/zena_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
-        	QuintAtomType = "magicalparcherplus:bluezena"
+			QuintAtomType = "magicalparcherplus:bluezena"
 		};
 
 		CeminratesBestie = new AtomType()
@@ -276,7 +277,7 @@ public static class Atoms
 				field_994 = class_235.method_615("textures/atoms/magicalparcher/ceminratesbestie_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
-        	QuintAtomType = "magicalparcherplus:CeminratesBestie"
+			QuintAtomType = "magicalparcherplus:CeminratesBestie"
 		};
 
 		Proton = new AtomType()
@@ -292,7 +293,7 @@ public static class Atoms
 				field_994 = class_235.method_615("textures/atoms/magicalparcher/proton_diffuse"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
-        	QuintAtomType = "magicalparcherplus:proton"
+			QuintAtomType = "magicalparcherplus:proton"
 		};
 
 		atomsToAdd = new List<AtomType>() { Proton, Gerio, Gabs, Tric, EZGG, Modrenity, CeminratesBestie, RedZena, BlueZena, Abomination, Wordexis, Erabukun, Zena, };
@@ -326,7 +327,7 @@ public static class Atoms
 						field_994 = AndOr(ThisImageShouldBeTextured,class_235.method_615("textures/atoms/magicalparcher/ptableatoms/"+PTableNaming[PTableAtomIndex].ToLower()+"_diffuse"),class_235.method_615("textures/atoms/salt_diffuse")),//salt_diffuse
 						field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 					},
-        			QuintAtomType = "magicalparcherplus:"+PTableNaming[PTableAtomIndex].ToLower()
+					QuintAtomType = "magicalparcherplus:"+PTableNaming[PTableAtomIndex].ToLower()
 				};
 				if (!PTableIgnore[PTableAtomIndex]) {
 					PTableAtoms[PTableAtomIndex] = Whatwiyo;
@@ -363,11 +364,33 @@ public static class Atoms
 		Flexibility.addLiquidationRule(AtomTypes.field_1675,AtomTypes.field_1680);
 		Flexibility.addCardinalificationRule(CeminratesBestie,Gerio);
 		Flexibility.addLiquidationRule(Gerio,CeminratesBestie);
+		Flexibility.addMetallificationRule(AtomTypes.field_1680,AtomTypes.field_1681);
+		Flexibility.addDemetallificationRule(AtomTypes.field_1681,AtomTypes.field_1680);
 		Flexibility.DemetallificationExplosionMeta.Add(AtomTypes.field_1684);
 		Flexibility.DemetallificationExplosionMeta.Add(AtomTypes.field_1682);
 		Flexibility.DemetallificationExplosionMeta.Add(AtomTypes.field_1685);
 		Flexibility.DemetallificationExplosionMeta.Add(AtomTypes.field_1683);
 		Flexibility.DemetallificationExplosionMeta.Add(AtomTypes.field_1686);
+		Dictionary<AtomType,int> wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Modrenity,1);
+		wanafo.Add(Atoms.EZGG,1);
+		wanafo.Add(Atoms.Gabs,1);
+		wanafo.Add(Atoms.Tric,1);
+		Flexibility.UnifyRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[1] { Atoms.Abomination }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Abomination,1);
+		Flexibility.DisperseRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[4] { Atoms.Modrenity, Atoms.EZGG, Atoms.Gabs, Atoms.Tric }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Gerio,2);
+		Flexibility.AnimismusRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.RedZena, Atoms.BlueZena }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.RedZena,1);
+		wanafo.Add(Atoms.BlueZena,1);
+		Flexibility.AntiAnimismusRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.Gerio, Atoms.Gerio }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(AtomTypes.field_1687,1);
+		wanafo.Add(AtomTypes.field_1688,1);
+		Flexibility.AntiAnimismusRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AtomTypes.field_1675, AtomTypes.field_1675 }));
 		On.Editor.method_927 += RenderExtraStuff;
 		QApi.RunAfterCycle((sim, first) => {
 			List<Molecule> moleculeList = sim.field_3823;
@@ -381,114 +404,114 @@ public static class Atoms
 			}
 		});
 	}
-    internal static void RenderExtraStuff(On.Editor.orig_method_927 orig, AtomType type, Vector2 position, float param_4582, float param_4583, float param_4584, float param_4585, float param_4586, float param_4587, Texture overrideShadow, Texture maskM, bool param_4590)
-    {
+	internal static void RenderExtraStuff(On.Editor.orig_method_927 orig, AtomType type, Vector2 position, float param_4582, float param_4583, float param_4584, float param_4585, float param_4586, float param_4587, Texture overrideShadow, Texture maskM, bool param_4590)
+	{
 		if (GerioificationVanilla)
 		{
-        	if (type == AtomTypes.field_1677) //visuallize earth as tric
-        	{
-        	    RenderExtraStuff(orig, Tric, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
-        	    return;
-        	}
-        	if (type == AtomTypes.field_1679) //visuallize water as gabs
-        	{
-        	    RenderExtraStuff(orig, Gabs, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
-        	    return;
-        	}
-        	if (type == AtomTypes.field_1678) //visuallize fire as ezgg
-        	{
-        	    RenderExtraStuff(orig, EZGG, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
-        	    return;
-        	}
-        	if (type == AtomTypes.field_1676) //visuallize air as modrenity
-        	{
-        	    RenderExtraStuff(orig, Modrenity, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
-        	    return;
-        	}
-        	if (type == AtomTypes.field_1675) //visuallize salt as gerio
-        	{
-        	    RenderExtraStuff(orig, Gerio, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
-        	    return;
-        	}
-        	if (type == AtomTypes.field_1687) //visuallize vitae as red zena
-        	{
-        	    RenderExtraStuff(orig, RedZena, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
-        	    return;
-        	}
-        	if (type == AtomTypes.field_1688) //visuallize mors as blue zena
-        	{
-        	    RenderExtraStuff(orig, BlueZena, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
-        	    return;
-        	}
-        	if (type == AtomTypes.field_1690) //visuallize quint as abomination
-        	{
-        	    RenderExtraStuff(orig, Abomination, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
-        	    return;
-        	}
+			if (type == AtomTypes.field_1677) //visuallize earth as tric
+			{
+				RenderExtraStuff(orig, Tric, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == AtomTypes.field_1679) //visuallize water as gabs
+			{
+				RenderExtraStuff(orig, Gabs, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == AtomTypes.field_1678) //visuallize fire as ezgg
+			{
+				RenderExtraStuff(orig, EZGG, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == AtomTypes.field_1676) //visuallize air as modrenity
+			{
+				RenderExtraStuff(orig, Modrenity, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == AtomTypes.field_1675) //visuallize salt as gerio
+			{
+				RenderExtraStuff(orig, Gerio, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == AtomTypes.field_1687) //visuallize vitae as red zena
+			{
+				RenderExtraStuff(orig, RedZena, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == AtomTypes.field_1688) //visuallize mors as blue zena
+			{
+				RenderExtraStuff(orig, BlueZena, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == AtomTypes.field_1690) //visuallize quint as abomination
+			{
+				RenderExtraStuff(orig, Abomination, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
 		}
-        Color tecolor = Color.White.WithAlpha(param_4583);
-        if (type == Wordexis)
-        {
-	        class_135.method_263(WordexisBackAccessories, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
-        }
-        if (type == Tric)
-        {
-	        class_135.method_263(TricEars, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		Color tecolor = Color.White.WithAlpha(param_4583);
+		if (type == Wordexis)
+		{
+			class_135.method_263(WordexisBackAccessories, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		}
+		if (type == Tric)
+		{
+			class_135.method_263(TricEars, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
 			if (TricHasHeadphones)
-	        	class_135.method_263(TricBackAccessories, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
-        }
-        if (type == CeminratesBestie)
-        {
-	        class_135.method_263(CeminratesBestieEars, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
-        }
-        if (type == Gabs)
-        {
-	        class_135.method_263(GabsSpikes, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
-        }
-        if (type == Modrenity)
-        {
-	        class_135.method_263(ModrenityControlSticks, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
-        }
-        if (type == Zena)
-        {
-	        class_135.method_263(ZenaMagnets, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
-        }
-        if (type == RedZena)
-        {
-	        class_135.method_263(RedZenaMagnets, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
-        }
-        if (type == BlueZena)
-        {
-	        class_135.method_263(BlueZenaMagnets, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
-        }
-        if (type == Abomination)
-        {
-	        class_135.method_263(TricEars, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
-	        class_135.method_263(GabsSpikes, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
-	        class_135.method_263(ModrenityControlSticks, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
-        }
+				class_135.method_263(TricBackAccessories, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		}
+		if (type == CeminratesBestie)
+		{
+			class_135.method_263(CeminratesBestieEars, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		}
+		if (type == Gabs)
+		{
+			class_135.method_263(GabsSpikes, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		}
+		if (type == Modrenity)
+		{
+			class_135.method_263(ModrenityControlSticks, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		}
+		if (type == Zena)
+		{
+			class_135.method_263(ZenaMagnets, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		}
+		if (type == RedZena)
+		{
+			class_135.method_263(RedZenaMagnets, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		}
+		if (type == BlueZena)
+		{
+			class_135.method_263(BlueZenaMagnets, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		}
+		if (type == Abomination)
+		{
+			class_135.method_263(TricEars, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+			class_135.method_263(GabsSpikes, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+			class_135.method_263(ModrenityControlSticks, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		}
 		//behind atom
-        orig(type, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+		orig(type, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
 		//in front of atom
-        if (type == Wordexis)
-        {
-	        class_135.method_263(WordexisVisor, tecolor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
-        }
-        if (type == Gerio)
-        {
-	        class_135.method_263(GerioHair, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		if (type == Wordexis)
+		{
+			class_135.method_263(WordexisVisor, tecolor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
+		}
+		if (type == Gerio)
+		{
+			class_135.method_263(GerioHair, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
 			if (GerioHasHat)
-	        	class_135.method_263(GerioHat, tecolor, position - new Vector2(60, 30) * param_4582, new Vector2(120, 120) * param_4582);
-        }
-        if (type == EZGG)
-        {
-	        class_135.method_263(EZGGHat, tecolor, position - new Vector2(60, 30) * param_4582, new Vector2(120, 120) * param_4582);
-        }
-        if (type == CeminratesBestie)
-        {
-	        class_135.method_263(CeminratesBestieFrontAccessories, tecolor, position - new Vector2(0, 30) * param_4582, new Vector2(60, 60) * param_4582);
-        }
-    }
+				class_135.method_263(GerioHat, tecolor, position - new Vector2(60, 30) * param_4582, new Vector2(120, 120) * param_4582);
+		}
+		if (type == EZGG)
+		{
+			class_135.method_263(EZGGHat, tecolor, position - new Vector2(60, 30) * param_4582, new Vector2(120, 120) * param_4582);
+		}
+		if (type == CeminratesBestie)
+		{
+			class_135.method_263(CeminratesBestieFrontAccessories, tecolor, position - new Vector2(0, 30) * param_4582, new Vector2(60, 60) * param_4582);
+		}
+	}
 
 	public static bool IsAndGetPTableAtom(AtomType WhatAtom, out int AtomIndex) {
 		for (int i = 0; i < 118; i++)
@@ -507,7 +530,7 @@ public static class Atoms
 	}
 
 	public static void Unload()
-    {
+	{
 		On.Editor.method_927 -= RenderExtraStuff;
-    }
+	}
 }
