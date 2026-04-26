@@ -371,6 +371,18 @@ public static class Atoms
 		Flexibility.DemetallificationExplosionMeta.Add(AtomTypes.field_1685);
 		Flexibility.DemetallificationExplosionMeta.Add(AtomTypes.field_1683);
 		Flexibility.DemetallificationExplosionMeta.Add(AtomTypes.field_1686);
+		Flexibility.addCalcinatorRule(Atoms.Gabs,Atoms.Gerio);
+		Flexibility.addCalcinatorRule(Atoms.Modrenity,Atoms.Gerio);
+		Flexibility.addCalcinatorRule(Atoms.Tric,Atoms.Gerio);
+		Flexibility.addCalcinatorRule(Atoms.EZGG,Atoms.Gerio);
+		Flexibility.addCalcinatorRule(Atoms.Wordexis,Atoms.Gerio);
+		Flexibility.addCalcinatorRule(Atoms.Erabukun,Atoms.Gerio);
+		Flexibility.addDuplicatorCastable(Atoms.Gerio,Atoms.Gabs);
+		Flexibility.addDuplicatorCastable(Atoms.Gerio,Atoms.Modrenity);
+		Flexibility.addDuplicatorCastable(Atoms.Gerio,Atoms.Tric);
+		Flexibility.addDuplicatorCastable(Atoms.Gerio,Atoms.EZGG);
+		Flexibility.addDuplicatorCastable(Atoms.Gerio,Atoms.Wordexis);
+		Flexibility.addDuplicatorCastable(Atoms.Gerio,Atoms.Erabukun);
 		Dictionary<AtomType,int> wanafo = new Dictionary<AtomType,int>();
 		wanafo.Add(Atoms.Modrenity,1);
 		wanafo.Add(Atoms.EZGG,1);
@@ -449,7 +461,7 @@ public static class Atoms
 				return;
 			}
 		}
-		Color tecolor = Color.White.WithAlpha(param_4583);
+		Color tecolor = Color.White.WithAlpha(param_4583*param_4584);
 		if (type == Wordexis)
 		{
 			class_135.method_263(WordexisBackAccessories, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);

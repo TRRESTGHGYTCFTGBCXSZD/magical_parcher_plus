@@ -27,6 +27,8 @@ public class Flexibility
 	public static List<Recipe> DisperseRecipes = new();
 	public static List<Recipe> AnimismusRecipes = new();
 	public static List<Recipe> AntiAnimismusRecipes = new();
+	private static Dictionary<AtomType,List<AtomType>> DuplicatorCastables = new();
+	private static Dictionary<AtomType, AtomType> CalcinatorMeta = new();
 	//reductive metal code
 	public static bool applyCardinalificationRule(AtomType input, out AtomType output) => applyTRule(input, CardinalificationMeta, out output);
 	public static bool applyLiquidationRule(AtomType input, out AtomType output) => applyTRule(input, LiquidationMeta, out output);
@@ -34,6 +36,7 @@ public class Flexibility
 	public static bool applyDemetallificationRule(AtomType input, out AtomType output) => applyTRule(input, DemetallificationMeta, out output);
 	public static bool applyExtraAtomicException(AtomType input, out int output) => applyTRule(input, ExtraAtomicExceptions, out output);
 	public static bool applyPlaceholderPTableReplacement(AtomType input, out int output) => applyTRule(input, PlaceholderPTableReplacements, out output);
+	public static bool applyCalcinatorRule(AtomType input, out AtomType output) => applyTRule(input, CalcinatorMeta, out output);
 
 	public static void addCardinalificationRule(AtomType hi, AtomType lo) => addTRule("cardinalificationMeta", hi, lo, CardinalificationMeta, new List<AtomType> {});
 	public static void addLiquidationRule(AtomType hi, AtomType lo) => addTRule("liquidationMeta", hi, lo, LiquidationMeta, new List<AtomType> {});
@@ -41,6 +44,7 @@ public class Flexibility
 	public static void addDemetallificationRule(AtomType hi, AtomType lo) => addTRule("demetallification", hi, lo, DemetallificationMeta, new List<AtomType> {});
 	public static void addExtraAtomicException(AtomType atomictype, int atomicnumber) => addTRule("extraatomicexceptions", atomictype, atomicnumber, ExtraAtomicExceptions, new List<AtomType> {});
 	public static void addPlaceholderPTableReplacement(AtomType atomictype, int atomicnumber) => addTRule("placeholderptablereplacements", atomictype, atomicnumber, PlaceholderPTableReplacements, new List<AtomType> {});
+	public static void addCalcinatorRule(AtomType hi, AtomType lo) => addTRule("calcinator", hi, lo, CalcinatorMeta, new List<AtomType> {});
 
 	public static bool checkTriplexCondition(AtomType triplexcatalyst, AtomType triplexattach){
 		if (!CanThisAtomTriplex.ContainsKey(triplexcatalyst)) //safeguard to prevent uninitialized data
@@ -59,6 +63,25 @@ public class Flexibility
 			CanThisAtomTriplex.Add(triplexcatalyst,new List<AtomType>());
 		}
 		CanThisAtomTriplex[triplexcatalyst].Add(triplexattach);
+	}
+
+	public static bool checkDuplicatorCastable(AtomType triplexcatalyst, AtomType triplexattach){
+		if (!DuplicatorCastables.ContainsKey(triplexcatalyst)) //safeguard to prevent uninitialized data
+		{
+			return false;
+		}
+		foreach (AtomType atomie in DuplicatorCastables[triplexcatalyst])
+		{
+			if (atomie == triplexattach) return true; // this is found
+		}
+		return false;
+	}
+	public static void addDuplicatorCastable(AtomType triplexcatalyst, AtomType triplexattach){
+		if (!DuplicatorCastables.ContainsKey(triplexcatalyst)) //safeguard to prevent uninitialized data
+		{
+			DuplicatorCastables.Add(triplexcatalyst,new List<AtomType>());
+		}
+		DuplicatorCastables[triplexcatalyst].Add(triplexattach);
 	}
 
 	private static bool applyTRule<T>(AtomType hi, Dictionary<AtomType, T> dict, out T lo)

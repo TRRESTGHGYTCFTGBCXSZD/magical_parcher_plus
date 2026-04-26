@@ -23,7 +23,19 @@ public static class Parts
 	//season 1 glyphs
 	public static PartType Cardinalification, Liquidation, Gerioification, Metallification, Demetallification;
 	//season 2 glyphs
-	public static PartType AnimisStabilizer, AtomicProjection, AtomicRejection, MagneticDepolarizer, MagneticPolarizer, GiantGerio;
+	public static PartType AnimisStabilizer, AtomicProjection, AtomicRejection, MagneticDepolarizer, MagneticPolarizer, WordexisWheel;
+    static Molecule WordexisWheelWhatTheFuck()
+    {
+        Molecule molecule = new();
+        molecule.method_1105(new Atom(Atoms.Gabs), new HexIndex(0, 1));
+        molecule.method_1105(new Atom(Atoms.Erabukun), new HexIndex(1, 0));
+        molecule.method_1105(new Atom(Atoms.Tric), new HexIndex(1, -1));
+        molecule.method_1105(new Atom(Atoms.EZGG), new HexIndex(0, -1));
+        molecule.method_1105(new Atom(Atoms.Wordexis), new HexIndex(-1, 0));
+        molecule.method_1105(new Atom(Atoms.Modrenity), new HexIndex(-1, 1));
+        return molecule;
+    }
+
 	public static readonly Texture ProjectionBase = class_238.field_1989.field_90.field_255.field_288;
 	public static readonly Texture ProjectionGlow = class_235.method_615("textures/select/double_glow");
 	public static readonly Texture ProjectionBowl = class_238.field_1989.field_90.field_255.field_292;
@@ -270,17 +282,25 @@ public static class Parts
 		};
 
 		QApi.AddPartType(AnimisStabilizer, (part, pos, editor, renderer) => {
-			Vector2 vector2 = new(41f, 119f);
+			Vector2 vector2 = new(42f, 120f);
 			renderer.method_523(DiamondBase, new Vector2(0.0f, 0.0f), vector2, 0.0f);
-			foreach(HexIndex idx in part.method_1159().field_1540){
-				if(idx is { Q: 0, R: 0 }){
-					renderer.method_528(ProjectionBowl, idx, Vector2.Zero);
-				}
-				else{
-					renderer.method_528(RejectionBowl /*quicksilver_input*/, idx, Vector2.Zero);
-					// should be 272?
-					//renderer.method_529(Wordexis_Input /*quicksilver_symbol*/, idx, Vector2.Zero);
-				}
+			renderer.method_528(class_238.field_1989.field_90.field_255.field_293, new HexIndex(0, 1), Vector2.Zero);
+			renderer.method_528(class_238.field_1989.field_90.field_255.field_293, new HexIndex(1, -1), Vector2.Zero);
+			renderer.method_528(class_238.field_1989.field_90.field_255.field_293, new HexIndex(0, 0), Vector2.Zero);
+			renderer.method_528(class_238.field_1989.field_90.field_255.field_293, new HexIndex(1, 0), Vector2.Zero);
+			
+			PartSimState pss = editor.method_507().method_481(part);
+			class_236 uco = editor.method_1989(part, pos);
+			float time = editor.method_504();
+			Vector2 risingOffset = uco.field_1984 + class_187.field_1742.method_492(new HexIndex(0, 0)).Rotated(uco.field_1985);
+			Vector2 risingOffset2 = uco.field_1984 + class_187.field_1742.method_492(new HexIndex(1, 0)).Rotated(uco.field_1985);
+
+			if (pss.field_2743)
+			{
+				Molecule VitaeMolecule = Molecule.method_1121(pss.field_2744[0]);
+				Molecule MorsMolecule = Molecule.method_1121(pss.field_2744[0]);
+				Editor.method_925(VitaeMolecule, risingOffset, new HexIndex(0, 0), 0f, 1f, time, 1f, false, null);
+				Editor.method_925(MorsMolecule, risingOffset2, new HexIndex(0, 0), 0f, 1f, time, 1f, false, null);
 			}
 		});
 		QApi.AddPartTypeToPanel(AnimisStabilizer, PartTypes.field_1775);
@@ -435,6 +455,59 @@ public static class Parts
 		QApi.AddPartTypeToPanel(MagneticDepolarizer, PartTypes.field_1775);
 		
 		QApi.AddPuzzlePermission("magicalparcherplus:magneticpolarizer", "Glyphs Of Magnets", "Magical Parcher+");
+		WordexisWheel = new(){
+			field_1528 = "magical-parcher-plus-wordexiswheel",
+			field_1529 = class_134.method_253("Wordexis' Wheel", string.Empty),
+			field_1530 = class_134.method_253("GERIO. DO YOU WANNA TRANSFORM?", string.Empty),
+			field_1547 = class_238.field_1989.field_90.field_245.field_335,
+			field_1548 = class_238.field_1989.field_90.field_245.field_336,
+			field_1531 = 30,
+			field_1552 = true,
+			field_1532 = (enum_2)1,
+			field_1533 = true,
+			field_1544 = new Dictionary<HexIndex, AtomType>
+			{
+				{
+					new HexIndex(-1, 0),
+					Atoms.Wordexis
+				},
+				{
+					new HexIndex(1, 0),
+					Atoms.Erabukun
+				},
+				{
+					new HexIndex(-1, 1),
+					Atoms.Modrenity
+				},
+				{
+					new HexIndex(0, 1),
+					Atoms.Gabs
+				},
+				{
+					new HexIndex(0, -1),
+					Atoms.EZGG
+				},
+				{
+					new HexIndex(1, -1),
+					Atoms.Tric
+				}
+			},
+			field_1536 = true,
+			field_1551 = Permissions.None,
+			CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:wordexiswheel")
+		};
+
+		QApi.AddPartType(WordexisWheel, (part, pos, editor, renderer) => {
+		
+			class_236 uco = editor.method_1989(part, pos);
+			float time = (float)(Math.Sin(new struct_27(Time.Now().Ticks).method_603()*4f)/2f)+0.5f;
+			Vector2 risingOffset = uco.field_1984 + class_187.field_1742.method_492(new HexIndex(0, 0)).Rotated(uco.field_1985);
+
+			Editor.method_925(WordexisWheelWhatTheFuck(), risingOffset, new HexIndex(0, 0), uco.field_1985, 1f, time, 1f, false, null);
+		});
+		QApi.AddPartTypeToPanel(WordexisWheel, PartTypes.field_1775);
+		
+		QApi.AddPuzzlePermission("magicalparcherplus:wordexiswheel", "Wordexis' Wheel", "Magical Parcher+");
 		// the that code runs below
 		QApi.RunAfterCycle((sim, first) => {
 			var seb = sim.field_3818;
@@ -468,7 +541,7 @@ public static class Parts
 								seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
 								// upgrade effect for gold -> uranium
 								qs.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, qs.field_2280, class_238.field_1989.field_81.field_614, 30f);
-								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1844);
+								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1843);
 							}
 						}
 					}
@@ -489,7 +562,7 @@ public static class Parts
 								seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
 								// upgrade effect for gold -> uranium
 								qs.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, qs.field_2280, class_238.field_1989.field_81.field_614, 30f);
-								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1844);
+								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1843);
 							}
 						}
 					}
@@ -509,7 +582,7 @@ public static class Parts
 								seb.field_3937.Add(new class_286(seb, word.field_2278, AtomTypes.field_1690));
 								// upgrade effect for gold -> uranium
 								qs.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, qs.field_2280, class_238.field_1989.field_81.field_614, 30f);
-								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1844);
+								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1843);
 							}
 						}
 					}
@@ -523,7 +596,7 @@ public static class Parts
 							bowl.field_2277.method_1106(Demetal, bowl.field_2278);
 							// upgrade effect for gold -> uranium
 							bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
-							YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1844);
+							YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1845);
 						}
 					}
 				}else if(type == Demetallification){
@@ -536,7 +609,7 @@ public static class Parts
 							bowl.field_2277.method_1106(Demetal, bowl.field_2278);
 							// upgrade effect for gold -> uranium
 							bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
-							YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1844);
+							YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1845);
 						}
 						if(false && Flexibility.DemetallificationExplosionMeta.Contains(bowl.field_2280)){ //make it as part of rule
 							seb.method_518(first ? 0f : 1f, class_134.method_253("Spontaneous quicksilver explosion is not allowed.", string.Empty), new Vector2[1] { class_187.field_1742.method_492(part.method_1184(new(0, 0))) });
@@ -579,7 +652,7 @@ public static class Parts
 								//seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
 								// upgrade effect for gold -> uranium
 								qs.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, qs.field_2280, class_238.field_1989.field_81.field_614, 30f);
-								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1860);
+								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1845);
 							}
 						}
 					}
@@ -605,10 +678,22 @@ public static class Parts
 									// show the removal effects for qs
 									seb.field_3937.Add(new class_286(seb, zena1.field_2278, zena1.field_2280));
 									seb.field_3937.Add(new class_286(seb, zena2.field_2278, zena2.field_2280));
+									sim.field_3826.Add(new()
+									{
+										field_3850 = (Sim.enum_190)0,
+										field_3851 = class_187.field_1742.method_492(part.method_1184(new(0, 0))),
+										field_3852 = 15f
+									});
+									sim.field_3826.Add(new()
+									{
+										field_3850 = (Sim.enum_190)0,
+										field_3851 = class_187.field_1742.method_492(part.method_1184(new(1, 0))),
+										field_3852 = 15f
+									});
 									// upgrade effect for gold -> uranium
 									pss.field_2743 = true;
 									pss.field_2744 = Dumper;
-									YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1860);
+									YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1838);
 								}
 							}
 						}
@@ -637,7 +722,7 @@ public static class Parts
 							Texture[] disposalFlashAnimation = class_238.field_1989.field_90.field_240;
 							seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(0, 0))+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
 							seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(1, 0))+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
-							YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1860);
+							YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1840);
 						}
 					}
 				}else if(type == MagneticDepolarizer){
@@ -656,7 +741,7 @@ public static class Parts
 							Texture[] disposalFlashAnimation = class_238.field_1989.field_90.field_240;
 							seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(0, 0))+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
 							seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(1, 0))+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
-							YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1860);
+							YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1840);
 						}
 					}
 				}else if(type == class_191.field_1775)/* Triplex bonder */{
@@ -727,7 +812,7 @@ public static class Parts
 										field_3851 = class_187.field_1742.method_492(part.method_1184(new(1, -1))),
 										field_3852 = 15f
 									});
-									YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1860);
+									YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1838);
 									pss.field_2743 = true;
 									pss.field_2744 = Dumper;
 									//seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
@@ -792,7 +877,7 @@ public static class Parts
 										field_3851 = class_187.field_1742.method_492(part.method_1184(new(0, 0))),
 										field_3852 = 15f
 									});
-									YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1860);
+									YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1850);
 									pss.field_2743 = true;
 									pss.field_2744 = new AtomType[5] { Input3.field_2280, Input1.field_2280, Input2.field_2280, Input4.field_2280, Dumper[0] };
 									//seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
@@ -870,7 +955,7 @@ public static class Parts
 										field_3851 = class_187.field_1742.method_492(part.method_1184(new(1, 0))),
 										field_3852 = 15f
 									});
-									YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1860);
+									YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1841);
 									pss.field_2743 = true;
 									pss.field_2744 = Dumper;
 									//seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
@@ -902,6 +987,30 @@ public static class Parts
 						molecule = new Molecule();
 						molecule.method_1105(new Atom(pss.field_2744[3]), part.method_1184(new(1, 0)));
 						moleculeList.Add(molecule);
+					}
+				}else if(type == class_191.field_1776)/* Calcinator */{
+					AtomType Demetal = default(AtomType);
+					if(sim.FindAtomRelative(part, new HexIndex(0, 0)).method_99(out AtomReference bowl)){
+						// and are the right types...
+						if(Flexibility.applyCalcinatorRule(bowl.field_2280,out Demetal)){
+							// transmute the gold and destroy the quicksilver
+							bowl.field_2277.method_1106(Demetal, bowl.field_2278);
+							// upgrade effect for gold -> uranium
+							bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
+							YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1840);
+						}
+					}
+				}else if(type == class_191.field_1777)/* Duplicator */{
+					if(sim.FindAtomRelative(part, new HexIndex(1, 0)).method_99(out AtomReference bowl)
+					&& sim.FindAtomRelative(part, new HexIndex(0, 0)).method_99(out AtomReference dupe)){
+						// and are the right types...
+						if(Flexibility.checkDuplicatorCastable(bowl.field_2280,dupe.field_2280)){
+							// transmute the gold and destroy the quicksilver
+							bowl.field_2277.method_1106(dupe.field_2280, bowl.field_2278);
+							// upgrade effect for gold -> uranium
+							bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
+							YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1843);
+						}
 					}
 				}
 			}
