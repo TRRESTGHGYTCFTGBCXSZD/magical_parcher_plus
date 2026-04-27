@@ -19,6 +19,30 @@ using Texture = class_256;
 
 public static class Parts
 {
+	public static MethodInfo PrivateMethod<T>(string method) => typeof(T).GetMethod(method, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+	public static bool FindBerloAtom(Sim simulation, HexIndex HexPos, out AtomType wee)
+	{
+		var SEB = simulation.field_3818;
+		var solution = SEB.method_502();
+		var partList = solution.field_3919;
+		var partSimStates = simulation.field_3821;
+
+		foreach (var wheel in partList)
+		{
+			if (wheel.method_1159().field_1544 is not null)
+			{
+				var partSimState = partSimStates[wheel];
+				if (wheel.method_1159().field_1544.ContainsKey((HexPos-partSimState.field_2724).Rotated(partSimState.field_2726.Negative())))
+				{
+					wee = wheel.method_1159().field_1544[(HexPos-partSimState.field_2724).Rotated(partSimState.field_2726.Negative())];
+					return true;
+				}
+			}
+		}
+		wee = AtomTypes.field_1675; //salt as fallback
+		return false;
+	}
+
 	public static bool IsHalvingLoaded = false;
 	//season 1 glyphs
 	public static PartType Cardinalification, Liquidation, Gerioification, Metallification, Demetallification;
@@ -1001,15 +1025,28 @@ public static class Parts
 						}
 					}
 				}else if(type == class_191.field_1777)/* Duplicator */{
-					if(sim.FindAtomRelative(part, new HexIndex(1, 0)).method_99(out AtomReference bowl)
-					&& sim.FindAtomRelative(part, new HexIndex(0, 0)).method_99(out AtomReference dupe)){
-						// and are the right types...
-						if(Flexibility.checkDuplicatorCastable(bowl.field_2280,dupe.field_2280)){
-							// transmute the gold and destroy the quicksilver
-							bowl.field_2277.method_1106(dupe.field_2280, bowl.field_2278);
-							// upgrade effect for gold -> uranium
-							bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
-							YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1843);
+					if(sim.FindAtomRelative(part, new HexIndex(1, 0)).method_99(out AtomReference bowl)){
+						//atom
+						if (sim.FindAtomRelative(part, new HexIndex(0, 0)).method_99(out AtomReference dupe)){
+							// and are the right types...
+							if(Flexibility.checkDuplicatorCastable(bowl.field_2280,dupe.field_2280)){
+								// transmute the gold and destroy the quicksilver
+								bowl.field_2277.method_1106(dupe.field_2280, bowl.field_2278);
+								// upgrade effect for gold -> uranium
+								bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
+								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1843);
+							}
+						}
+						//baron
+						if (FindBerloAtom(sim, part.method_1184(new(0, 0)), out AtomType dupe2)){
+							// and are the right types...
+							if(Flexibility.checkDuplicatorCastable(bowl.field_2280,dupe2)){
+								// transmute the gold and destroy the quicksilver
+								bowl.field_2277.method_1106(dupe2, bowl.field_2278);
+								// upgrade effect for gold -> uranium
+								bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
+								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1843);
+							}
 						}
 					}
 				}
