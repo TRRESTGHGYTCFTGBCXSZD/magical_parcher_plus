@@ -524,10 +524,9 @@ public static class Parts
 		QApi.AddPartType(WordexisWheel, (part, pos, editor, renderer) => {
 		
 			class_236 uco = editor.method_1989(part, pos);
-			float time = (float)(Math.Sin(new struct_27(Time.Now().Ticks).method_603()*4f)/2f)+0.5f;
 			Vector2 risingOffset = uco.field_1984 + class_187.field_1742.method_492(new HexIndex(0, 0)).Rotated(uco.field_1985);
 
-			Editor.method_925(WordexisWheelWhatTheFuck(), risingOffset, new HexIndex(0, 0), uco.field_1985, 1f, time, 1f, false, null);
+			Editor.method_925(WordexisWheelWhatTheFuck(), risingOffset, new HexIndex(0, 0), uco.field_1985, 1f, 1f, 1f, false, null);
 		});
 		QApi.AddPartTypeToPanel(WordexisWheel, PartTypes.field_1775);
 		
@@ -849,15 +848,17 @@ public static class Parts
 					else if (pss.field_2743)
 					{
 						if(sim.FindAtomRelative(part, new HexIndex(1, -1)).method_99(out AtomReference ToBeRemoved)) 
-							ToBeRemoved.field_2277.method_1107(ToBeRemoved.field_2278);
+							ToBeRemoved.field_2277.method_1106(pss.field_2744[0], ToBeRemoved.field_2278);
+							//ToBeRemoved.field_2277.method_1107(ToBeRemoved.field_2278);
 						if(sim.FindAtomRelative(part, new HexIndex(0, 1)).method_99(out AtomReference ToBeRemoved2)) 
-							ToBeRemoved2.field_2277.method_1107(ToBeRemoved2.field_2278);
-						Molecule molecule = new Molecule();
-						molecule.method_1105(new Atom(pss.field_2744[0]), part.method_1184(new(0, 1)));
-						moleculeList.Add(molecule);
-						molecule = new Molecule();
-						molecule.method_1105(new Atom(pss.field_2744[1]), part.method_1184(new(1, -1)));
-						moleculeList.Add(molecule);
+							ToBeRemoved2.field_2277.method_1106(pss.field_2744[1], ToBeRemoved2.field_2278);
+							//ToBeRemoved2.field_2277.method_1107(ToBeRemoved2.field_2278);
+						//Molecule molecule = new Molecule();
+						//molecule.method_1105(new Atom(pss.field_2744[0]), part.method_1184(new(0, 1)));
+						//moleculeList.Add(molecule);
+						//molecule = new Molecule();
+						//molecule.method_1105(new Atom(pss.field_2744[1]), part.method_1184(new(1, -1)));
+						//moleculeList.Add(molecule);
 					}
 				}else if(type == class_191.field_1783)/* Unification */{
 					// vanilla code runs first, so what if i do a hacky workaround
@@ -914,10 +915,11 @@ public static class Parts
 					else if (pss.field_2743)
 					{
 						if(sim.FindAtomRelative(part, new HexIndex(0, 0)).method_99(out AtomReference ToBeRemoved)) 
-							ToBeRemoved.field_2277.method_1107(ToBeRemoved.field_2278);
-						Molecule molecule = new Molecule();
-						molecule.method_1105(new Atom(pss.field_2744[4]), part.method_1184(new(0, 0)));
-						moleculeList.Add(molecule);
+							ToBeRemoved.field_2277.method_1106(pss.field_2744[4], ToBeRemoved.field_2278);
+							//ToBeRemoved.field_2277.method_1107(ToBeRemoved.field_2278);
+						//Molecule molecule = new Molecule();
+						//molecule.method_1105(new Atom(pss.field_2744[4]), part.method_1184(new(0, 0)));
+						//moleculeList.Add(molecule);
 					}
 				}else if(type == class_191.field_1784)/* Dispersion */{
 					// vanilla code runs first, so what if i do a hacky workaround
@@ -992,25 +994,29 @@ public static class Parts
 					else if (pss.field_2743)
 					{
 						if(sim.FindAtomRelative(part, new HexIndex(-1, 0)).method_99(out AtomReference ToBeRemoved)) 
-							ToBeRemoved.field_2277.method_1107(ToBeRemoved.field_2278);
+							ToBeRemoved.field_2277.method_1106(pss.field_2744[0], ToBeRemoved.field_2278);
+							//ToBeRemoved.field_2277.method_1107(ToBeRemoved.field_2278);
 						if(sim.FindAtomRelative(part, new HexIndex(0, -1)).method_99(out AtomReference ToBeRemoved2)) 
-							ToBeRemoved2.field_2277.method_1107(ToBeRemoved2.field_2278);
+							ToBeRemoved2.field_2277.method_1106(pss.field_2744[1], ToBeRemoved2.field_2278);
+							//ToBeRemoved2.field_2277.method_1107(ToBeRemoved2.field_2278);
 						if(sim.FindAtomRelative(part, new HexIndex(1, -1)).method_99(out AtomReference ToBeRemoved3)) 
-							ToBeRemoved3.field_2277.method_1107(ToBeRemoved3.field_2278);
+							ToBeRemoved3.field_2277.method_1106(pss.field_2744[2], ToBeRemoved3.field_2278);
+							//ToBeRemoved3.field_2277.method_1107(ToBeRemoved3.field_2278);
 						if(sim.FindAtomRelative(part, new HexIndex(1, 0)).method_99(out AtomReference ToBeRemoved4)) 
-							ToBeRemoved4.field_2277.method_1107(ToBeRemoved4.field_2278);
-						Molecule molecule = new Molecule();
-						molecule.method_1105(new Atom(pss.field_2744[0]), part.method_1184(new(-1, 0)));
-						moleculeList.Add(molecule);
-						molecule = new Molecule();
-						molecule.method_1105(new Atom(pss.field_2744[1]), part.method_1184(new(0, -1)));
-						moleculeList.Add(molecule);
-						molecule = new Molecule();
-						molecule.method_1105(new Atom(pss.field_2744[2]), part.method_1184(new(1, -1)));
-						moleculeList.Add(molecule);
-						molecule = new Molecule();
-						molecule.method_1105(new Atom(pss.field_2744[3]), part.method_1184(new(1, 0)));
-						moleculeList.Add(molecule);
+							ToBeRemoved4.field_2277.method_1106(pss.field_2744[3], ToBeRemoved4.field_2278);
+							//ToBeRemoved4.field_2277.method_1107(ToBeRemoved4.field_2278);
+						//Molecule molecule = new Molecule();
+						//molecule.method_1105(new Atom(pss.field_2744[0]), part.method_1184(new(-1, 0)));
+						//moleculeList.Add(molecule);
+						//molecule = new Molecule();
+						//molecule.method_1105(new Atom(pss.field_2744[1]), part.method_1184(new(0, -1)));
+						//moleculeList.Add(molecule);
+						//molecule = new Molecule();
+						//molecule.method_1105(new Atom(pss.field_2744[2]), part.method_1184(new(1, -1)));
+						//moleculeList.Add(molecule);
+						//molecule = new Molecule();
+						//molecule.method_1105(new Atom(pss.field_2744[3]), part.method_1184(new(1, 0)));
+						//moleculeList.Add(molecule);
 					}
 				}else if(type == class_191.field_1776)/* Calcinator */{
 					AtomType Demetal = default(AtomType);
@@ -1020,7 +1026,7 @@ public static class Parts
 							// transmute the gold and destroy the quicksilver
 							bowl.field_2277.method_1106(Demetal, bowl.field_2278);
 							// upgrade effect for gold -> uranium
-							bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
+							bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)0, bowl.field_2280, class_238.field_1989.field_81.field_611, 30f);
 							YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1840);
 						}
 					}
@@ -1033,7 +1039,7 @@ public static class Parts
 								// transmute the gold and destroy the quicksilver
 								bowl.field_2277.method_1106(dupe.field_2280, bowl.field_2278);
 								// upgrade effect for gold -> uranium
-								bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
+								bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)0, bowl.field_2280, class_238.field_1989.field_81.field_612, 30f);
 								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1843);
 							}
 						}
@@ -1044,7 +1050,7 @@ public static class Parts
 								// transmute the gold and destroy the quicksilver
 								bowl.field_2277.method_1106(dupe2, bowl.field_2278);
 								// upgrade effect for gold -> uranium
-								bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, bowl.field_2280, class_238.field_1989.field_81.field_614, 30f);
+								bowl.field_2279.field_2276 = new class_168(seb, 0, (enum_132)0, bowl.field_2280, class_238.field_1989.field_81.field_612, 30f);
 								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1843);
 							}
 						}

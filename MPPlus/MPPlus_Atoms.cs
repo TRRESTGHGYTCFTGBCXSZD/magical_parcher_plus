@@ -66,6 +66,8 @@ public static class Atoms
 	};
 	//public static Dictionary<AtomType, int> PTableAtomsReverse = new();
 	//atoms that don't categorize
+	public static AtomType Switcheroo, NumberAtom;
+	//character/alternative atoms
 	public static AtomType Wordexis, Erabukun, Zena;
 	public static AtomType Gerio, EZGG, Gabs, Tric, Modrenity, CeminratesBestie, RedZena, BlueZena, Abomination;
 	public static List<AtomType> atomsToAdd;
@@ -294,6 +296,38 @@ public static class Atoms
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:proton"
+		};
+
+		Switcheroo = new AtomType()
+		{
+			/*ID, byte*/field_2283 = ProtonID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Switcheroo"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Switcheroo", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Switcheroo", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/zena_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/zena_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:switcheroo"
+		};
+
+		NumberAtom = new AtomType()
+		{
+			/*ID, byte*/field_2283 = ProtonID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Number"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Number", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Number", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/number_symbol"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/number_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:numberatom"
 		};
 
 		atomsToAdd = new List<AtomType>() { Proton, Gerio, Gabs, Tric, EZGG, Modrenity, CeminratesBestie, RedZena, BlueZena, Abomination, Wordexis, Erabukun, Zena, };
