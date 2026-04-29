@@ -87,6 +87,7 @@ public static class Atoms
 	public static Texture BlueZenaMagnets = class_235.method_615("textures/atoms/magicalparcher/bluezena_magnets");
 	public static Texture CeminratesBestieEars = class_235.method_615("textures/atoms/magicalparcher/ceminratesbestie_ears");
 	public static Texture CeminratesBestieFrontAccessories = class_235.method_615("textures/atoms/magicalparcher/ceminratesbestie_accessoriesfront");
+	public static Texture saltcircle = class_235.method_615("textures/atoms/salt_diffuse");
 
 	public static void AddNewContent() {
 		//
@@ -306,11 +307,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Switcheroo"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Switcheroo", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Switcheroo", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/zena_face"),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/switcheroo_symbol"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/zena_base"),//salt_diffuse
+				field_994 = class_235.method_615("textures/atoms/salt_diffuse"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:switcheroo"
@@ -364,21 +365,21 @@ public static class Atoms
 			QuintAtomType = "magicalparcherplus:limbo"
 		};
 
-		NumberAtom = new AtomType()
-		{
-			/*ID, byte*/field_2283 = ProtonID,
-			/*Non-local Name*/field_2284 = class_134.method_254("Number"),
-			/*Atomic Name*/field_2285 = class_134.method_253("Number", string.Empty),
-			/*Local name*/field_2286 = class_134.method_253("Number", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/number_symbol"),
-			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
-			/*Default Graphics struct*/field_2290 = new class_106()
-			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/number_base"),//salt_diffuse
-				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
-			},
-			QuintAtomType = "magicalparcherplus:numberatom"
-		};
+		//NumberAtom = new AtomType()
+		//{
+		//	/*ID, byte*/field_2283 = ProtonID,
+		//	/*Non-local Name*/field_2284 = class_134.method_254("Number"),
+		//	/*Atomic Name*/field_2285 = class_134.method_253("Number", string.Empty),
+		//	/*Local name*/field_2286 = class_134.method_253("Number", string.Empty),
+		//	/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/number_symbol"),
+		//	/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+		//	/*Default Graphics struct*/field_2290 = new class_106()
+		//	{
+		//		field_994 = class_235.method_615("textures/atoms/magicalparcher/number_base"),//salt_diffuse
+		//		field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+		//	},
+		//	QuintAtomType = "magicalparcherplus:numberatom"
+		//};
 
 		atomsToAdd = new List<AtomType>() { Wood, Rock, Limbo, Proton, Switcheroo, Gerio, Gabs, Tric, EZGG, Modrenity, CeminratesBestie, RedZena, BlueZena, Abomination, Wordexis, Erabukun, Zena, };
 
@@ -435,29 +436,24 @@ public static class Atoms
 
 		for (int PTableAtomIndex = 0; PTableAtomIndex < 255; PTableAtomIndex++)
 		{
-				AtomType Whatwiyo = new AtomType()
+			AtomType Whatwiyo = new AtomType()
+			{
+				/*ID, byte*/field_2283 = PTableAtomID,
+				/*Non-local Name*/field_2284 = class_134.method_254("Number "+(sbyte)PTableAtomIndex),
+				/*Atomic Name*/field_2285 = class_134.method_253("Number "+(sbyte)PTableAtomIndex, string.Empty),
+				/*Local name*/field_2286 = class_134.method_253("Number "+(sbyte)PTableAtomIndex, string.Empty),
+				/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/number_symbol"),
+				/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+				/*Default Graphics struct*/field_2290 = new class_106()
 				{
-					/*ID, byte*/field_2283 = PTableAtomID,
-					/*Non-local Name*/field_2284 = class_134.method_254("Number "+(sbyte)PTableAtomIndex),
-					/*Atomic Name*/field_2285 = class_134.method_253("Number "+(sbyte)PTableAtomIndex, string.Empty),
-					/*Local name*/field_2286 = class_134.method_253("Number "+(sbyte)PTableAtomIndex, string.Empty),
-					/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/number_symbol"),
-					/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
-					/*Default Graphics struct*/field_2290 = new class_106()
-					{
-						field_994 = class_235.method_615("textures/atoms/magicalparcher/number_base"),//salt_diffuse
-						field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
-					},
-					QuintAtomType = "magicalparcherplus:number_"+PTableAtomIndex
-				};
-				NumberAtoms[PTableAtomIndex] = Whatwiyo;
+					field_994 = class_235.method_615("textures/atoms/magicalparcher/number_base"),//salt_diffuse
+					field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+				},
+				QuintAtomType = "magicalparcherplus:number_"+PTableAtomIndex
+			};
+			NumberAtoms[PTableAtomIndex] = Whatwiyo;
+			QApi.AddAtomType(Whatwiyo);
 		}
-			QApi.AddAtomType(NumberAtoms[1]);
-			QApi.AddAtomType(NumberAtoms[2]);
-			QApi.AddAtomType(NumberAtoms[3]);
-			QApi.AddAtomType(NumberAtoms[4]);
-			QApi.AddAtomType(NumberAtoms[5]);
-			QApi.AddAtomType(NumberAtoms[6]);
 		//assign ptable atoms manually
 		PTableAtoms[25] = AtomTypes.field_1684;
 		PTableAtoms[28] = AtomTypes.field_1682;
@@ -637,6 +633,13 @@ public static class Atoms
 			}
 		}
 		Color tecolor = Color.White.WithAlpha(param_4583*param_4584);
+		//if (type == Switcheroo)
+		//{
+		//	float Red = (float)(Math.Sin(new struct_27(Time.Now().Ticks).method_603()*4)+1)/2f;
+		//	float Green = (float)(Math.Sin((new struct_27(Time.Now().Ticks).method_603()+(Math.PI*4/3))*4)+1)/2f;
+		//	float Blue = (float)(Math.Sin((new struct_27(Time.Now().Ticks).method_603()+(Math.PI*2/3))*4)+1)/2f;
+		//	class_135.method_263(saltcircle, new Color(Red,Green,Blue,param_4583*param_4584), position - new Vector2(35, 35) * param_4582, new Vector2(70, 70) * param_4582);
+		//}
 		if (type == Wordexis)
 		{
 			class_135.method_263(WordexisBackAccessories, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
