@@ -66,7 +66,7 @@ public static class Atoms
 	};
 	//public static Dictionary<AtomType, int> PTableAtomsReverse = new();
 	//atoms that don't categorize
-	public static AtomType Switcheroo, NumberAtom;
+	public static AtomType Wood, Rock, Limbo, Switcheroo, NumberAtom;
 	//character/alternative atoms
 	public static AtomType Wordexis, Erabukun, Zena;
 	public static AtomType Gerio, EZGG, Gabs, Tric, Modrenity, CeminratesBestie, RedZena, BlueZena, Abomination;
@@ -314,6 +314,54 @@ public static class Atoms
 			QuintAtomType = "magicalparcherplus:switcheroo"
 		};
 
+		Wood = new AtomType()
+		{
+			/*ID, byte*/field_2283 = ProtonID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Wood"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Elemental Wood", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Wood", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/zena_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/zena_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:wood"
+		};
+
+		Rock = new AtomType()
+		{
+			/*ID, byte*/field_2283 = ProtonID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Rock"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Elemental Rock", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Rock", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/zena_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/zena_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:rock"
+		};
+
+		Limbo = new AtomType()
+		{
+			/*ID, byte*/field_2283 = ProtonID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Limbo"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Elemental Limbo", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Limbo", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/zena_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/zena_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:limbo"
+		};
+
 		NumberAtom = new AtomType()
 		{
 			/*ID, byte*/field_2283 = ProtonID,
@@ -330,7 +378,7 @@ public static class Atoms
 			QuintAtomType = "magicalparcherplus:numberatom"
 		};
 
-		atomsToAdd = new List<AtomType>() { Proton, Gerio, Gabs, Tric, EZGG, Modrenity, CeminratesBestie, RedZena, BlueZena, Abomination, Wordexis, Erabukun, Zena, };
+		atomsToAdd = new List<AtomType>() { Wood, Rock, Limbo, Proton, Switcheroo, Gerio, Gabs, Tric, EZGG, Modrenity, CeminratesBestie, RedZena, BlueZena, Abomination, Wordexis, Erabukun, Zena, };
 
 		//add atoms to internal dictionary
 		//var old_len = AtomTypes.field_1691.Length;
@@ -392,8 +440,9 @@ public static class Atoms
 		PTableAtoms[81] = AtomTypes.field_1681;
 		Flexibility.addTriplexCondition(EZGG,AtomTypes.field_1678);
 		Flexibility.addTriplexCondition(EZGG,EZGG);
-		Flexibility.addTriplexCondition(Abomination,EZGG);
-		Flexibility.addTriplexCondition(Abomination,Abomination);
+		//Flexibility.addTriplexCondition(Abomination,EZGG);
+		//Flexibility.addTriplexCondition(Abomination,Abomination);
+		//rules disabled to be consistent with other atom set
 		Flexibility.addCardinalificationRule(AtomTypes.field_1680,AtomTypes.field_1675);
 		Flexibility.addLiquidationRule(AtomTypes.field_1675,AtomTypes.field_1680);
 		Flexibility.addCardinalificationRule(CeminratesBestie,Gerio);
@@ -411,12 +460,16 @@ public static class Atoms
 		Flexibility.addCalcinatorRule(Atoms.EZGG,Atoms.Gerio);
 		Flexibility.addCalcinatorRule(Atoms.Wordexis,Atoms.Gerio);
 		Flexibility.addCalcinatorRule(Atoms.Erabukun,Atoms.Gerio);
+		Flexibility.addCalcinatorRule(Atoms.Wood,AtomTypes.field_1675);
+		Flexibility.addCalcinatorRule(Atoms.Rock,AtomTypes.field_1675);
 		Flexibility.addDuplicatorCastable(Atoms.Gerio,Atoms.Gabs);
 		Flexibility.addDuplicatorCastable(Atoms.Gerio,Atoms.Modrenity);
 		Flexibility.addDuplicatorCastable(Atoms.Gerio,Atoms.Tric);
 		Flexibility.addDuplicatorCastable(Atoms.Gerio,Atoms.EZGG);
 		Flexibility.addDuplicatorCastable(Atoms.Gerio,Atoms.Wordexis);
 		Flexibility.addDuplicatorCastable(Atoms.Gerio,Atoms.Erabukun);
+		Flexibility.addDuplicatorCastable(AtomTypes.field_1675,Atoms.Wood);
+		Flexibility.addDuplicatorCastable(AtomTypes.field_1675,Atoms.Rock);
 		Dictionary<AtomType,int> wanafo = new Dictionary<AtomType,int>();
 		wanafo.Add(Atoms.Modrenity,1);
 		wanafo.Add(Atoms.EZGG,1);
@@ -437,6 +490,60 @@ public static class Atoms
 		wanafo.Add(AtomTypes.field_1687,1);
 		wanafo.Add(AtomTypes.field_1688,1);
 		Flexibility.AntiAnimismusRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AtomTypes.field_1675, AtomTypes.field_1675 }));
+		Flexibility.GerioificationRecipes.Add(
+			new ShapedRecipe(
+				new MultipleMatcher[]{
+					new (new AtomType[2] { AtomTypes.field_1675, AtomTypes.field_1680 }),
+					new (AtomTypes.field_1690),
+				}
+				,new AtomType[1] { Atoms.Switcheroo }
+			)
+		);
+		Flexibility.GerioificationRecipes.Add(
+			new ShapedRecipe(
+				new MultipleMatcher[]{
+					new (new AtomType[2] { Atoms.Gerio, Atoms.CeminratesBestie }),
+					new (Atoms.Abomination),
+				}
+				,new AtomType[1] { Atoms.Switcheroo }
+			)
+		);
+		Flexibility.SwitcherooRecipes.Add(
+			new ShapedRecipe(
+				new MultipleMatcher[]{
+					new (Atoms.Gerio),
+					new (Atoms.Switcheroo),
+				}
+				,new AtomType[1] { AtomTypes.field_1675 }
+			)
+		);
+		Flexibility.SwitcherooRecipes.Add(
+			new ShapedRecipe(
+				new MultipleMatcher[]{
+					new (Atoms.CeminratesBestie),
+					new (Atoms.Switcheroo),
+				}
+				,new AtomType[1] { AtomTypes.field_1680 }
+			)
+		);
+		Flexibility.SwitcherooRecipes.Add(
+			new ShapedRecipe(
+				new MultipleMatcher[]{
+					new (AtomTypes.field_1675),
+					new (Atoms.Switcheroo),
+				}
+				,new AtomType[1] { Atoms.Gerio }
+			)
+		);
+		Flexibility.SwitcherooRecipes.Add(
+			new ShapedRecipe(
+				new MultipleMatcher[]{
+					new (AtomTypes.field_1680),
+					new (Atoms.Switcheroo),
+				}
+				,new AtomType[1] { Atoms.CeminratesBestie }
+			)
+		);
 		On.Editor.method_927 += RenderExtraStuff;
 		QApi.RunAfterCycle((sim, first) => {
 			List<Molecule> moleculeList = sim.field_3823;
@@ -450,6 +557,12 @@ public static class Atoms
 			}
 		});
 	}
+	//param_4582 = scale
+	//param_4583 = transparency
+	//param_4584 = drop %
+	//param_4585 = unknown
+	//param_4586 = angle
+	//param_4587 = unknown
 	internal static void RenderExtraStuff(On.Editor.orig_method_927 orig, AtomType type, Vector2 position, float param_4582, float param_4583, float param_4584, float param_4585, float param_4586, float param_4587, Texture overrideShadow, Texture maskM, bool param_4590)
 	{
 		if (GerioificationVanilla)

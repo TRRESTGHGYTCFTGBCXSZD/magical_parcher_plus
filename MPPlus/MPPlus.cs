@@ -103,6 +103,7 @@ public class MagicalParcherPlus : QuintessentialMod
 			Logger.Log("[MP+] Detected Neuvolics, Adding Iridium");
 			MPPlusExtensions.AddNeuvolics();
 		}
+		AirWave.AddNewContent();
 		Atoms.AddNewContent();
 		Parts.AddNewContent();
 		if (QuintessentialLoader.CodeMods.Any(mod => mod.Meta.Name == "HalvingMetallurgy"))
@@ -128,8 +129,9 @@ public class MagicalParcherPlus : QuintessentialMod
 		Atoms.TricHasHeadphones = SET.TricHasHeadphones;
     }
 	public override void Unload() {
-		Atoms.Unload();
 		Parts.Unload();
+		Atoms.Unload();
+		AirWave.Unload();
 	}
 	//------------------------- END HOOKING -------------------------//
 	public override void PostLoad() { }

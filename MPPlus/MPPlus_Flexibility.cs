@@ -17,6 +17,7 @@ public class Flexibility
 {
 	private static Dictionary<AtomType, AtomType> CardinalificationMeta = new();
 	private static Dictionary<AtomType, AtomType> LiquidationMeta = new();
+	public static List<Recipe> GerioificationRecipes = new();
 	private static Dictionary<AtomType, AtomType> MetallificationMeta = new();
 	private static Dictionary<AtomType, AtomType> DemetallificationMeta = new();
 	public static List<AtomType> DemetallificationExplosionMeta = new();
@@ -29,6 +30,7 @@ public class Flexibility
 	public static List<Recipe> AntiAnimismusRecipes = new();
 	private static Dictionary<AtomType,List<AtomType>> DuplicatorCastables = new();
 	private static Dictionary<AtomType, AtomType> CalcinatorMeta = new();
+	public static List<Recipe> SwitcherooRecipes = new();
 	//reductive metal code
 	public static bool applyCardinalificationRule(AtomType input, out AtomType output) => applyTRule(input, CardinalificationMeta, out output);
 	public static bool applyLiquidationRule(AtomType input, out AtomType output) => applyTRule(input, LiquidationMeta, out output);
