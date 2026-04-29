@@ -65,6 +65,8 @@ public static class Atoms
 		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
 	};
 	//public static Dictionary<AtomType, int> PTableAtomsReverse = new();
+	//number atoms
+	public static AtomType[] NumberAtoms = new AtomType[256];
 	//atoms that don't categorize
 	public static AtomType Wood, Rock, Limbo, Switcheroo, NumberAtom;
 	//character/alternative atoms
@@ -430,6 +432,32 @@ public static class Atoms
 			//AtomTypes.field_1691[old_len + i] = atomsToAdd[i];
 			QApi.AddAtomType(atomsToAdd[i]);
 		}
+
+		for (int PTableAtomIndex = 0; PTableAtomIndex < 255; PTableAtomIndex++)
+		{
+				AtomType Whatwiyo = new AtomType()
+				{
+					/*ID, byte*/field_2283 = PTableAtomID,
+					/*Non-local Name*/field_2284 = class_134.method_254("Number "+(sbyte)PTableAtomIndex),
+					/*Atomic Name*/field_2285 = class_134.method_253("Number "+(sbyte)PTableAtomIndex, string.Empty),
+					/*Local name*/field_2286 = class_134.method_253("Number "+(sbyte)PTableAtomIndex, string.Empty),
+					/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/number_symbol"),
+					/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+					/*Default Graphics struct*/field_2290 = new class_106()
+					{
+						field_994 = class_235.method_615("textures/atoms/magicalparcher/number_base"),//salt_diffuse
+						field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+					},
+					QuintAtomType = "magicalparcherplus:number_"+PTableAtomIndex
+				};
+				NumberAtoms[PTableAtomIndex] = Whatwiyo;
+		}
+			QApi.AddAtomType(NumberAtoms[1]);
+			QApi.AddAtomType(NumberAtoms[2]);
+			QApi.AddAtomType(NumberAtoms[3]);
+			QApi.AddAtomType(NumberAtoms[4]);
+			QApi.AddAtomType(NumberAtoms[5]);
+			QApi.AddAtomType(NumberAtoms[6]);
 		//assign ptable atoms manually
 		PTableAtoms[25] = AtomTypes.field_1684;
 		PTableAtoms[28] = AtomTypes.field_1682;
