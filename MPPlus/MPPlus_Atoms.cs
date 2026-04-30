@@ -323,7 +323,7 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Wood"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Elemental Wood", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Wood", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/zena_face"),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/simple/wordexis"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
@@ -339,7 +339,7 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Rock"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Elemental Rock", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Rock", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/zena_face"),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/simple/erabukun"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
@@ -355,7 +355,7 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Limbo"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Elemental Limbo", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Limbo", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/zena_face"),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/simple/zena"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
@@ -434,7 +434,7 @@ public static class Atoms
 			QApi.AddAtomType(atomsToAdd[i]);
 		}
 
-		for (int PTableAtomIndex = 0; PTableAtomIndex < 255; PTableAtomIndex++)
+		for (int PTableAtomIndex = 0; PTableAtomIndex <= 255; PTableAtomIndex++)
 		{
 			AtomType Whatwiyo = new AtomType()
 			{

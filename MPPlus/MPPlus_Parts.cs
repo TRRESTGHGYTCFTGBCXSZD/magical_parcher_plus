@@ -918,6 +918,18 @@ public static class Parts
 							seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(1, 0))+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
 							YOUARENOTAPRIVATEEYENOWPLAYSOUND(AirWave.Exploder[Time.Now().Ticks%3]);
 						}
+						if(zena1.field_2280 == Atoms.Limbo && zena2.field_2280 == Atoms.Limbo){
+							// transmute the gold and destroy the quicksilver
+							zena1.field_2277.method_1106(AtomTypes.field_1687, zena1.field_2278);
+							zena2.field_2277.method_1106(AtomTypes.field_1688, zena2.field_2278);
+							// show the removal effects for qs
+							//seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
+							// upgrade effect for gold -> uranium
+							Texture[] disposalFlashAnimation = class_238.field_1989.field_90.field_240;
+							seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(0, 0))+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+							seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(1, 0))+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+							YOUARENOTAPRIVATEEYENOWPLAYSOUND(AirWave.Exploder[Time.Now().Ticks%3]);
+						}
 					}
 				}else if(type == MagneticDepolarizer){
 					// if all the atoms exist...
@@ -929,6 +941,19 @@ public static class Parts
 							// transmute the gold and destroy the quicksilver
 							zena1.field_2277.method_1106(Atoms.Zena, zena1.field_2278);
 							zena2.field_2277.method_1106(Atoms.Zena, zena2.field_2278);
+							// show the removal effects for qs
+							//seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
+							// upgrade effect for gold -> uranium
+							Texture[] disposalFlashAnimation = class_238.field_1989.field_90.field_240;
+							seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(0, 0))+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+							seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(1, 0))+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+							YOUARENOTAPRIVATEEYENOWPLAYSOUND(AirWave.Exploder[Time.Now().Ticks%3]);
+						}
+						if((zena1.field_2280 == AtomTypes.field_1687 && zena2.field_2280 == AtomTypes.field_1688)
+						||(zena2.field_2280 == AtomTypes.field_1687 && zena1.field_2280 == AtomTypes.field_1688)){
+							// transmute the gold and destroy the quicksilver
+							zena1.field_2277.method_1106(Atoms.Limbo, zena1.field_2278);
+							zena2.field_2277.method_1106(Atoms.Limbo, zena2.field_2278);
 							// show the removal effects for qs
 							//seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
 							// upgrade effect for gold -> uranium
