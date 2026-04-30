@@ -1001,6 +1001,9 @@ public static class Parts
 								}
 							}
 						}
+						gripperpss.field_2728 = false;
+						gripperpss.field_2729 = (Maybe<Molecule>) struct_18.field_1431;
+						gripperpss.field_2740 = false;
 					}
 				}
 				
