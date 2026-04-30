@@ -45,7 +45,7 @@ public static class AirWave
 		FieldInfo field = typeof(class_11).GetField("field_52", BindingFlags.Static | BindingFlags.NonPublic);
 		Dictionary<string, float> volumeDictionary = (Dictionary<string, float>)field.GetValue(null);
 
-		volumeDictionary.Add("pock_eight", 0.2f);
+		volumeDictionary.Add("pock_eight", 0.3f);
 		volumeDictionary.Add("explode3", 0.2f);
 		volumeDictionary.Add("explode4", 0.2f);
 		volumeDictionary.Add("explode5", 0.2f);

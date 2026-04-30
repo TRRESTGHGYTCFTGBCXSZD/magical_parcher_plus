@@ -43,13 +43,15 @@ public static class Parts
 		return false;
 	}
 
-	//marker glyphs
+	//marker parts
 	public static PartType ZenaMarker, TricMarker, WordexisMarker;
-	//season 1 glyphs
+	//season 1 parts
 	public static PartType Cardinalification, Liquidation, Gerioification, Metallification, Demetallification;
-	//season 2 glyphs
+	//season 2 parts
 	public static PartType AnimisStabilizer, AtomicProjection, AtomicRejection, MagneticDepolarizer, MagneticPolarizer, WordexisWheel;
 	public static PartType SwitcherooGlyph;
+	//season 3 parts
+	public static PartType ArmOfDisposal;
 	static Molecule WordexisWheelWhatTheFuck()
 	{
 		Molecule molecule = new();
@@ -595,6 +597,31 @@ public static class Parts
 		QApi.AddPartTypeToPanel(SwitcherooGlyph, PartTypes.field_1775);
 		
 		QApi.AddPuzzlePermission("magicalparcherplus:switcherooglyph", "Glyph of Switcheroo", "Magical Parcher+");
+
+		ArmOfDisposal = new(){
+			field_1528 = "magical-parcher-plus-armofdisposal",
+			field_1529 = class_134.method_253("Arm of Disposal", string.Empty),
+			field_1530 = class_134.method_253("Grab command Removes any kind of molecule on the arm.", string.Empty),
+			field_1547 = class_238.field_1989.field_90.field_245.field_313,
+			field_1548 = class_238.field_1989.field_90.field_245.field_314,
+			field_1531 = 20,
+			field_1532 = (enum_2)1,
+			field_1533 = true,
+			field_1534 = new HexRotation[1] { HexRotation.R0 },
+			field_1535 = true,
+			field_1536 = true,
+			field_1551 = enum_149.SimpleArm,
+		};
+
+		QApi.AddPartType(ArmOfDisposal, (part, pos, editor, renderer) => {
+		
+			PartSimState pss = editor.method_507().method_481(part);
+			class_236 uco = editor.method_1989(part, pos);
+			Vector2 risingOffset = uco.field_1984 + class_187.field_1742.method_492(new HexIndex(pss.field_2725, 0)).Rotated(uco.field_1985);
+
+			Editor.method_927(Atoms.CeminratesBestie,risingOffset, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+		});
+		QApi.AddPartTypeToPanel(ArmOfDisposal, PartTypes.field_1764);
 		
 		ZenaMarker = new(){
 			field_1528 = "magical-parcher-plus-zenamarker",
@@ -602,8 +629,9 @@ public static class Parts
 			field_1530 = class_134.method_253("Does nothing. What, Do you want to have more markers? Is The Glyph of Equilibrium not enough?", string.Empty),
 			field_1531 = 0, // Cost
 			field_1539 = true, // Is a glyph (?)
-			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
-			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
+			field_1549 = class_238.field_1989.field_97.field_382, // Shadow/glow
+			field_1550 = class_238.field_1989.field_97.field_383, // Stroke/outline
+			field_1546 = false,
 			field_1547 = Wordexis_Input, // Panel icon
 			field_1548 = Wordexis_Input, // Hovered panel icon
 			field_1540 = new HexIndex[]{
@@ -628,8 +656,9 @@ public static class Parts
 			field_1530 = class_134.method_253("Does nothing. What, Do you want to have more markers? Is The Glyph of Equilibrium not enough?", string.Empty),
 			field_1531 = 0, // Cost
 			field_1539 = true, // Is a glyph (?)
-			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
-			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
+			field_1549 = class_238.field_1989.field_97.field_382, // Shadow/glow
+			field_1550 = class_238.field_1989.field_97.field_383, // Stroke/outline
+			field_1546 = false,
 			field_1547 = Wordexis_Input, // Panel icon
 			field_1548 = Wordexis_Input, // Hovered panel icon
 			field_1540 = new HexIndex[]{
@@ -654,8 +683,9 @@ public static class Parts
 			field_1530 = class_134.method_253("Does nothing. What, Do you want to have more markers? Is The Glyph of Equilibrium not enough?", string.Empty),
 			field_1531 = 0, // Cost
 			field_1539 = true, // Is a glyph (?)
-			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
-			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
+			field_1549 = class_238.field_1989.field_97.field_382, // Shadow/glow
+			field_1550 = class_238.field_1989.field_97.field_383, // Stroke/outline
+			field_1546 = false,
 			field_1547 = Wordexis_Input, // Panel icon
 			field_1548 = Wordexis_Input, // Hovered panel icon
 			field_1540 = new HexIndex[]{
@@ -924,6 +954,51 @@ public static class Parts
 								// upgrade effect for gold -> uranium
 								qs.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, qs.field_2280, class_238.field_1989.field_81.field_614, 30f);
 								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1843);
+							}
+						}
+					}
+				}
+
+				else if(type == ArmOfDisposal){
+					//find it's gripper
+					var gripper = part.field_2696[0];
+					PartSimState gripperpss = partSimStates[gripper];
+					if (first){
+						var compiledProgramSim = sim.method_1820();
+						int cycleNumber = sim.method_1818();
+						var instructionType = compiledProgramSim.method_852(cycleNumber, part, out Maybe<int> _);
+						var instructionCategory = instructionType.field_2548;
+						//then execute
+						if (instructionCategory == (enum_144) 5) // GRAB/DROP
+						{
+							bool isGrab = instructionType.field_2549;
+							// if all the atoms exist...
+							if(isGrab && sim.FindAtom(gripperpss.field_2724).method_99(out AtomReference qs)){
+								Texture[] disposalFlashAnimation = class_238.field_1989.field_90.field_240;
+								if(!qs.field_2281){ //single atom case
+									// transmute the gold and destroy the quicksilver
+									qs.field_2277.method_1107(qs.field_2278);
+									// upgrade effect for gold -> uranium
+									seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(gripperpss.field_2724+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+									YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1842);
+								} else {
+									//iterate the molecule's things
+									int atomcount = 0;
+									foreach (KeyValuePair<HexIndex, Atom> item in qs.field_2277.method_1100())
+									{
+										HexIndex key = item.Key;
+										//Atom value = item.Value;
+										//qs.field_2277.method_1107(key);
+										seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(key+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+										atomcount++;
+									}
+									if (atomcount >= 10){
+										YOUARENOTAPRIVATEEYENOWPLAYSOUND(AirWave.PockEight); //if there are 5 or more atoms popping
+									} else {
+										YOUARENOTAPRIVATEEYENOWPLAYSOUND(AirWave.Exploder[Time.Now().Ticks%3]); //if there are 2 or more atoms popping
+									}
+									sim.field_3823.Remove(qs.field_2277);
+								}
 							}
 						}
 					}
