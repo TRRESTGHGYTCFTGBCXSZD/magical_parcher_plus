@@ -610,16 +610,22 @@ public static class Parts
 			field_1534 = new HexRotation[1] { HexRotation.R0 },
 			field_1535 = true,
 			field_1536 = true,
-			field_1551 = enum_149.SimpleArm,
+			field_1551 = enum_149.Disposal,
 		};
 
 		QApi.AddPartType(ArmOfDisposal, (part, pos, editor, renderer) => {
 		
 			PartSimState pss = editor.method_507().method_481(part);
 			class_236 uco = editor.method_1989(part, pos);
-			Vector2 risingOffset = uco.field_1984 + class_187.field_1742.method_492(new HexIndex(pss.field_2725, 0)).Rotated(uco.field_1985);
-
+			Vector2 risingOffset;
+			for (int g = 0;g<pss.field_2725*4;g++){
+				risingOffset = uco.field_1984 + (class_187.field_1742.method_492(new HexIndex(g, 0))/4f).Rotated(uco.field_1985);
+				Editor.method_927(Atoms.CeminratesBestie,risingOffset, 0.25f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+			}
+			risingOffset = uco.field_1984 + class_187.field_1742.method_492(new HexIndex(pss.field_2725, 0)).Rotated(uco.field_1985);
 			Editor.method_927(Atoms.CeminratesBestie,risingOffset, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+			risingOffset = uco.field_1984 + class_187.field_1742.method_492(new HexIndex(0, 0)).Rotated(uco.field_1985);
+			Editor.method_927(Atoms.CeminratesBestie,risingOffset, 0.6f, 1f, 1f, 0f, -21f, 0f, null, null, false );
 		});
 		QApi.AddPartTypeToPanel(ArmOfDisposal, PartTypes.field_1764);
 		
