@@ -68,8 +68,8 @@ public class MagicalParcherPlus : QuintessentialMod
 	public static QuintessentialMod self;
 	public override Type SettingsType => typeof(Settei);
 	public override void Load() {
-        self = this;
-        Settings = new Settei();
+		self = this;
+		Settings = new Settei();
 	}
 	public override void LoadPuzzleContent() {
 		//foreach(var mod in QuintessentialLoader.CodeMods){Logger.Log("[MP+] Mod Name: " + mod.Meta.Name);}
@@ -119,15 +119,16 @@ public class MagicalParcherPlus : QuintessentialMod
 	//	// add new atoms to the editor palette
 	//	for (int i = 0; i < Atoms.atomsToAdd.Count(); i++) method_1130_info.Invoke(self, new object[] { new Vector2(560, 440 - 30 * i), Atoms.atomsToAdd[i], true });
 	//}
-    public override void ApplySettings()
-    {
-        base.ApplySettings();
-        Settei SET = (Settei)Settings;
+	public override void ApplySettings()
+	{
+		base.ApplySettings();
+		Settei SET = (Settei)Settings;
 
-        Atoms.GerioificationVanilla = SET.GerioificationVanilla;
+		Atoms.GerioificationVanilla = SET.GerioificationVanilla;
 		Atoms.GerioHasHat = SET.GerioHasHat;
 		Atoms.TricHasHeadphones = SET.TricHasHeadphones;
-    }
+		Parts.BypassPartRules = SET.BypassPartRules;
+	}
 	public override void Unload() {
 		Parts.Unload();
 		Atoms.Unload();

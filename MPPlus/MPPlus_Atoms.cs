@@ -30,6 +30,10 @@ public static class Atoms
 	private static byte OriginalCharactersAtomID = 254;
 	private static byte PTableAtomID = 253;
 	private static byte ProtonID = 252;
+	private static byte NormalCardinalsID = 251;
+	private static byte SwitcherooID = 250;
+	private static byte NumberAtomID = 249;
+	//speaki is atom id 248
 
 	public static T AndOr<T>(bool dind, T truedind, T falsedind) {
 		return dind ? truedind : falsedind;
@@ -303,7 +307,7 @@ public static class Atoms
 
 		Switcheroo = new AtomType()
 		{
-			/*ID, byte*/field_2283 = ProtonID,
+			/*ID, byte*/field_2283 = SwitcherooID,
 			/*Non-local Name*/field_2284 = class_134.method_254("Switcheroo"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Switcheroo", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Switcheroo", string.Empty),
@@ -319,7 +323,7 @@ public static class Atoms
 
 		Wood = new AtomType()
 		{
-			/*ID, byte*/field_2283 = ProtonID,
+			/*ID, byte*/field_2283 = NormalCardinalsID,
 			/*Non-local Name*/field_2284 = class_134.method_254("Wood"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Elemental Wood", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Wood", string.Empty),
@@ -335,7 +339,7 @@ public static class Atoms
 
 		Rock = new AtomType()
 		{
-			/*ID, byte*/field_2283 = ProtonID,
+			/*ID, byte*/field_2283 = NormalCardinalsID,
 			/*Non-local Name*/field_2284 = class_134.method_254("Rock"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Elemental Rock", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Rock", string.Empty),
@@ -351,7 +355,7 @@ public static class Atoms
 
 		Limbo = new AtomType()
 		{
-			/*ID, byte*/field_2283 = ProtonID,
+			/*ID, byte*/field_2283 = NormalCardinalsID,
 			/*Non-local Name*/field_2284 = class_134.method_254("Limbo"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Elemental Limbo", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Limbo", string.Empty),
@@ -438,7 +442,7 @@ public static class Atoms
 		{
 			AtomType Whatwiyo = new AtomType()
 			{
-				/*ID, byte*/field_2283 = PTableAtomID,
+				/*ID, byte*/field_2283 = NumberAtomID,
 				/*Non-local Name*/field_2284 = class_134.method_254("Number "+(sbyte)PTableAtomIndex),
 				/*Atomic Name*/field_2285 = class_134.method_253("Number "+(sbyte)PTableAtomIndex, string.Empty),
 				/*Local name*/field_2286 = class_134.method_253("Number "+(sbyte)PTableAtomIndex, string.Empty),

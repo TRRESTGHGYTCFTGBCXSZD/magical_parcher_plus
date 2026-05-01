@@ -43,6 +43,7 @@ public static class Parts
 		return false;
 	}
 
+	public static bool BypassPartRules = false;
 	//marker parts
 	public static PartType ZenaMarker, TricMarker, WordexisMarker;
 	//season 1 parts
@@ -105,7 +106,7 @@ public static class Parts
 				new(1, 0)
 			}, // Spaces used
 			field_1551 = Permissions.None,
-			CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:cardinalification")
+			CustomPermissionCheck = perms => (perms.Contains("magicalparcherplus:cardinalification")||BypassPartRules)
 		};
 
 		QApi.AddPartType(Cardinalification, (part, pos, editor, renderer) => {
@@ -154,7 +155,7 @@ public static class Parts
 				new(1, 0)
 			}, // Spaces used
 			field_1551 = Permissions.None,
-			CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:liquidation")
+			CustomPermissionCheck = perms => (perms.Contains("magicalparcherplus:liquidation")||BypassPartRules)
 		};
 
 		QApi.AddPartType(Liquidation, (part, pos, editor, renderer) => {
@@ -203,7 +204,7 @@ public static class Parts
 				new(1, 0)
 			}, // Spaces used
 			field_1551 = Permissions.None,
-			CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:gerioification")
+			CustomPermissionCheck = perms => (perms.Contains("magicalparcherplus:gerioification")||BypassPartRules)
 		};
 
 		QApi.AddPartType(Gerioification, (part, pos, editor, renderer) => {
@@ -251,7 +252,7 @@ public static class Parts
 				new(0, 0)
 			}, // Spaces used
 			field_1551 = Permissions.None,
-			CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:metallification")
+			CustomPermissionCheck = perms => (perms.Contains("magicalparcherplus:metallification")||BypassPartRules)
 		};
 
 		QApi.AddPartType(Metallification, (part, pos, editor, renderer) => {
@@ -278,7 +279,7 @@ public static class Parts
 				new(0, 0)
 			}, // Spaces used
 			field_1551 = Permissions.None,
-			CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:demetallification")
+			CustomPermissionCheck = perms => (perms.Contains("magicalparcherplus:demetallification")||BypassPartRules)
 		};
 
 		QApi.AddPartType(Demetallification, (part, pos, editor, renderer) => {
@@ -312,7 +313,7 @@ public static class Parts
 				new(1, -1)
 			}, // Spaces used
 			field_1551 = Permissions.None,
-			CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:animisstabilizer")
+			CustomPermissionCheck = perms => (perms.Contains("magicalparcherplus:animisstabilizer")||BypassPartRules)
 		};
 
 		QApi.AddPartType(AnimisStabilizer, (part, pos, editor, renderer) => {
@@ -356,7 +357,7 @@ public static class Parts
 				new(1, 0)
 			}, // Spaces used
 			field_1551 = Permissions.None,
-			CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:atomicprojection")
+			CustomPermissionCheck = perms => (perms.Contains("magicalparcherplus:atomicprojection")||BypassPartRules)
 		};
 
 		QApi.AddPartType(AtomicProjection, (part, pos, editor, renderer) => {
@@ -404,7 +405,7 @@ public static class Parts
 				new(1, 0)
 			}, // Spaces used
 			field_1551 = Permissions.None,
-			CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:atomicrejection")
+			CustomPermissionCheck = perms => (perms.Contains("magicalparcherplus:atomicrejection")||BypassPartRules)
 		};
 
 		QApi.AddPartType(AtomicRejection, (part, pos, editor, renderer) => {
@@ -452,7 +453,7 @@ public static class Parts
 				new(1, 0)
 			}, // Spaces used
 			field_1551 = Permissions.None,
-			CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:magneticpolarizer")
+			CustomPermissionCheck = perms => (perms.Contains("magicalparcherplus:magneticpolarizer")||BypassPartRules)
 		};
 
 		QApi.AddPartType(MagneticPolarizer, (part, pos, editor, renderer) => {
@@ -481,7 +482,7 @@ public static class Parts
 				new(1, 0)
 			}, // Spaces used
 			field_1551 = Permissions.None,
-			CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:magneticpolarizer")
+			CustomPermissionCheck = perms => (perms.Contains("magicalparcherplus:magneticpolarizer")||BypassPartRules)
 		};
 
 		QApi.AddPartType(MagneticDepolarizer, (part, pos, editor, renderer) => {
@@ -535,7 +536,7 @@ public static class Parts
 			},
 			field_1536 = true,
 			field_1551 = Permissions.None,
-			CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:wordexiswheel")
+			CustomPermissionCheck = perms => (perms.Contains("magicalparcherplus:wordexiswheel")||BypassPartRules)
 		};
 
 		QApi.AddPartType(WordexisWheel, (part, pos, editor, renderer) => {
@@ -564,7 +565,7 @@ public static class Parts
 				new(1, 0)
 			}, // Spaces used
 			field_1551 = Permissions.None,
-			CustomPermissionCheck = perms => perms.Contains("magicalparcherplus:switcherooglyph")
+			CustomPermissionCheck = perms => (perms.Contains("magicalparcherplus:switcherooglyph")||BypassPartRules)
 		};
 
 		QApi.AddPartType(SwitcherooGlyph, (part, pos, editor, renderer) => {
@@ -1004,13 +1005,14 @@ public static class Parts
 						{
 							bool isGrab = instructionType.field_2549;
 							// if all the atoms exist...
-							if(isGrab && sim.FindAtom(gripperpss.field_2724).method_99(out AtomReference qs)){
+							HexIndex GripperPosition = pss.field_2724 + new HexIndex(pss.field_2725, 0).Rotated(pss.field_2726);
+							if(isGrab && sim.FindAtom(GripperPosition).method_99(out AtomReference qs)){
 								Texture[] disposalFlashAnimation = class_238.field_1989.field_90.field_240;
 								if(!qs.field_2281){ //single atom case
 									// transmute the gold and destroy the quicksilver
 									qs.field_2277.method_1107(qs.field_2278);
 									// upgrade effect for gold -> uranium
-									seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(gripperpss.field_2724+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
+									seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(GripperPosition+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
 									YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1842);
 								} else {
 									//iterate the molecule's things
@@ -1032,6 +1034,7 @@ public static class Parts
 								}
 							}
 						}
+						gripperpss.field_2724 = part.method_1161();
 						gripperpss.field_2728 = false;
 						gripperpss.field_2729 = (Maybe<Molecule>) struct_18.field_1431;
 						gripperpss.field_2740 = false;
