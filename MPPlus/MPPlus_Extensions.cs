@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.IO;
 
+using ZenaLib;
+
 namespace MagicalParcherPlus;
 
 using AtomTypes = class_175;
@@ -34,10 +36,10 @@ internal class MPPlusExtensions
 		Flexibility.DemetallificationExplosionMeta.Add(HalvingMetallurgy.Atoms.Osmium);
 		Flexibility.DemetallificationExplosionMeta.Add(HalvingMetallurgy.Atoms.Sednum);
 		Flexibility.DemetallificationExplosionMeta.Add(HalvingMetallurgy.Atoms.Vulcan);
-    }
+	}
 	public static void AddHalvingMetallurgyLater() {
 		Flexibility.addTriplexCondition(Atoms.EZGG,HalvingMetallurgy.Atoms.Vulcan);
-    }
+	}
 	public static void AddUnstableElements() {
 		Atoms.PTableAtoms[91] = MagicalParcherPlus.FindModAtom("UnstableElements:uranium"); //why it is private
 		Atoms.PTableIgnore[91] = true;
@@ -50,22 +52,56 @@ internal class MPPlusExtensions
 		//Flexibility.addExtraAtomicException(FindModAtom("UnstableElements:uranium_2_0"),91);
 		//Flexibility.addExtraAtomicException(FindModAtom("UnstableElements:uranium_2_1"),91);
 		//Flexibility.addExtraAtomicException(FindModAtom("UnstableElements:uranium_2_2"),91);
-    }
+	}
 	public static void AddMetalQuintessence() {
 		Atoms.PTableAtoms[23] = MetalQuintessence.MetalQuintessenceAtoms.Chromium;
 		Atoms.PTableIgnore[23] = true;
 		Flexibility.DemetallificationExplosionMeta.Add(MetalQuintessence.MetalQuintessenceAtoms.Chromium);
-    }
+	}
 	public static void AddAlchemicalInversions() {
 		Atoms.PTableAtoms[38] = AlchemicalInversions.Atoms.Yttrium;
 		Atoms.PTableIgnore[38] = true;
-    }
+	}
 	public static void AddNeuvolics() {
 		Atoms.PTableAtoms[76] = Neuvolics.Atoms.Iridium;
 		Atoms.PTableIgnore[76] = true;
-    }
+	}
 	public static void AddVacancy_ExtHalvingMetallurgy() {
 		Flexibility.addMetallificationRule(HalvingMetallurgy.Atoms.Quicklime,Vaca.MainClass.VacaAtom);
 		Flexibility.addDemetallificationRule(Vaca.MainClass.VacaAtom,HalvingMetallurgy.Atoms.Quicklime);
-    }
+	}
+}
+public class SwitcherooRecipe : Recipe
+{
+	protected MultipleMatcher Catalyst;
+	protected Dictionary<AtomType,int> Input;
+	public MultipleMatcher GetCatalyst() {
+		return Catalyst;
+	}
+	public Dictionary<AtomType,int> GetInput() {
+		return Input;
+	}
+	public override bool CheckRecipe(AtomType[] Ingredients){ //partital match unsupported
+		if (Catalyst != Ingredients[0]) return false;
+		Ingredients = Ingredients.Skip(1).ToArray();
+		Dictionary<AtomType,int> Dim = new(Input);
+		foreach (AtomType atoms in Ingredients){
+			if (atoms is null) {
+				continue;
+			} else if (Dim.ContainsKey(atoms)) {
+				Dim[atoms]--;
+				if (Dim[atoms] <= 0) {
+					Dim.Remove(atoms);
+				}
+			} else {
+				return false;
+			}
+		}
+		return Dim.Count <= 0;
+	}
+	public SwitcherooRecipe(MultipleMatcher Cata,Dictionary<AtomType,int> Targ,AtomType[] Dispel){
+		Catalyst = Cata;
+		Input = Targ;
+		Output = Dispel;
+	}
 }

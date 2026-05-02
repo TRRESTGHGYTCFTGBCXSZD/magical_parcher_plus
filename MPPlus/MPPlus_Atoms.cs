@@ -74,9 +74,11 @@ public static class Atoms
 	//atoms that don't categorize
 	public static AtomType Wood, Rock, Limbo, Switcheroo, NumberAtom;
 	//character/alternative atoms
-	public static AtomType Wordexis, Erabukun, Zena;
+	public static AtomType Wordexis, Erabukun, Zena, AnxietyBot;
 	public static AtomType Gerio, EZGG, Gabs, Tric, Modrenity, CeminratesBestie, RedZena, BlueZena, Abomination;
+
 	public static List<AtomType> atomsToAdd;
+	
 	public static Texture WordexisBackAccessories = class_235.method_615("textures/atoms/magicalparcher/wordexis_accessoriesback");
 	public static Texture WordexisVisor = class_235.method_615("textures/atoms/magicalparcher/wordexis_accessoriesfront");
 	public static Texture TricEars = class_235.method_615("textures/atoms/magicalparcher/tric_ears");
@@ -91,7 +93,15 @@ public static class Atoms
 	public static Texture BlueZenaMagnets = class_235.method_615("textures/atoms/magicalparcher/bluezena_magnets");
 	public static Texture CeminratesBestieEars = class_235.method_615("textures/atoms/magicalparcher/ceminratesbestie_ears");
 	public static Texture CeminratesBestieFrontAccessories = class_235.method_615("textures/atoms/magicalparcher/ceminratesbestie_accessoriesfront");
+	public static Texture AnxietyBotAccessories = class_235.method_615("textures/atoms/magicalparcher/anxietybot_antennas");
 	public static Texture saltcircle = class_235.method_615("textures/atoms/salt_diffuse");
+
+	private static readonly Random DoItShakyShaky = new();
+
+	internal static void CreateSwitcherooRecipe(AtomType catalyst,Dictionary<AtomType,int> input,AtomType output){
+		Flexibility.SwitcherooRecipes.Add(new SwitcherooRecipe(new MultipleMatcher(catalyst),input,new AtomType[1]{output}));
+		Flexibility.SwitcherooRecipes.Add(new SwitcherooRecipe(new MultipleMatcher(output),input,new AtomType[1]{catalyst}));
+	}
 
 	public static void AddNewContent() {
 		//
@@ -369,6 +379,22 @@ public static class Atoms
 			QuintAtomType = "magicalparcherplus:limbo"
 		};
 
+		AnxietyBot = new AtomType()
+		{
+			/*ID, byte*/field_2283 = NewCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Anxiety Bot"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Anxiety Bot", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Anxiety Bot", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/anxietybot_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/anxietybot_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:anxietybot"
+		};
+
 		//NumberAtom = new AtomType()
 		//{
 		//	/*ID, byte*/field_2283 = ProtonID,
@@ -385,7 +411,7 @@ public static class Atoms
 		//	QuintAtomType = "magicalparcherplus:numberatom"
 		//};
 
-		atomsToAdd = new List<AtomType>() { Wood, Rock, Limbo, Proton, Switcheroo, Gerio, Gabs, Tric, EZGG, Modrenity, CeminratesBestie, RedZena, BlueZena, Abomination, Wordexis, Erabukun, Zena, };
+		atomsToAdd = new List<AtomType>() { Wood, Rock, Limbo, Proton, Switcheroo, Gerio, Gabs, Tric, EZGG, Modrenity, CeminratesBestie, RedZena, BlueZena, Abomination, Wordexis, Erabukun, Zena, AnxietyBot, };
 
 		//add atoms to internal dictionary
 		//var old_len = AtomTypes.field_1691.Length;
@@ -536,41 +562,131 @@ public static class Atoms
 				,new AtomType[1] { Atoms.Switcheroo }
 			)
 		);
-		Flexibility.SwitcherooRecipes.Add(
-			new ShapedRecipe(
-				new MultipleMatcher[]{
-					new (Atoms.Gerio),
-					new (Atoms.Switcheroo),
-				}
-				,new AtomType[1] { AtomTypes.field_1675 }
-			)
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,1);
+		CreateSwitcherooRecipe(
+			AtomTypes.field_1680,
+			wanafo,
+			Atoms.Gerio
 		);
-		Flexibility.SwitcherooRecipes.Add(
-			new ShapedRecipe(
-				new MultipleMatcher[]{
-					new (Atoms.CeminratesBestie),
-					new (Atoms.Switcheroo),
-				}
-				,new AtomType[1] { AtomTypes.field_1680 }
-			)
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,1);
+		CreateSwitcherooRecipe(
+			AtomTypes.field_1685,
+			wanafo,
+			Atoms.CeminratesBestie
 		);
-		Flexibility.SwitcherooRecipes.Add(
-			new ShapedRecipe(
-				new MultipleMatcher[]{
-					new (AtomTypes.field_1675),
-					new (Atoms.Switcheroo),
-				}
-				,new AtomType[1] { Atoms.Gerio }
-			)
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,3);
+		CreateSwitcherooRecipe(
+			AtomTypes.field_1676,
+			wanafo,
+			Atoms.Modrenity
 		);
-		Flexibility.SwitcherooRecipes.Add(
-			new ShapedRecipe(
-				new MultipleMatcher[]{
-					new (AtomTypes.field_1680),
-					new (Atoms.Switcheroo),
-				}
-				,new AtomType[1] { Atoms.CeminratesBestie }
-			)
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,3);
+		CreateSwitcherooRecipe(
+			AtomTypes.field_1677,
+			wanafo,
+			Atoms.Tric
+		);
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,3);
+		CreateSwitcherooRecipe(
+			AtomTypes.field_1678,
+			wanafo,
+			Atoms.EZGG
+		);
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,3);
+		CreateSwitcherooRecipe(
+			AtomTypes.field_1679,
+			wanafo,
+			Atoms.Gabs
+		);
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,3);
+		CreateSwitcherooRecipe(
+			AtomTypes.field_1687,
+			wanafo,
+			Atoms.RedZena
+		);
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,3);
+		CreateSwitcherooRecipe(
+			AtomTypes.field_1688,
+			wanafo,
+			Atoms.BlueZena
+		);
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,3);
+		CreateSwitcherooRecipe(
+			AtomTypes.field_1681,
+			wanafo,
+			Atoms.NumberAtoms[1]
+		);
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,3);
+		CreateSwitcherooRecipe(
+			AtomTypes.field_1682,
+			wanafo,
+			Atoms.NumberAtoms[2]
+		);
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,3);
+		CreateSwitcherooRecipe(
+			AtomTypes.field_1683,
+			wanafo,
+			Atoms.NumberAtoms[3]
+		);
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,3);
+		CreateSwitcherooRecipe(
+			AtomTypes.field_1684,
+			wanafo,
+			Atoms.NumberAtoms[4]
+		);
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,3);
+		CreateSwitcherooRecipe(
+			AtomTypes.field_1685,
+			wanafo,
+			Atoms.NumberAtoms[5]
+		);
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,3);
+		CreateSwitcherooRecipe(
+			AtomTypes.field_1686,
+			wanafo,
+			Atoms.NumberAtoms[6]
+		);
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,3);
+		CreateSwitcherooRecipe(
+			AtomTypes.field_1690,
+			wanafo,
+			Atoms.Abomination
+		);
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,3);
+		CreateSwitcherooRecipe(
+			Atoms.Wood,
+			wanafo,
+			Atoms.Wordexis
+		);
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,3);
+		CreateSwitcherooRecipe(
+			Atoms.Rock,
+			wanafo,
+			Atoms.Erabukun
+		);
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Switcheroo,3);
+		CreateSwitcherooRecipe(
+			Atoms.Limbo,
+			wanafo,
+			Atoms.Zena
 		);
 		On.Editor.method_927 += RenderExtraStuff;
 		QApi.RunAfterCycle((sim, first) => {
@@ -644,6 +760,7 @@ public static class Atoms
 		//	float Blue = (float)(Math.Sin((new struct_27(Time.Now().Ticks).method_603()+(Math.PI*2/3))*4)+1)/2f;
 		//	class_135.method_263(saltcircle, new Color(Red,Green,Blue,param_4583*param_4584), position - new Vector2(35, 35) * param_4582, new Vector2(70, 70) * param_4582);
 		//}
+
 		if (type == Wordexis)
 		{
 			class_135.method_263(WordexisBackAccessories, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
@@ -683,6 +800,12 @@ public static class Atoms
 			class_135.method_263(TricEars, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
 			class_135.method_263(GabsSpikes, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
 			class_135.method_263(ModrenityControlSticks, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		}
+
+		if (type == AnxietyBot)
+		{
+			position += new Vector2((DoItShakyShaky.Next(9) - 4) / 4f, (DoItShakyShaky.Next(9) - 4) / 4f);
+			class_135.method_263(AnxietyBotAccessories, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
 		}
 		//behind atom
 		orig(type, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
