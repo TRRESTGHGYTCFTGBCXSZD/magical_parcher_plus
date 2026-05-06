@@ -1127,7 +1127,7 @@ public static class Atoms
 		}
 		if (type == Erizie)
 		{
-			class_135.method_263(ErizieErasers, tecolor, position - new Vector2(0, 30) * param_4582, new Vector2(60, 60) * param_4582);
+			class_135.method_263(ErizieErasers, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
 		}
 		//behind atom
 		orig(type, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
@@ -1152,7 +1152,7 @@ public static class Atoms
 		}
 		if (type == Erizie)
 		{
-			class_135.method_263(ErizieFurs, tecolor, position - new Vector2(0, 30) * param_4582, new Vector2(60, 60) * param_4582);
+			class_135.method_263(ErizieFurs, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
 		}
 	}
 
