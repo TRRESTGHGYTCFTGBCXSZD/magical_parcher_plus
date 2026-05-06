@@ -44,14 +44,19 @@ public static class Parts
 	}
 
 	public static bool BypassPartRules = false;
+	public static bool CheaterParts = false;
 	//marker parts
 	public static PartType ZenaMarker, TricMarker, WordexisMarker;
+	//cheater parts
+	public static PartType QuintessenceFabricator, AbominationFabricator;
 	//season 1 parts
 	public static PartType Cardinalification, Liquidation, Gerioification, Metallification, Demetallification;
 	//season 2 parts
 	public static PartType AnimisStabilizer, AtomicProjection, AtomicRejection, MagneticDepolarizer, MagneticPolarizer, WordexisWheel, SwitcherooGlyph;
 	//season 3 parts
 	public static PartType ArmOfDisposal, QuantumUnbonder, AtomQuantumUnbonder, BondPreservingDisposal, HyperSwitcheroo;
+	//season 4 parts
+	public static PartType ChromaCycler, ChromaRotater;
 	static Molecule WordexisWheelWhatTheFuck()
 	{
 		Molecule molecule = new();
@@ -673,7 +678,7 @@ public static class Parts
 		});
 		QApi.AddPartTypeToPanel(QuantumUnbonder, PartTypes.field_1775);
 		
-		QApi.AddPuzzlePermission("magicalparcherplus:quantumunbonder", "Glyph of Quantum Unbonder", "Magical Parcher+");
+		QApi.AddPuzzlePermission("magicalparcherplus:quantumunbonder", "Glyph of Q-Unbonder", "Magical Parcher+");
 
 		AtomQuantumUnbonder = new(){
 			field_1528 = "magical-parcher-plus-atomquantumunbonder",
@@ -705,7 +710,7 @@ public static class Parts
 		});
 		QApi.AddPartTypeToPanel(AtomQuantumUnbonder, PartTypes.field_1775);
 		
-		QApi.AddPuzzlePermission("magicalparcherplus:atomquantumunbonder", "Glyph of Quantum Separation", "Magical Parcher+");
+		QApi.AddPuzzlePermission("magicalparcherplus:atomquantumunbonder", "Glyph of Q-Separation", "Magical Parcher+");
 
 		BondPreservingDisposal = new(){
 			field_1528 = "magical-parcher-plus-bondpreservingdisposal",
@@ -728,8 +733,8 @@ public static class Parts
 		QApi.AddPartType(BondPreservingDisposal, (part, pos, editor, renderer) => {
 			Vector2 vector2 = new(41f, 48f);
 			renderer.method_523(ProjectionBase, new Vector2(0.0f, 0.0f), vector2, 0.0f);
-			renderer.method_530(RejectionBowl, new HexIndex(0, 0), 4f);
-			renderer.method_528(class_238.field_1989.field_90.field_163, new HexIndex(0, 0), Vector2.Zero);
+			renderer.method_530(class_238.field_1989.field_90.field_164, new HexIndex(0, 0), 4f);
+			renderer.method_528(RejectionBowl, new HexIndex(0, 0), Vector2.Zero);
 			renderer.method_530(class_238.field_1989.field_90.field_164 /*bonder_shadow*/, new HexIndex(1, 0), 0);
 			renderer.method_530(class_238.field_1989.field_90.field_255.field_293 /*quicksilver_input*/, new HexIndex(1, 0), 0);
 			// should be 272?
@@ -788,7 +793,110 @@ public static class Parts
 		});
 		QApi.AddPartTypeToPanel(HyperSwitcheroo, PartTypes.field_1775);
 		
-		QApi.AddPuzzlePermission("magicalparcherplus:hyperswitcheroo", "Glyph of Hyper Switcheroo", "Magical Parcher+");
+		QApi.AddPuzzlePermission("magicalparcherplus:hyperswitcheroo", "Glyph of H-Switcheroo", "Magical Parcher+");
+		
+		////////////////////////////////////////////////////////////////////////////////
+
+		ChromaCycler = new(){
+			field_1528 = "magical-parcher-plus-chromacycler", // ID
+			field_1529 = class_134.method_253("Glyph of Chroma Cycler", string.Empty), // Name
+			field_1530 = class_134.method_253("Takes Sinfigie/Toisakansero to transmute Bot's color into adjacent color.", string.Empty), // Description
+			field_1531 = 40, // Cost
+			field_1539 = true, // Is a glyph (?)
+			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
+			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
+			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/switcherooglyph"), // Panel icon
+			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/switcherooglyph"), // Hovered panel icon
+			field_1540 = new HexIndex[]{
+				new(0, 0),
+				new(1, 0)
+			}, // Spaces used
+			field_1551 = Permissions.None,
+			CustomPermissionCheck = perms => (perms.Contains("magicalparcherplus:chromacycler")||BypassPartRules)
+		};
+
+		QApi.AddPartType(ChromaCycler, (part, pos, editor, renderer) => {
+			Vector2 vector2 = new(41f, 48f);
+			renderer.method_523(ProjectionBase, new Vector2(0.0f, 0.0f), vector2, 0.0f);
+			foreach(HexIndex idx in part.method_1159().field_1540){
+				if(idx is { Q: 0, R: 0 }){
+					renderer.method_530(class_238.field_1989.field_90.field_164 /*bonder_shadow*/, idx, 0);
+					renderer.method_528(ProjectionBowl, idx, Vector2.Zero);
+					renderer.method_529(SaltSymbol /*quicksilver_symbol*/, idx, Vector2.Zero);
+					renderer.method_529(QuicksilverSymbol /*quicksilver_symbol*/, idx, Vector2.Zero);
+				}
+				else{
+					renderer.method_530(class_238.field_1989.field_90.field_164 /*bonder_shadow*/, idx, 0);
+					renderer.method_530(class_238.field_1989.field_90.field_255.field_293 /*quicksilver_input*/, idx, 0);
+					// should be 272?
+					Editor.method_927(Atoms.Switcheroo,class_187.field_1742.method_492(part.method_1184(idx)) + pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				}
+			}
+
+			for(var i = 0; i < part.method_1159().field_1540.Length; i++){
+				HexIndex hexIndex = part.method_1159().field_1540[i];
+				if(hexIndex != new HexIndex(0, 0)){
+					int index = i - 1;
+					float num = new HexRotation(index * 2).ToRadians();
+					renderer.method_522(class_238.field_1989.field_90.field_255.field_289 /*bond*/, new Vector2(-30f, 12f), num);
+				}
+			}
+		});
+		QApi.AddPartTypeToPanel(ChromaCycler, PartTypes.field_1775);
+		
+		QApi.AddPuzzlePermission("magicalparcherplus:chromacycler", "Glyph of Chroma Cycler", "Magical Parcher+");
+
+		ChromaRotater = new(){
+			field_1528 = "magical-parcher-plus-chromarotator", // ID
+			field_1529 = class_134.method_253("Glyph of Chroma Rotator", string.Empty), // Name
+			field_1530 = class_134.method_253("Takes 2 pairs of Sinfigie/Toisakansero to transmute Bot's color into adjacent color, and ejects Erizie.", string.Empty), // Description
+			field_1531 = 40, // Cost
+			field_1539 = true, // Is a glyph (?)
+			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
+			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
+			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/switcherooglyph"), // Panel icon
+			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/switcherooglyph"), // Hovered panel icon
+			field_1540 = new HexIndex[]{
+				new(0, 0),
+				new(1, 0),
+				new(2, 0),
+				new(-1, 0),
+				new(-2, 0)
+			}, // Spaces used
+			field_1551 = Permissions.None,
+			CustomPermissionCheck = perms => (perms.Contains("magicalparcherplus:chromarotator")||BypassPartRules)
+		};
+
+		QApi.AddPartType(ChromaRotater, (part, pos, editor, renderer) => {
+			Vector2 vector2 = new(41f, 48f);
+			renderer.method_523(ProjectionBase, new Vector2(0.0f, 0.0f), vector2, 0.0f);
+			foreach(HexIndex idx in part.method_1159().field_1540){
+				if(idx is { Q: 0, R: 0 }){
+					renderer.method_530(class_238.field_1989.field_90.field_164 /*bonder_shadow*/, idx, 0);
+					renderer.method_528(ProjectionBowl, idx, Vector2.Zero);
+					renderer.method_529(SaltSymbol /*quicksilver_symbol*/, idx, Vector2.Zero);
+					renderer.method_529(QuicksilverSymbol /*quicksilver_symbol*/, idx, Vector2.Zero);
+				}
+				else{
+					renderer.method_530(class_238.field_1989.field_90.field_164 /*bonder_shadow*/, idx, 0);
+					renderer.method_530(class_238.field_1989.field_90.field_255.field_293 /*quicksilver_input*/, idx, 0);
+					// should be 272?
+					Editor.method_927(Atoms.Switcheroo,class_187.field_1742.method_492(part.method_1184(idx)) + pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				}
+			}
+
+			for(var i = 0; i < part.method_1159().field_1540.Length; i++){
+				HexIndex hexIndex = part.method_1159().field_1540[i];
+				if(hexIndex != new HexIndex(0, 0)){
+					int index = i - 1;
+					float num = new HexRotation(index * 2).ToRadians();
+					renderer.method_522(class_238.field_1989.field_90.field_255.field_289 /*bond*/, new Vector2(-30f, 12f), num);
+				}
+			}
+		});
+		QApi.AddPartTypeToPanel(ChromaRotater, PartTypes.field_1775);
+		
+		QApi.AddPuzzlePermission("magicalparcherplus:chromarotator", "Glyph of Chroma Rotator", "Magical Parcher+");
 		
 		////////////////////////////////////////////////////////////////////////////////
 

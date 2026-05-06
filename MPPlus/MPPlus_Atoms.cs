@@ -73,9 +73,14 @@ public static class Atoms
 	public static AtomType[] NumberAtoms = new AtomType[256];
 	//atoms that don't categorize
 	public static AtomType Wood, Rock, Limbo, Switcheroo, NumberAtom;
-	//character/alternative atoms
-	public static AtomType Wordexis, Erabukun, Zena, AnxietyBot;
+	//character atoms
+		// alternative atoms
+	public static AtomType Wordexis, Erabukun, Zena;
 	public static AtomType Gerio, EZGG, Gabs, Tric, Modrenity, CeminratesBestie, RedZena, BlueZena, Abomination;
+		// a family of 7 bots
+	public static AtomType IBot, AnxietyBot, OBot, ZBot, TBot, JBot, SBot;
+		// volics for 7 bots
+	public static AtomType Sinfigie, Toisakansero, Erizie;
 
 	public static List<AtomType> atomsToAdd;
 	
@@ -93,8 +98,29 @@ public static class Atoms
 	public static Texture BlueZenaMagnets = class_235.method_615("textures/atoms/magicalparcher/bluezena_magnets");
 	public static Texture CeminratesBestieEars = class_235.method_615("textures/atoms/magicalparcher/ceminratesbestie_ears");
 	public static Texture CeminratesBestieFrontAccessories = class_235.method_615("textures/atoms/magicalparcher/ceminratesbestie_accessoriesfront");
-	public static Texture AnxietyBotAccessories = class_235.method_615("textures/atoms/magicalparcher/anxietybot_antennas");
 	public static Texture saltcircle = class_235.method_615("textures/atoms/salt_diffuse");
+
+	public static Texture[] BlockBotAccessories = {
+		class_235.method_615("textures/atoms/magicalparcher/ibot_antennas"),
+		class_235.method_615("textures/atoms/magicalparcher/anxietybot_antennas"),
+		class_235.method_615("textures/atoms/magicalparcher/obot_antennas"),
+		class_235.method_615("textures/atoms/magicalparcher/sbot_antennas"),
+		class_235.method_615("textures/atoms/magicalparcher/tbot_antennas"),
+		class_235.method_615("textures/atoms/magicalparcher/jbot_antennas"),
+		class_235.method_615("textures/atoms/magicalparcher/zbot_antennas"),
+	};
+	public static Texture[] SinfigieTextures = {
+		class_235.method_615("textures/atoms/magicalparcher/sinfigie_base"),
+		class_235.method_615("textures/atoms/magicalparcher/sinfigie_face"),
+		class_235.method_615("textures/atoms/magicalparcher/sinfigie_rotator")
+	};
+	public static Texture[] ToisakanseroTextures = {
+		class_235.method_615("textures/atoms/magicalparcher/toisakansero_base"),
+		class_235.method_615("textures/atoms/magicalparcher/toisakansero_face"),
+		class_235.method_615("textures/atoms/magicalparcher/toisakansero_rotator")
+	};
+	public static Texture ErizieErasers = class_235.method_615("textures/atoms/magicalparcher/erizie_erasers");
+	public static Texture ErizieFurs = class_235.method_615("textures/atoms/magicalparcher/erizie_furs");
 
 	private static readonly Random DoItShakyShaky = new();
 
@@ -299,6 +325,8 @@ public static class Atoms
 			QuintAtomType = "magicalparcherplus:CeminratesBestie"
 		};
 
+		////////////////////////////////////////////////////////////////////////////////
+
 		Proton = new AtomType()
 		{
 			/*ID, byte*/field_2283 = ProtonID,
@@ -330,6 +358,8 @@ public static class Atoms
 			},
 			QuintAtomType = "magicalparcherplus:switcheroo"
 		};
+
+		////////////////////////////////////////////////////////////////////////////////
 
 		Wood = new AtomType()
 		{
@@ -379,6 +409,24 @@ public static class Atoms
 			QuintAtomType = "magicalparcherplus:limbo"
 		};
 
+		////////////////////////////////////////////////////////////////////////////////
+
+		IBot = new AtomType()
+		{
+			/*ID, byte*/field_2283 = NewCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("I-Bot"),
+			/*Atomic Name*/field_2285 = class_134.method_253("I-Bot", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("I-Bot", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/ibot_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/anxietybot_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:ibot"
+		};
+
 		AnxietyBot = new AtomType()
 		{
 			/*ID, byte*/field_2283 = NewCharactersAtomID,
@@ -393,6 +441,134 @@ public static class Atoms
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:anxietybot"
+		};
+
+		OBot = new AtomType()
+		{
+			/*ID, byte*/field_2283 = NewCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("O-Bot"),
+			/*Atomic Name*/field_2285 = class_134.method_253("O-Bot", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("O-Bot", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/obot_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/obot_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:obot"
+		};
+
+		ZBot = new AtomType()
+		{
+			/*ID, byte*/field_2283 = NewCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Z-Bot"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Z-Bot", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Z-Bot", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/zbot_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/anxietybot_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:zbot"
+		};
+
+		TBot = new AtomType()
+		{
+			/*ID, byte*/field_2283 = NewCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("T-Bot"),
+			/*Atomic Name*/field_2285 = class_134.method_253("T-Bot", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("T-Bot", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/tbot_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/anxietybot_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:tbot"
+		};
+
+		JBot = new AtomType()
+		{
+			/*ID, byte*/field_2283 = NewCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("J-Bot"),
+			/*Atomic Name*/field_2285 = class_134.method_253("J-Bot", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("J-Bot", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/jbot_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/anxietybot_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:jbot"
+		};
+
+		SBot = new AtomType()
+		{
+			/*ID, byte*/field_2283 = NewCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("S-Bot"),
+			/*Atomic Name*/field_2285 = class_134.method_253("S-Bot", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("S-Bot", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/sbot_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/anxietybot_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:sbot"
+		};
+
+		Sinfigie = new AtomType()
+		{
+			/*ID, byte*/field_2283 = NewCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Sinfigie"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Sinfigie", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Sinfigie", string.Empty),
+			/*Symbol*/field_2287 = SinfigieTextures[1],
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = SinfigieTextures[0],//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:sinfigie"
+		};
+
+		Toisakansero = new AtomType()
+		{
+			/*ID, byte*/field_2283 = NewCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Toisakansero"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Toisakansero", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Toisakansero", string.Empty),
+			/*Symbol*/field_2287 = ToisakanseroTextures[1],
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = ToisakanseroTextures[0],//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:toisakansero"
+		};
+
+		Erizie = new AtomType()
+		{
+			/*ID, byte*/field_2283 = NewCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Erizie"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Erizie", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Erizie", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/erizie_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/magicalparcher/erizie_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:erizie"
 		};
 
 		//NumberAtom = new AtomType()
@@ -411,7 +587,14 @@ public static class Atoms
 		//	QuintAtomType = "magicalparcherplus:numberatom"
 		//};
 
-		atomsToAdd = new List<AtomType>() { Wood, Rock, Limbo, Proton, Switcheroo, Gerio, Gabs, Tric, EZGG, Modrenity, CeminratesBestie, RedZena, BlueZena, Abomination, Wordexis, Erabukun, Zena, AnxietyBot, };
+		atomsToAdd = new List<AtomType>() {
+			Wood, Rock, Limbo,
+			Proton, Switcheroo,
+			Gerio, Gabs, Tric, EZGG, Modrenity, CeminratesBestie, RedZena, BlueZena, Abomination,
+			Wordexis, Erabukun, Zena,
+			IBot, AnxietyBot, OBot, ZBot, TBot, JBot, SBot,
+			Sinfigie, Toisakansero, Erizie
+		};
 
 		//add atoms to internal dictionary
 		//var old_len = AtomTypes.field_1691.Length;
@@ -688,7 +871,16 @@ public static class Atoms
 			wanafo,
 			Atoms.Zena
 		);
-		On.Editor.method_927 += RenderExtraStuff;
+		Flexibility.GerioificationRecipes.Add(
+			new ShapedRecipe(
+				new MultipleMatcher[]{
+					new (Atoms.IBot),
+					new (Atoms.Toisakansero),
+				}
+				,new AtomType[1] { Atoms.Switcheroo }
+			)
+		);
+		On.Editor.method_927 += ReplaceTeAtoms;
 		QApi.RunAfterCycle((sim, first) => {
 			List<Molecule> moleculeList = sim.field_3823;
 			var seb = sim.field_3818;
@@ -701,13 +893,7 @@ public static class Atoms
 			}
 		});
 	}
-	//param_4582 = scale
-	//param_4583 = transparency
-	//param_4584 = drop %
-	//param_4585 = unknown
-	//param_4586 = angle
-	//param_4587 = unknown
-	internal static void RenderExtraStuff(On.Editor.orig_method_927 orig, AtomType type, Vector2 position, float param_4582, float param_4583, float param_4584, float param_4585, float param_4586, float param_4587, Texture overrideShadow, Texture maskM, bool param_4590)
+	internal static void ReplaceTeAtoms(On.Editor.orig_method_927 orig, AtomType type, Vector2 position, float param_4582, float param_4583, float param_4584, float param_4585, float param_4586, float param_4587, Texture overrideShadow, Texture maskM, bool param_4590)
 	{
 		if (GerioificationVanilla)
 		{
@@ -746,12 +932,72 @@ public static class Atoms
 				RenderExtraStuff(orig, BlueZena, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
 				return;
 			}
+			if (type == AtomTypes.field_1680) //visuallize qs as ceminrates' bestie
+			{
+				RenderExtraStuff(orig, CeminratesBestie, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
 			if (type == AtomTypes.field_1690) //visuallize quint as abomination
 			{
 				RenderExtraStuff(orig, Abomination, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
 				return;
 			}
+			if (type == Tric) //visuallize earth as tric
+			{
+				RenderExtraStuff(orig, AtomTypes.field_1677, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == Gabs) //visuallize water as gabs
+			{
+				RenderExtraStuff(orig, AtomTypes.field_1679, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == EZGG) //visuallize fire as ezgg
+			{
+				RenderExtraStuff(orig, AtomTypes.field_1678, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == Modrenity) //visuallize air as modrenity
+			{
+				RenderExtraStuff(orig, AtomTypes.field_1676, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == Gerio) //visuallize salt as gerio
+			{
+				RenderExtraStuff(orig, AtomTypes.field_1675, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == RedZena) //visuallize vitae as red zena
+			{
+				RenderExtraStuff(orig, AtomTypes.field_1687, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == BlueZena) //visuallize mors as blue zena
+			{
+				RenderExtraStuff(orig, AtomTypes.field_1688, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == CeminratesBestie) //visuallize qs as ceminrates' bestie
+			{
+				RenderExtraStuff(orig, AtomTypes.field_1680, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == Abomination) //visuallize quint as abomination
+			{
+				RenderExtraStuff(orig, AtomTypes.field_1690, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
 		}
+		RenderExtraStuff(orig, type, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+	}
+	//param_4582 = scale
+	//param_4583 = transparency
+	//param_4584 = drop %
+	//param_4585 = unknown
+	//param_4586 = angle
+	//param_4587 = unknown
+	internal static void RenderExtraStuff(On.Editor.orig_method_927 orig, AtomType type, Vector2 position, float param_4582, float param_4583, float param_4584, float param_4585, float param_4586, float param_4587, Texture overrideShadow, Texture maskM, bool param_4590)
+	{
 		Color tecolor = Color.White.WithAlpha(param_4583*param_4584);
 		//if (type == Switcheroo)
 		//{
@@ -760,6 +1006,54 @@ public static class Atoms
 		//	float Blue = (float)(Math.Sin((new struct_27(Time.Now().Ticks).method_603()+(Math.PI*2/3))*4)+1)/2f;
 		//	class_135.method_263(saltcircle, new Color(Red,Green,Blue,param_4583*param_4584), position - new Vector2(35, 35) * param_4582, new Vector2(70, 70) * param_4582);
 		//}
+
+		if (type == Sinfigie)
+		{
+			class_135.method_263(SinfigieTextures[0], tecolor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
+			float roteball = (float)new struct_27(Time.Now().Ticks).method_603()*2f;
+			float rotewidth = 60;
+			float roteheight = 60;
+			float[] roterote = {
+				(float)(position.X+(-Math.Cos(roteball)*rotewidth/2)+(-Math.Sin(roteball)*roteheight/2)),
+				(float)(position.Y+(-Math.Sin(roteball)*rotewidth/2)+(Math.Cos(roteball)*roteheight/2)),
+				(float)(position.X+(Math.Cos(roteball)*rotewidth/2)+(-Math.Sin(roteball)*roteheight/2)),
+				(float)(position.Y+(Math.Sin(roteball)*rotewidth/2)+(Math.Cos(roteball)*roteheight/2)),
+				(float)(position.X+(Math.Cos(roteball)*rotewidth/2)+(Math.Sin(roteball)*roteheight/2)),
+				(float)(position.Y+(Math.Sin(roteball)*rotewidth/2)+(-Math.Cos(roteball)*roteheight/2)),
+				(float)(position.X+(-Math.Cos(roteball)*rotewidth/2)+(Math.Sin(roteball)*roteheight/2)),
+				(float)(position.Y+(-Math.Sin(roteball)*rotewidth/2)+(-Math.Cos(roteball)*roteheight/2)),
+			};
+			Vector3 rotonormal = new Vector3(0f, 0f, -1f);
+			Vector2 rotofield = class_135.method_257().field_1695;
+			struct_0 rotocolor = tecolor.Packed();
+			class_135.method_261(SinfigieTextures[2], new MeshVertex(new Vector3(roterote[0], roterote[1], 0f), rotonormal, new Vector2(0f, 1f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[2], roterote[3], 0f), rotonormal, new Vector2(1f, 1f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[4], roterote[5], 0f), rotonormal, new Vector2(1f, 0f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[6], roterote[7], 0f), rotonormal, new Vector2(0f, 0f), rotofield, rotocolor));
+			class_135.method_263(SinfigieTextures[1], tecolor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
+			return;
+		}
+		if (type == Toisakansero)
+		{
+			class_135.method_263(ToisakanseroTextures[0], tecolor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
+			float roteball = -((float)new struct_27(Time.Now().Ticks).method_603())*2f;
+			float rotewidth = 60;
+			float roteheight = 60;
+			float[] roterote = {
+				(float)(position.X+(-Math.Cos(roteball)*rotewidth/2)+(-Math.Sin(roteball)*roteheight/2)),
+				(float)(position.Y+(-Math.Sin(roteball)*rotewidth/2)+(Math.Cos(roteball)*roteheight/2)),
+				(float)(position.X+(Math.Cos(roteball)*rotewidth/2)+(-Math.Sin(roteball)*roteheight/2)),
+				(float)(position.Y+(Math.Sin(roteball)*rotewidth/2)+(Math.Cos(roteball)*roteheight/2)),
+				(float)(position.X+(Math.Cos(roteball)*rotewidth/2)+(Math.Sin(roteball)*roteheight/2)),
+				(float)(position.Y+(Math.Sin(roteball)*rotewidth/2)+(-Math.Cos(roteball)*roteheight/2)),
+				(float)(position.X+(-Math.Cos(roteball)*rotewidth/2)+(Math.Sin(roteball)*roteheight/2)),
+				(float)(position.Y+(-Math.Sin(roteball)*rotewidth/2)+(-Math.Cos(roteball)*roteheight/2)),
+			};
+			Vector3 rotonormal = new Vector3(0f, 0f, -1f);
+			Vector2 rotofield = class_135.method_257().field_1695;
+			struct_0 rotocolor = tecolor.Packed();
+			class_135.method_261(ToisakanseroTextures[2], new MeshVertex(new Vector3(roterote[0], roterote[1], 0f), rotonormal, new Vector2(0f, 1f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[2], roterote[3], 0f), rotonormal, new Vector2(1f, 1f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[4], roterote[5], 0f), rotonormal, new Vector2(1f, 0f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[6], roterote[7], 0f), rotonormal, new Vector2(0f, 0f), rotofield, rotocolor));
+			class_135.method_263(ToisakanseroTextures[1], tecolor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
+			return;
+		}
+		//custom rendering
 
 		if (type == Wordexis)
 		{
@@ -802,10 +1096,38 @@ public static class Atoms
 			class_135.method_263(ModrenityControlSticks, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
 		}
 
+		if (type == IBot)
+		{
+			class_135.method_263(BlockBotAccessories[0], tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		}
 		if (type == AnxietyBot)
 		{
 			position += new Vector2((DoItShakyShaky.Next(9) - 4) / 4f, (DoItShakyShaky.Next(9) - 4) / 4f);
-			class_135.method_263(AnxietyBotAccessories, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+			class_135.method_263(BlockBotAccessories[1], tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		}
+		if (type == OBot)
+		{
+			class_135.method_263(BlockBotAccessories[2], tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		}
+		if (type == SBot)
+		{
+			class_135.method_263(BlockBotAccessories[3], tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		}
+		if (type == TBot)
+		{
+			class_135.method_263(BlockBotAccessories[4], tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		}
+		if (type == JBot)
+		{
+			class_135.method_263(BlockBotAccessories[5], tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		}
+		if (type == ZBot)
+		{
+			class_135.method_263(BlockBotAccessories[6], tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
+		}
+		if (type == Erizie)
+		{
+			class_135.method_263(ErizieErasers, tecolor, position - new Vector2(0, 30) * param_4582, new Vector2(60, 60) * param_4582);
 		}
 		//behind atom
 		orig(type, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
@@ -828,6 +1150,10 @@ public static class Atoms
 		{
 			class_135.method_263(CeminratesBestieFrontAccessories, tecolor, position - new Vector2(0, 30) * param_4582, new Vector2(60, 60) * param_4582);
 		}
+		if (type == Erizie)
+		{
+			class_135.method_263(ErizieFurs, tecolor, position - new Vector2(0, 30) * param_4582, new Vector2(60, 60) * param_4582);
+		}
 	}
 
 	public static bool IsAndGetPTableAtom(AtomType WhatAtom, out int AtomIndex) {
@@ -848,6 +1174,6 @@ public static class Atoms
 
 	public static void Unload()
 	{
-		On.Editor.method_927 -= RenderExtraStuff;
+		On.Editor.method_927 -= ReplaceTeAtoms;
 	}
 }
