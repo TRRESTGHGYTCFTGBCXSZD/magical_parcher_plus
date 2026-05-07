@@ -70,6 +70,15 @@ internal class MPPlusExtensions
 		Flexibility.addMetallificationRule(HalvingMetallurgy.Atoms.Quicklime,Vaca.MainClass.VacaAtom);
 		Flexibility.addDemetallificationRule(Vaca.MainClass.VacaAtom,HalvingMetallurgy.Atoms.Quicklime);
 	}
+	public static void AddTrueAnimismus_ExtAlchemicalInversions() {
+		Dictionary<AtomType,int> wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(TrueAnimismus.ModdedAtoms.RedVitae,1);
+		wanafo.Add(TrueAnimismus.ModdedAtoms.GreyMors,1);
+		Flexibility.DepolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AlchemicalInversions.Atoms.Tenebrivex, AlchemicalInversions.Atoms.Tenebrivex }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(AlchemicalInversions.Atoms.Tenebrivex,2);
+		Flexibility.PolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { TrueAnimismus.ModdedAtoms.RedVitae, TrueAnimismus.ModdedAtoms.GreyMors }));
+	}
 }
 public class SwitcherooRecipe : Recipe
 {

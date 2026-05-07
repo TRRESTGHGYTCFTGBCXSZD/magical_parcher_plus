@@ -68,9 +68,24 @@ public static class Parts
 		molecule.method_1105(new Atom(Atoms.Modrenity), new HexIndex(-1, 1));
 		return molecule;
 	}
+	public static AtomType[] RadonRainbow = {
+		Atoms.IBot,
+		Atoms.AnxietyBot,
+		Atoms.OBot,
+		Atoms.ZBot,
+		Atoms.TBot,
+		Atoms.JBot,
+		Atoms.SBot,
+	};
+	public static int GetIndexOfRadonRainbow(AtomType bo){
+		for (int ga = 0; ga < RadonRainbow.Length; ga++){
+			if (bo == RadonRainbow[ga]) return ga;
+		}
+		return -1;
+	}
 
 	public static readonly Texture ProjectionBase = class_238.field_1989.field_90.field_255.field_288;
-	public static readonly Texture ProjectionGlow = class_235.method_615("textures/select/double_glow");
+	public static readonly Texture ProjectionGlow = class_238.field_1989.field_97.field_374;
 	public static readonly Texture ProjectionBowl = class_238.field_1989.field_90.field_255.field_292;
 	public static readonly Texture ProjectionHole = class_238.field_1989.field_90.field_255.field_293;
 	
@@ -343,7 +358,7 @@ public static class Parts
 			if (pss.field_2743)
 			{
 				Molecule VitaeMolecule = Molecule.method_1121(pss.field_2744[0]);
-				Molecule MorsMolecule = Molecule.method_1121(pss.field_2744[0]);
+				Molecule MorsMolecule = Molecule.method_1121(pss.field_2744[1]);
 				Editor.method_925(VitaeMolecule, risingOffset, new HexIndex(0, 0), 0f, 1f, time, 1f, false, null);
 				Editor.method_925(MorsMolecule, risingOffset2, new HexIndex(0, 0), 0f, 1f, time, 1f, false, null);
 			}
@@ -829,7 +844,7 @@ public static class Parts
 					renderer.method_530(class_238.field_1989.field_90.field_164 /*bonder_shadow*/, idx, 0);
 					renderer.method_530(class_238.field_1989.field_90.field_255.field_293 /*quicksilver_input*/, idx, 0);
 					// should be 272?
-					Editor.method_927(Atoms.Switcheroo,class_187.field_1742.method_492(part.method_1184(idx)) + pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+					Editor.method_927((((Time.Now().Ticks / 10000000l)&1) == 0) ? Atoms.Sinfigie : Atoms.Toisakansero,class_187.field_1742.method_492(part.method_1184(idx)) + pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 				}
 			}
 
@@ -870,28 +885,130 @@ public static class Parts
 		QApi.AddPartType(ChromaRotater, (part, pos, editor, renderer) => {
 			Vector2 vector2 = new(41f, 48f);
 			renderer.method_523(ProjectionBase, new Vector2(0.0f, 0.0f), vector2, 0.0f);
-			foreach(HexIndex idx in part.method_1159().field_1540){
-				if(idx is { Q: 0, R: 0 }){
-					renderer.method_530(class_238.field_1989.field_90.field_164 /*bonder_shadow*/, idx, 0);
-					renderer.method_528(ProjectionBowl, idx, Vector2.Zero);
-					renderer.method_529(SaltSymbol /*quicksilver_symbol*/, idx, Vector2.Zero);
-					renderer.method_529(QuicksilverSymbol /*quicksilver_symbol*/, idx, Vector2.Zero);
-				}
-				else{
-					renderer.method_530(class_238.field_1989.field_90.field_164 /*bonder_shadow*/, idx, 0);
-					renderer.method_530(class_238.field_1989.field_90.field_255.field_293 /*quicksilver_input*/, idx, 0);
-					// should be 272?
-					Editor.method_927(Atoms.Switcheroo,class_187.field_1742.method_492(part.method_1184(idx)) + pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+			renderer.method_528(class_238.field_1989.field_90.field_255.field_293, new HexIndex(-1, 0), Vector2.Zero);
+			renderer.method_528(class_238.field_1989.field_90.field_255.field_293, new HexIndex(0, 0), Vector2.Zero);
+			renderer.method_528(class_238.field_1989.field_90.field_255.field_293, new HexIndex(1, 0), Vector2.Zero);
+			renderer.method_528(class_238.field_1989.field_90.field_255.field_293, new HexIndex(-2, 0), Vector2.Zero);
+			renderer.method_528(class_238.field_1989.field_90.field_255.field_293, new HexIndex(2, 0), Vector2.Zero);
+			
+			PartSimState pss = editor.method_507().method_481(part);
+			class_236 uco = editor.method_1989(part, pos);
+			float time = editor.method_504();
+			Vector2 risingOffset = uco.field_1984 + class_187.field_1742.method_492(new HexIndex(-2, 0)).Rotated(uco.field_1985);
+			Vector2 risingOffset2 = uco.field_1984 + class_187.field_1742.method_492(new HexIndex(2, 0)).Rotated(uco.field_1985);
+			
+			int AtomsonPlacer = 0;
+			int ValidNeuMetals = 0;
+			int ValidCCW = 0;
+			int ValidCW = 0;
+			int NeuMetalThing = 0;
+			bool InvalidPlacement = false;
+			HexIndex[] holes = new HexIndex[] { new (-1, 0), new (0, 0), new (1, 0) };
+			foreach (HexIndex h in holes)
+			{
+				foreach (Molecule m in editor.method_507().method_483())
+				{
+					if (m.method_1100().TryGetValue(part.method_1184(h), out Atom a))
+					{
+						AtomsonPlacer += 1;
+						if (m.method_1100().Count == 1)
+						{
+							AtomType aT = a.field_2275;
+							if (aT == Atoms.Sinfigie)
+							{
+								ValidCCW++;
+							}
+							else if (aT == Atoms.Toisakansero)
+							{
+								ValidCW++;
+							}
+							else if (GetIndexOfRadonRainbow(aT) != -1)
+							{
+								ValidNeuMetals++;
+								NeuMetalThing = GetIndexOfRadonRainbow(aT);
+							}
+						}
+					}
 				}
 			}
+			if (
+				(AtomsonPlacer != (ValidNeuMetals+ValidCCW+ValidCW))
+			|| (ValidCCW > 0 && ValidCW > 0)
+			|| (ValidCCW > 2 || ValidCW > 2)
+			|| (ValidNeuMetals > 1)
+			 ) {
+				InvalidPlacement = true;
+			}
 
-			for(var i = 0; i < part.method_1159().field_1540.Length; i++){
-				HexIndex hexIndex = part.method_1159().field_1540[i];
-				if(hexIndex != new HexIndex(0, 0)){
-					int index = i - 1;
-					float num = new HexRotation(index * 2).ToRadians();
-					renderer.method_522(class_238.field_1989.field_90.field_255.field_289 /*bond*/, new Vector2(-30f, 12f), num);
-				}
+			AtomType ThatMole = RadonRainbow[((Time.Now().Ticks / (10000000l>>3))%7)];
+
+			if (InvalidPlacement){
+				renderer.method_530(class_238.field_1989.field_77, new HexIndex(-1, 0), 0);
+				renderer.method_530(class_238.field_1989.field_77, new HexIndex(0, 0), 0);
+				renderer.method_530(class_238.field_1989.field_77, new HexIndex(1, 0), 0);
+			} else if (AtomsonPlacer == 3) {
+			} else if (AtomsonPlacer == 0) {
+				AtomType Displayee = ThatMole;
+				if (((Time.Now().Ticks / (10000000l))&3) == 2) Displayee = Atoms.Sinfigie;
+				if (((Time.Now().Ticks / (10000000l))&3) == 3) Displayee = Atoms.Toisakansero;
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(-1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(0, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+			} else if (ValidNeuMetals == 0 && (ValidCCW == 2 || ValidCW == 2)) {
+				AtomType Displayee = ThatMole;
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(-1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(0, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+			} else if (ValidCCW > 0 && ValidNeuMetals == 1) {
+				AtomType Displayee = Atoms.Sinfigie;
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(-1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(0, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+			} else if (ValidCW > 0 && ValidNeuMetals == 1) {
+				AtomType Displayee = Atoms.Toisakansero;
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(-1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(0, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+			} else if (ValidNeuMetals == 1) {
+				AtomType Displayee = Atoms.Sinfigie;
+				if (((Time.Now().Ticks / (10000000l))&1) == 1) Displayee = Atoms.Toisakansero;
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(-1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(0, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+			} else if (ValidCCW > 0 && ValidNeuMetals == 0) {
+				AtomType Displayee = ThatMole;
+				if (((Time.Now().Ticks / (10000000l))&1) == 1) Displayee = Atoms.Sinfigie;
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(-1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(0, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+			} else if (ValidCW > 0 && ValidNeuMetals == 0) {
+				AtomType Displayee = ThatMole;
+				if (((Time.Now().Ticks / (10000000l))&1) == 1) Displayee = Atoms.Toisakansero;
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(-1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(0, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+			}
+
+			if (pss.field_2743)
+			{
+				Molecule VitaeMolecule = Molecule.method_1121(pss.field_2744[0]);
+				Molecule MorsMolecule = Molecule.method_1121(pss.field_2744[1]);
+				Editor.method_925(VitaeMolecule, risingOffset, new HexIndex(0, 0), 0f, 1f, time, 1f, false, null);
+				Editor.method_925(MorsMolecule, risingOffset2, new HexIndex(0, 0), 0f, 1f, time, 1f, false, null);
+			}
+			else
+			{
+				if (InvalidPlacement) 
+					renderer.method_530(class_238.field_1989.field_77, new HexIndex(-2, 0), 0);
+				else if (ValidNeuMetals == 0)
+					Editor.method_927(ThatMole, risingOffset, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				else if (ValidNeuMetals == 1 && ValidCCW > 0)
+					Editor.method_927(RadonRainbow[((NeuMetalThing - 1)+7)%7], risingOffset, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				else if (ValidNeuMetals == 1 && ValidCW > 0)
+					Editor.method_927(RadonRainbow[((NeuMetalThing + 1)+7)%7], risingOffset, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				else if (ValidNeuMetals == 1)
+					Editor.method_927(RadonRainbow[((((Time.Now().Ticks / (10000000l >> 1))&1) == 0 ? NeuMetalThing - 1 : NeuMetalThing + 1)+7)%7], risingOffset, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+				Editor.method_927(Atoms.Erizie, risingOffset2, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 			}
 		});
 		QApi.AddPartTypeToPanel(ChromaRotater, PartTypes.field_1775);
@@ -1195,21 +1312,10 @@ public static class Parts
 					if(sim.FindAtomRelative(part, new HexIndex(0, 0)).method_99(out AtomReference zena1)
 					   && sim.FindAtomRelative(part, new (1, 0)).method_99(out AtomReference zena2)){
 						// and are the right types...
-						if(zena1.field_2280 == Atoms.Zena && zena2.field_2280 == Atoms.Zena){
+						if(ZenaLib.RecipeManager.CheckRecipes(new AtomType[2]{zena1.field_2280,zena2.field_2280},Flexibility.PolarizerRecipes.ToArray(),out AtomType[] Dumper)){
 							// transmute the gold and destroy the quicksilver
-							zena1.field_2277.method_1106(Atoms.RedZena, zena1.field_2278);
-							zena2.field_2277.method_1106(Atoms.BlueZena, zena2.field_2278);
-							// show the removal effects for qs
-							//seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
-							// upgrade effect for gold -> uranium
-							seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(0, 0))+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
-							seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(1, 0))+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
-							YOUARENOTAPRIVATEEYENOWPLAYSOUND(AirWave.Exploder[Time.Now().Ticks%3]);
-						}
-						if(zena1.field_2280 == Atoms.Limbo && zena2.field_2280 == Atoms.Limbo){
-							// transmute the gold and destroy the quicksilver
-							zena1.field_2277.method_1106(AtomTypes.field_1687, zena1.field_2278);
-							zena2.field_2277.method_1106(AtomTypes.field_1688, zena2.field_2278);
+							zena1.field_2277.method_1106(Dumper[0], zena1.field_2278);
+							zena2.field_2277.method_1106(Dumper[1], zena2.field_2278);
 							// show the removal effects for qs
 							//seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
 							// upgrade effect for gold -> uranium
@@ -1223,23 +1329,10 @@ public static class Parts
 					if(sim.FindAtomRelative(part, new HexIndex(0, 0)).method_99(out AtomReference zena1)
 					   && sim.FindAtomRelative(part, new (1, 0)).method_99(out AtomReference zena2)){
 						// and are the right types...
-						if((zena1.field_2280 == Atoms.RedZena && zena2.field_2280 == Atoms.BlueZena)
-						||(zena2.field_2280 == Atoms.RedZena && zena1.field_2280 == Atoms.BlueZena)){
+						if(ZenaLib.RecipeManager.CheckRecipes(new AtomType[2]{zena1.field_2280,zena2.field_2280},Flexibility.DepolarizerRecipes.ToArray(),out AtomType[] Dumper)){
 							// transmute the gold and destroy the quicksilver
-							zena1.field_2277.method_1106(Atoms.Zena, zena1.field_2278);
-							zena2.field_2277.method_1106(Atoms.Zena, zena2.field_2278);
-							// show the removal effects for qs
-							//seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
-							// upgrade effect for gold -> uranium
-							seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(0, 0))+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
-							seb.field_3936.Add(new class_228(seb, (enum_7)1, class_187.field_1742.method_492(part.method_1184(new(1, 0))+new HexIndex(1, 0)), disposalFlashAnimation, 30f, Vector2.Zero, 0f));
-							YOUARENOTAPRIVATEEYENOWPLAYSOUND(AirWave.Exploder[Time.Now().Ticks%3]);
-						}
-						if((zena1.field_2280 == AtomTypes.field_1687 && zena2.field_2280 == AtomTypes.field_1688)
-						||(zena2.field_2280 == AtomTypes.field_1687 && zena1.field_2280 == AtomTypes.field_1688)){
-							// transmute the gold and destroy the quicksilver
-							zena1.field_2277.method_1106(Atoms.Limbo, zena1.field_2278);
-							zena2.field_2277.method_1106(Atoms.Limbo, zena2.field_2278);
+							zena1.field_2277.method_1106(Dumper[0], zena1.field_2278);
+							zena2.field_2277.method_1106(Dumper[1], zena2.field_2278);
 							// show the removal effects for qs
 							//seb.field_3937.Add(new class_286(seb, word.field_2278, Atoms.Wordexis));
 							// upgrade effect for gold -> uranium
@@ -1444,6 +1537,70 @@ public static class Parts
 								qs.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, qs.field_2280, class_238.field_1989.field_81.field_614, 30f);
 								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1843);
 						}
+					}
+				}
+				
+				////////////////////////////////////////////////////////////////////////////////
+
+				else if(type == ChromaCycler){
+					// if all the atoms exist...
+					if(sim.FindAtomRelative(part, new HexIndex(0, 0)).method_99(out AtomReference qs)
+					   && sim.FindAtomRelative(part, new(1, 0)).method_99(out AtomReference word)){
+						// and are the right types...
+						if(ZenaLib.RecipeManager.CheckRecipes(new AtomType[2]{qs.field_2280,word.field_2280},Flexibility.ChromaCyclerRecipes.ToArray(),out AtomType[] Dumper)){
+							// and the quicksilver is not being consumed or held...
+							if(!word.field_2281 && !word.field_2282){
+								// transmute the gold and destroy the quicksilver
+								qs.field_2277.method_1106(Dumper[0], qs.field_2278);
+								word.field_2277.method_1107(word.field_2278);
+								// show the removal effects for qs
+								seb.field_3937.Add(new class_286(seb, word.field_2278, word.field_2280));
+								// upgrade effect for gold -> uranium
+								qs.field_2279.field_2276 = new class_168(seb, 0, (enum_132)1, qs.field_2280, class_238.field_1989.field_81.field_614, 30f);
+								Vector2 param_5378 = class_187.field_1742.method_492(part.method_1161());
+								seb.field_3935.Add(new class_228(seb, (enum_7)1, param_5378, class_238.field_1989.field_90.field_256, 30f, Vector2.Zero, part.method_1163().Opposite().ToRadians()));
+								YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1843);
+							}
+						}
+					}
+				}else if(type == ChromaRotater){
+					if (first) {
+						// if all the atoms exist...
+						if(sim.FindAtomRelative(part, new HexIndex(-1, 0)).method_99(out AtomReference inp1)
+						   && sim.FindAtomRelative(part, new(0, 0)).method_99(out AtomReference inp2)
+						   && sim.FindAtomRelative(part, new(1, 0)).method_99(out AtomReference inp3)
+						   && !sim.FindAtomRelative(part, new(-2, 0)).method_99(out AtomReference _)
+						   && !sim.FindAtomRelative(part, new(2, 0)).method_99(out AtomReference _)){
+							// and are the right types...
+							if(ZenaLib.RecipeManager.CheckRecipes(new AtomType[3]{inp1.field_2280,inp2.field_2280,inp3.field_2280},Flexibility.ChromaRotatorRecipes.ToArray(),out AtomType[] Dumper)){
+								// and the quicksilver is not being consumed or held...
+								if((!inp1.field_2281 && !inp1.field_2282)
+								&& (!inp2.field_2281 && !inp2.field_2282)
+								&& (!inp3.field_2281 && !inp3.field_2282)){
+									// transmute the gold and destroy the quicksilver
+									inp1.field_2277.method_1107(inp1.field_2278);
+									inp2.field_2277.method_1107(inp2.field_2278);
+									inp3.field_2277.method_1107(inp3.field_2278);
+									// show the removal effects for qs
+									seb.field_3937.Add(new class_286(seb, inp1.field_2278, inp1.field_2280));
+									seb.field_3937.Add(new class_286(seb, inp2.field_2278, inp2.field_2280));
+									seb.field_3937.Add(new class_286(seb, inp3.field_2278, inp3.field_2280));
+									// upgrade effect for gold -> uranium
+									pss.field_2743 = true;
+									pss.field_2744 = Dumper;
+									YOUARENOTAPRIVATEEYENOWPLAYSOUND(class_238.field_1991.field_1843);
+								}
+							}
+						}
+					}
+					else if (pss.field_2743)
+					{
+						Molecule molecule = new Molecule();
+						molecule.method_1105(new Atom(pss.field_2744[0]), part.method_1184(new(-2, 0)));
+						moleculeList.Add(molecule);
+						molecule = new Molecule();
+						molecule.method_1105(new Atom(pss.field_2744[1]), part.method_1184(new(2, 0)));
+						moleculeList.Add(molecule);
 					}
 				}
 				

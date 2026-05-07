@@ -97,6 +97,11 @@ public class MagicalParcherPlus : QuintessentialMod
 		{
 			Logger.Log("[MP+] Detected Alchemical Inversions, Adding Yttrium");
 			MPPlusExtensions.AddAlchemicalInversions();
+			if (QuintessentialLoader.CodeMods.Any(mod => mod.Meta.Name == "TrueAnimismus"))
+			{
+				Logger.Log("[MP+] Detected True Animismus Extension for Alchemical Inversions");
+				MPPlusExtensions.AddTrueAnimismus_ExtAlchemicalInversions();
+			}
 		}
 		if (QuintessentialLoader.CodeMods.Any(mod => mod.Meta.Name == "Neuvolics"))
 		{

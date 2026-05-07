@@ -727,6 +727,20 @@ public static class Atoms
 		wanafo.Add(AtomTypes.field_1687,1);
 		wanafo.Add(AtomTypes.field_1688,1);
 		Flexibility.AntiAnimismusRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AtomTypes.field_1675, AtomTypes.field_1675 }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Zena,2);
+		Flexibility.PolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.RedZena, Atoms.BlueZena }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Limbo,2);
+		Flexibility.PolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AtomTypes.field_1687, AtomTypes.field_1688 }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.RedZena,1);
+		wanafo.Add(Atoms.BlueZena,1);
+		Flexibility.DepolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.Zena, Atoms.Zena }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(AtomTypes.field_1687,1);
+		wanafo.Add(AtomTypes.field_1688,1);
+		Flexibility.DepolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.Limbo, Atoms.Limbo }));
 		Flexibility.GerioificationRecipes.Add(
 			new ShapedRecipe(
 				new MultipleMatcher[]{
@@ -871,15 +885,48 @@ public static class Atoms
 			wanafo,
 			Atoms.Zena
 		);
-		Flexibility.GerioificationRecipes.Add(
-			new ShapedRecipe(
-				new MultipleMatcher[]{
-					new (Atoms.IBot),
-					new (Atoms.Toisakansero),
-				}
-				,new AtomType[1] { Atoms.Switcheroo }
-			)
-		);
+		Flexibility.ChromaCyclerRecipes.Add(new ShapedRecipe(new MultipleMatcher[]{new (Atoms.IBot),new (Atoms.Toisakansero),},new AtomType[1] { Atoms.AnxietyBot }));
+		Flexibility.ChromaCyclerRecipes.Add(new ShapedRecipe(new MultipleMatcher[]{new (Atoms.AnxietyBot),new (Atoms.Toisakansero),},new AtomType[1] { Atoms.OBot }));
+		Flexibility.ChromaCyclerRecipes.Add(new ShapedRecipe(new MultipleMatcher[]{new (Atoms.OBot),new (Atoms.Toisakansero),},new AtomType[1] { Atoms.ZBot }));
+		Flexibility.ChromaCyclerRecipes.Add(new ShapedRecipe(new MultipleMatcher[]{new (Atoms.ZBot),new (Atoms.Toisakansero),},new AtomType[1] { Atoms.TBot }));
+		Flexibility.ChromaCyclerRecipes.Add(new ShapedRecipe(new MultipleMatcher[]{new (Atoms.TBot),new (Atoms.Toisakansero),},new AtomType[1] { Atoms.JBot }));
+		Flexibility.ChromaCyclerRecipes.Add(new ShapedRecipe(new MultipleMatcher[]{new (Atoms.JBot),new (Atoms.Toisakansero),},new AtomType[1] { Atoms.SBot }));
+		Flexibility.ChromaCyclerRecipes.Add(new ShapedRecipe(new MultipleMatcher[]{new (Atoms.SBot),new (Atoms.Toisakansero),},new AtomType[1] { Atoms.IBot }));
+		Flexibility.ChromaCyclerRecipes.Add(new ShapedRecipe(new MultipleMatcher[]{new (Atoms.IBot),new (Atoms.Sinfigie),},new AtomType[1] { Atoms.SBot }));
+		Flexibility.ChromaCyclerRecipes.Add(new ShapedRecipe(new MultipleMatcher[]{new (Atoms.AnxietyBot),new (Atoms.Sinfigie),},new AtomType[1] { Atoms.IBot }));
+		Flexibility.ChromaCyclerRecipes.Add(new ShapedRecipe(new MultipleMatcher[]{new (Atoms.OBot),new (Atoms.Sinfigie),},new AtomType[1] { Atoms.AnxietyBot }));
+		Flexibility.ChromaCyclerRecipes.Add(new ShapedRecipe(new MultipleMatcher[]{new (Atoms.ZBot),new (Atoms.Sinfigie),},new AtomType[1] { Atoms.OBot }));
+		Flexibility.ChromaCyclerRecipes.Add(new ShapedRecipe(new MultipleMatcher[]{new (Atoms.TBot),new (Atoms.Sinfigie),},new AtomType[1] { Atoms.ZBot }));
+		Flexibility.ChromaCyclerRecipes.Add(new ShapedRecipe(new MultipleMatcher[]{new (Atoms.JBot),new (Atoms.Sinfigie),},new AtomType[1] { Atoms.TBot }));
+		Flexibility.ChromaCyclerRecipes.Add(new ShapedRecipe(new MultipleMatcher[]{new (Atoms.SBot),new (Atoms.Sinfigie),},new AtomType[1] { Atoms.JBot }));
+		wanafo = new Dictionary<AtomType,int>();wanafo.Add(Atoms.IBot,1);wanafo.Add(Atoms.Toisakansero,2);
+		Flexibility.ChromaRotatorRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.AnxietyBot, Atoms.Erizie }));
+		wanafo = new Dictionary<AtomType,int>();wanafo.Add(Atoms.AnxietyBot,1);wanafo.Add(Atoms.Toisakansero,2);
+		Flexibility.ChromaRotatorRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.OBot, Atoms.Erizie }));
+		wanafo = new Dictionary<AtomType,int>();wanafo.Add(Atoms.OBot,1);wanafo.Add(Atoms.Toisakansero,2);
+		Flexibility.ChromaRotatorRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.ZBot, Atoms.Erizie }));
+		wanafo = new Dictionary<AtomType,int>();wanafo.Add(Atoms.ZBot,1);wanafo.Add(Atoms.Toisakansero,2);
+		Flexibility.ChromaRotatorRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.TBot, Atoms.Erizie }));
+		wanafo = new Dictionary<AtomType,int>();wanafo.Add(Atoms.TBot,1);wanafo.Add(Atoms.Toisakansero,2);
+		Flexibility.ChromaRotatorRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.JBot, Atoms.Erizie }));
+		wanafo = new Dictionary<AtomType,int>();wanafo.Add(Atoms.JBot,1);wanafo.Add(Atoms.Toisakansero,2);
+		Flexibility.ChromaRotatorRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.SBot, Atoms.Erizie }));
+		wanafo = new Dictionary<AtomType,int>();wanafo.Add(Atoms.SBot,1);wanafo.Add(Atoms.Toisakansero,2);
+		Flexibility.ChromaRotatorRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.IBot, Atoms.Erizie }));
+		wanafo = new Dictionary<AtomType,int>();wanafo.Add(Atoms.IBot,1);wanafo.Add(Atoms.SBot,2);
+		Flexibility.ChromaRotatorRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.SBot, Atoms.Erizie }));
+		wanafo = new Dictionary<AtomType,int>();wanafo.Add(Atoms.AnxietyBot,1);wanafo.Add(Atoms.Sinfigie,2);
+		Flexibility.ChromaRotatorRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.IBot, Atoms.Erizie }));
+		wanafo = new Dictionary<AtomType,int>();wanafo.Add(Atoms.OBot,1);wanafo.Add(Atoms.Sinfigie,2);
+		Flexibility.ChromaRotatorRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.AnxietyBot, Atoms.Erizie }));
+		wanafo = new Dictionary<AtomType,int>();wanafo.Add(Atoms.ZBot,1);wanafo.Add(Atoms.Sinfigie,2);
+		Flexibility.ChromaRotatorRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.OBot, Atoms.Erizie }));
+		wanafo = new Dictionary<AtomType,int>();wanafo.Add(Atoms.TBot,1);wanafo.Add(Atoms.Sinfigie,2);
+		Flexibility.ChromaRotatorRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.ZBot, Atoms.Erizie }));
+		wanafo = new Dictionary<AtomType,int>();wanafo.Add(Atoms.JBot,1);wanafo.Add(Atoms.Sinfigie,2);
+		Flexibility.ChromaRotatorRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.TBot, Atoms.Erizie }));
+		wanafo = new Dictionary<AtomType,int>();wanafo.Add(Atoms.SBot,1);wanafo.Add(Atoms.Sinfigie,2);
+		Flexibility.ChromaRotatorRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.JBot, Atoms.Erizie }));
 		On.Editor.method_927 += ReplaceTeAtoms;
 		QApi.RunAfterCycle((sim, first) => {
 			List<Molecule> moleculeList = sim.field_3823;
@@ -985,6 +1032,36 @@ public static class Atoms
 			if (type == Abomination) //visuallize quint as abomination
 			{
 				RenderExtraStuff(orig, AtomTypes.field_1690, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == Erabukun)
+			{
+				RenderExtraStuff(orig, Wood, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == Wordexis)
+			{
+				RenderExtraStuff(orig, Rock, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == Zena)
+			{
+				RenderExtraStuff(orig, Limbo, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == Wood)
+			{
+				RenderExtraStuff(orig, Erabukun, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == Rock)
+			{
+				RenderExtraStuff(orig, Wordexis, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
+				return;
+			}
+			if (type == Limbo)
+			{
+				RenderExtraStuff(orig, Zena, position, param_4582, param_4583, param_4584, param_4585, param_4586, param_4587, overrideShadow, maskM, param_4590);
 				return;
 			}
 		}

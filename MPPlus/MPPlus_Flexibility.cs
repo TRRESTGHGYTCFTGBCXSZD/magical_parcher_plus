@@ -23,14 +23,18 @@ public class Flexibility
 	public static List<AtomType> DemetallificationExplosionMeta = new();
 	private static Dictionary<AtomType, int> ExtraAtomicExceptions = new();
 	private static Dictionary<AtomType, int> PlaceholderPTableReplacements = new();
+	public static List<Recipe> AntiAnimismusRecipes = new();
+	public static List<Recipe> PolarizerRecipes = new();
+	public static List<Recipe> DepolarizerRecipes = new();
+	public static List<Recipe> SwitcherooRecipes = new();
+	public static List<Recipe> ChromaCyclerRecipes = new();
+	public static List<Recipe> ChromaRotatorRecipes = new();
 	private static Dictionary<AtomType,List<AtomType>> CanThisAtomTriplex = new();
 	public static List<Recipe> UnifyRecipes = new();
 	public static List<Recipe> DisperseRecipes = new();
 	public static List<Recipe> AnimismusRecipes = new();
-	public static List<Recipe> AntiAnimismusRecipes = new();
 	private static Dictionary<AtomType,List<AtomType>> DuplicatorCastables = new();
 	private static Dictionary<AtomType, AtomType> CalcinatorMeta = new();
-	public static List<Recipe> SwitcherooRecipes = new();
 	//reductive metal code
 	public static bool applyCardinalificationRule(AtomType input, out AtomType output) => applyTRule(input, CardinalificationMeta, out output);
 	public static bool applyLiquidationRule(AtomType input, out AtomType output) => applyTRule(input, LiquidationMeta, out output);

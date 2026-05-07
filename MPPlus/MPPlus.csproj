@@ -62,6 +62,10 @@
       <HintPath>$(ModDllDir)\AlchemicalInversions.dll</HintPath>
       <CopyLocal>False</CopyLocal>
     </Reference>
+    <Reference Include="TrueAnimismus">
+      <HintPath>$(ModDllDir)\TrueAn.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ZenaLib">
