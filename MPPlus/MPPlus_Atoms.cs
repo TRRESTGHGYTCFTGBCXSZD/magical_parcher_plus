@@ -26,6 +26,7 @@ public static class Atoms
 	public static bool GerioificationVanilla = true;
 	public static bool GerioHasHat = false;
 	public static bool TricHasHeadphones = true;
+	public static bool BypassChanges = false;
 	private static byte NewCharactersAtomID = 255;
 	private static byte OriginalCharactersAtomID = 254;
 	private static byte PTableAtomID = 253;
@@ -942,7 +943,7 @@ public static class Atoms
 	}
 	internal static void ReplaceTeAtoms(On.Editor.orig_method_927 orig, AtomType type, Vector2 position, float param_4582, float param_4583, float param_4584, float param_4585, float param_4586, float param_4587, Texture overrideShadow, Texture maskM, bool param_4590)
 	{
-		if (GerioificationVanilla)
+		if (GerioificationVanilla && (!BypassChanges))
 		{
 			if (type == AtomTypes.field_1677) //visuallize earth as tric
 			{

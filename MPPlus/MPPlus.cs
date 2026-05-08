@@ -47,7 +47,9 @@ public class MagicalParcherPlus : QuintessentialMod
 						TextureFuck.field_2062 = Path.Combine(path, text);
 						return Renderer.orig_method_1339(TextureFuck);
 					}
+#pragma warning disable CS0168 // the variable for exception is not used but it complains
 					catch (Exception e)
+#pragma warning restore CS0168 // the variable for exception is not used but it complains
 					{}
 					finally
 					{
@@ -60,12 +62,24 @@ public class MagicalParcherPlus : QuintessentialMod
 		{
 			return Renderer.orig_method_1339(TextureFuck);
 		}
+#pragma warning disable CS0168 // the variable for exception is not used but it complains
 		catch (Exception e2)
+#pragma warning restore CS0168 // the variable for exception is not used but it complains
 		{}
 		return false;
 	}
 	public static MethodInfo PrivateMethod<T>(string method) => typeof(T).GetMethod(method, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
 	public static QuintessentialMod self;
+	public static bool IsAprilFools {
+		get {
+			return AprilFoolsOn || IsReallyAprilFools;
+		}
+		set {
+			AprilFoolsOn = value;
+		}
+	}
+	internal static bool AprilFoolsOn = System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1;
+	internal static bool IsReallyAprilFools = System.DateTime.Now.Month == 4 && System.DateTime.Now.Day == 1;
 	public override Type SettingsType => typeof(Settei);
 	public override void Load() {
 		self = this;
@@ -115,6 +129,10 @@ public class MagicalParcherPlus : QuintessentialMod
 		{
 			MPPlusExtensions.AddHalvingMetallurgyLater();
 		}
+		if (QuintessentialLoader.CodeMods.Any(mod => mod.Meta.Name == "MetalQuintessence"))
+		{
+			MPPlusExtensions.AddMetalQuintessenceLater();
+		}
 		//On.MoleculeEditorScreen.method_50 += AddElementsToMoleculeEditor;
 	}
 	static MethodInfo method_1130_info = typeof(MoleculeEditorScreen).GetMethod("method_1130", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -129,10 +147,22 @@ public class MagicalParcherPlus : QuintessentialMod
 		base.ApplySettings();
 		Settei SET = (Settei)Settings;
 
-		Atoms.GerioificationVanilla = SET.GerioificationVanilla;
+		IsAprilFools = SET.FakeAprilFools;
+
+		Atoms.GerioificationVanilla = SET.GerioificationVanilla || IsAprilFools;
 		Atoms.GerioHasHat = SET.GerioHasHat;
 		Atoms.TricHasHeadphones = SET.TricHasHeadphones;
 		Parts.BypassPartRules = SET.BypassPartRules;
+		if (SET.SwapGifBorder)
+		{
+			class_238.field_1989.field_99.field_698 = class_235.method_615("textures/solution_editor/gif_frame_mpplus");
+			class_238.field_1989.field_99.field_699 = class_235.method_615("textures/solution_editor/gif_frame_pipeline_mpplus");
+		}
+		else
+		{
+			class_238.field_1989.field_99.field_698 = class_235.method_615("textures/solution_editor/gif_frame");
+			class_238.field_1989.field_99.field_699 = class_235.method_615("textures/solution_editor/gif_frame_pipeline");
+		}
 	}
 	public override void Unload() {
 		Parts.Unload();

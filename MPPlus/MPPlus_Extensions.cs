@@ -37,9 +37,6 @@ internal class MPPlusExtensions
 		Flexibility.DemetallificationExplosionMeta.Add(HalvingMetallurgy.Atoms.Sednum);
 		Flexibility.DemetallificationExplosionMeta.Add(HalvingMetallurgy.Atoms.Vulcan);
 	}
-	public static void AddHalvingMetallurgyLater() {
-		Flexibility.addTriplexCondition(Atoms.EZGG,HalvingMetallurgy.Atoms.Vulcan);
-	}
 	public static void AddUnstableElements() {
 		Atoms.PTableAtoms[91] = MagicalParcherPlus.FindModAtom("UnstableElements:uranium"); //why it is private
 		Atoms.PTableIgnore[91] = true;
@@ -78,6 +75,12 @@ internal class MPPlusExtensions
 		wanafo = new Dictionary<AtomType,int>();
 		wanafo.Add(AlchemicalInversions.Atoms.Tenebrivex,2);
 		Flexibility.PolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { TrueAnimismus.ModdedAtoms.RedVitae, TrueAnimismus.ModdedAtoms.GreyMors }));
+	}
+	public static void AddHalvingMetallurgyLater() {
+		Flexibility.addTriplexCondition(Atoms.EZGG,HalvingMetallurgy.Atoms.Vulcan);
+	}
+	public static void AddMetalQuintessenceLater() {
+		MetalQuintessence.API.addBlossomRule(Atoms.Abomination,new AtomType[7] {Atoms.Wordexis, Atoms.Modrenity, Atoms.Gabs, Atoms.Erabukun, Atoms.Tric, Atoms.EZGG, Atoms.Gerio});
 	}
 }
 public class SwitcherooRecipe : Recipe

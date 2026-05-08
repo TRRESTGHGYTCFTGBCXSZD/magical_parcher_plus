@@ -15,4 +15,8 @@ public class Settei
 	public bool TricHasHeadphones = true;
 	[SettingsLabel("Bypass Part Rule Checking")]
 	public bool BypassPartRules = false;
+	[SettingsLabel("Use MP+ GIF Border")]
+	public bool SwapGifBorder = true;
+	[SettingsLabel("Enable April Fools Content")]
+	public bool FakeAprilFools = false;
 }

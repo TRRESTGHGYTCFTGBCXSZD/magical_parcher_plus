@@ -646,6 +646,7 @@ public static class Parts
 			PartSimState pss = editor.method_507().method_481(part);
 			class_236 uco = editor.method_1989(part, pos);
 			Vector2 risingOffset;
+			Atoms.BypassChanges = true;
 			for (int g = 0;g<pss.field_2725*4;g++){
 				risingOffset = uco.field_1984 + (class_187.field_1742.method_492(new HexIndex(g, 0))/4f).Rotated(uco.field_1985);
 				Editor.method_927(Atoms.CeminratesBestie,risingOffset, 0.25f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
@@ -654,6 +655,7 @@ public static class Parts
 			Editor.method_927(Atoms.CeminratesBestie,risingOffset, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 			risingOffset = uco.field_1984 + class_187.field_1742.method_492(new HexIndex(0, 0)).Rotated(uco.field_1985);
 			Editor.method_927(Atoms.CeminratesBestie,risingOffset, 0.6f, 1f, 1f, 0f, -21f, 0f, null, null, false );
+			Atoms.BypassChanges = false;
 		});
 		QApi.AddPartTypeToPanel(ArmOfDisposal, PartTypes.field_1764);
 
@@ -844,7 +846,7 @@ public static class Parts
 					renderer.method_530(class_238.field_1989.field_90.field_164 /*bonder_shadow*/, idx, 0);
 					renderer.method_530(class_238.field_1989.field_90.field_255.field_293 /*quicksilver_input*/, idx, 0);
 					// should be 272?
-					Editor.method_927((((Time.Now().Ticks / 10000000l)&1) == 0) ? Atoms.Sinfigie : Atoms.Toisakansero,class_187.field_1742.method_492(part.method_1184(idx)) + pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+					Editor.method_927((((Time.Now().Ticks / 10000000L)&1) == 0) ? Atoms.Sinfigie : Atoms.Toisakansero,class_187.field_1742.method_492(part.method_1184(idx)) + pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 				}
 			}
 
@@ -940,7 +942,7 @@ public static class Parts
 				InvalidPlacement = true;
 			}
 
-			AtomType ThatMole = RadonRainbow[((Time.Now().Ticks / (10000000l>>3))%7)];
+			AtomType ThatMole = RadonRainbow[((Time.Now().Ticks / (10000000L>>3))%7)];
 
 			if (InvalidPlacement){
 				renderer.method_530(class_238.field_1989.field_77, new HexIndex(-1, 0), 0);
@@ -949,8 +951,8 @@ public static class Parts
 			} else if (AtomsonPlacer == 3) {
 			} else if (AtomsonPlacer == 0) {
 				AtomType Displayee = ThatMole;
-				if (((Time.Now().Ticks / (10000000l))&3) == 2) Displayee = Atoms.Sinfigie;
-				if (((Time.Now().Ticks / (10000000l))&3) == 3) Displayee = Atoms.Toisakansero;
+				if (((Time.Now().Ticks / (10000000L))&3) == 2) Displayee = Atoms.Sinfigie;
+				if (((Time.Now().Ticks / (10000000L))&3) == 3) Displayee = Atoms.Toisakansero;
 				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(-1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(0, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
@@ -971,19 +973,19 @@ public static class Parts
 				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 			} else if (ValidNeuMetals == 1) {
 				AtomType Displayee = Atoms.Sinfigie;
-				if (((Time.Now().Ticks / (10000000l))&1) == 1) Displayee = Atoms.Toisakansero;
+				if (((Time.Now().Ticks / (10000000L))&1) == 1) Displayee = Atoms.Toisakansero;
 				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(-1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(0, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 			} else if (ValidCCW > 0 && ValidNeuMetals == 0) {
 				AtomType Displayee = ThatMole;
-				if (((Time.Now().Ticks / (10000000l))&1) == 1) Displayee = Atoms.Sinfigie;
+				if (((Time.Now().Ticks / (10000000L))&1) == 1) Displayee = Atoms.Sinfigie;
 				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(-1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(0, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 			} else if (ValidCW > 0 && ValidNeuMetals == 0) {
 				AtomType Displayee = ThatMole;
-				if (((Time.Now().Ticks / (10000000l))&1) == 1) Displayee = Atoms.Toisakansero;
+				if (((Time.Now().Ticks / (10000000L))&1) == 1) Displayee = Atoms.Toisakansero;
 				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(-1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(0, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 				Editor.method_927(Displayee, class_187.field_1742.method_492(part.method_1184(new(1, 0)))+pos, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
@@ -1007,7 +1009,7 @@ public static class Parts
 				else if (ValidNeuMetals == 1 && ValidCW > 0)
 					Editor.method_927(RadonRainbow[((NeuMetalThing + 1)+7)%7], risingOffset, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 				else if (ValidNeuMetals == 1)
-					Editor.method_927(RadonRainbow[((((Time.Now().Ticks / (10000000l >> 1))&1) == 0 ? NeuMetalThing - 1 : NeuMetalThing + 1)+7)%7], risingOffset, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
+					Editor.method_927(RadonRainbow[((((Time.Now().Ticks / (10000000L >> 1))&1) == 0 ? NeuMetalThing - 1 : NeuMetalThing + 1)+7)%7], risingOffset, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 				Editor.method_927(Atoms.Erizie, risingOffset2, 0.8f, 0.5f, 1f, 0f, -21f, 0f, null, null, false );
 			}
 		});
@@ -1031,7 +1033,7 @@ public static class Parts
 			field_1540 = new HexIndex[]{
 				new(0, 0)
 			}, // Spaces used
-			field_1536 = true,
+			field_1536 = false,
 			field_1551 = Permissions.None,
 		};
 
@@ -1058,7 +1060,7 @@ public static class Parts
 			field_1540 = new HexIndex[]{
 				new(0, 0)
 			}, // Spaces used
-			field_1536 = true,
+			field_1536 = false,
 			field_1551 = Permissions.None,
 		};
 
@@ -1085,16 +1087,30 @@ public static class Parts
 			field_1540 = new HexIndex[]{
 				new(0, 0)
 			}, // Spaces used
-			field_1536 = true,
+			field_1536 = false,
 			field_1551 = Permissions.None,
 		};
 
 		QApi.AddPartType(WordexisMarker, (part, pos, editor, renderer) => {
+			if (!MagicalParcherPlus.IsAprilFools)
+			{
 			class_256 markerbase = class_238.field_1989.field_90.field_185;
 			Vector2 markeroffset = (markerbase.field_2056.ToVector2() / 2).Rounded() + new Vector2(0f, 1f);
 			renderer.method_521(markerbase, markeroffset);
 			renderer.method_528(class_238.field_1989.field_90.field_187, new HexIndex(0, 0), Vector2.Zero);
 			renderer.method_521(WordexisMarkerBase, markeroffset);
+			}
+			else
+			{
+				double RanoRano = new struct_27(Time.Now().Ticks).method_603();
+				Molecule VitaeMolecule = Molecule.method_1121(Atoms.Wordexis);
+				Atoms.BypassChanges = true;
+				for (int h = 0; h < 100; h++){
+					double BinoBino = RanoRano + (h/10d);
+					Editor.method_925(VitaeMolecule, pos + (new Vector2((float)Math.Sin(BinoBino*Math.E),(float)Math.Sin(BinoBino*Math.PI)))*1000, -part.method_1161(), 0f, 1f, 1f, 1f, false, null);
+				}
+				Atoms.BypassChanges = false;
+			}
 		});
 		QApi.AddPartTypeToPanel(WordexisMarker, PartTypes.field_1782);
 
@@ -1634,7 +1650,9 @@ public static class Parts
 							if (pss.field_2744.Length < 2)
 								pss.field_2744 = new AtomType[2] { class_175.field_1687, class_175.field_1688 };
 						}
+#pragma warning disable CS0168 // the variable for exception is not used but it complains
 						catch (Exception _)
+#pragma warning restore CS0168 // the variable for exception is not used but it complains
 						{
 							pss.field_2744 = new AtomType[2] { class_175.field_1687, class_175.field_1688 };
 						}
@@ -1767,7 +1785,9 @@ public static class Parts
 							if (pss.field_2744.Length < 4)
 								pss.field_2744 = new AtomType[4] { class_175.field_1676, class_175.field_1678, class_175.field_1679, class_175.field_1677 };
 						}
+#pragma warning disable CS0168 // the variable for exception is not used but it complains
 						catch (Exception _)
+#pragma warning restore CS0168 // the variable for exception is not used but it complains
 						{
 							pss.field_2744 = new AtomType[4] { class_175.field_1676, class_175.field_1678, class_175.field_1679, class_175.field_1677 };
 						}
