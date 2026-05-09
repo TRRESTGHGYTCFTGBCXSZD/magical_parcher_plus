@@ -56,7 +56,7 @@ public static class Parts
 	//season 3 parts
 	public static PartType ArmOfDisposal, QuantumUnbonder, AtomQuantumUnbonder, BondPreservingDisposal, HyperSwitcheroo;
 	//season 4 parts
-	public static PartType ChromaCycler, ChromaRotater;
+	public static PartType ChromaCycler, ChromaRotater, BaronWheelPlus;
 	static Molecule WordexisWheelWhatTheFuck()
 	{
 		Molecule molecule = new();
@@ -66,6 +66,17 @@ public static class Parts
 		molecule.method_1105(new Atom(Atoms.EZGG), new HexIndex(0, -1));
 		molecule.method_1105(new Atom(Atoms.Wordexis), new HexIndex(-1, 0));
 		molecule.method_1105(new Atom(Atoms.Modrenity), new HexIndex(-1, 1));
+		return molecule;
+	}
+	static Molecule BaronPlusPlusPlusPlusPlusPlusPlusPlusPlusPlusPlusPlus()
+	{
+		Molecule molecule = new();
+		molecule.method_1105(new Atom(AtomTypes.field_1679), new HexIndex(0, 1));
+		molecule.method_1105(new Atom(Atoms.Rock), new HexIndex(1, 0));
+		molecule.method_1105(new Atom(AtomTypes.field_1677), new HexIndex(1, -1));
+		molecule.method_1105(new Atom(AtomTypes.field_1678), new HexIndex(0, -1));
+		molecule.method_1105(new Atom(Atoms.Wood), new HexIndex(-1, 0));
+		molecule.method_1105(new Atom(AtomTypes.field_1676), new HexIndex(-1, 1));
 		return molecule;
 	}
 	public static AtomType[] RadonRainbow = {
@@ -89,8 +100,8 @@ public static class Parts
 	public static readonly Texture ProjectionBowl = class_238.field_1989.field_90.field_255.field_292;
 	public static readonly Texture ProjectionHole = class_238.field_1989.field_90.field_255.field_293;
 	
-	public static readonly Texture Wordexis_Input = class_235.method_615("textures/parts/magicalparcher/inputs/wordexis_input");
-	public static readonly Texture Tric_Input = class_235.method_615("textures/parts/magicalparcher/inputs/tric_input");
+	public static readonly Texture Wordexis_Input = class_235.method_615("magical_parcher_plus/textures/parts/inputs/wordexis_input");
+	public static readonly Texture Tric_Input = class_235.method_615("magical_parcher_plus/textures/parts/inputs/tric_input");
 	public static readonly Texture QuicksilverSymbol = class_238.field_1989.field_90.field_255.field_294;
 	public static readonly Texture SaltSymbol = class_238.field_1989.field_90.field_228.field_275;
 	public static readonly Texture QuintessenceSymbol = class_238.field_1989.field_90.field_238.field_341;
@@ -103,9 +114,9 @@ public static class Parts
 	public static readonly Texture CalcinatorBase = class_238.field_1989.field_90.field_169;
 	public static readonly Texture RejectionBowl = class_238.field_1989.field_90.field_170;
 	
-	public static readonly Texture ZenaMarkerBase = class_235.method_615("textures/parts/magicalparcher/markers/zena");
-	public static readonly Texture TricMarkerBase = class_235.method_615("textures/parts/magicalparcher/markers/tric");
-	public static readonly Texture WordexisMarkerBase = class_235.method_615("textures/parts/magicalparcher/markers/wordexis");
+	public static readonly Texture ZenaMarkerBase = class_235.method_615("magical_parcher_plus/textures/parts/markers/zena");
+	public static readonly Texture TricMarkerBase = class_235.method_615("magical_parcher_plus/textures/parts/markers/tric");
+	public static readonly Texture WordexisMarkerBase = class_235.method_615("magical_parcher_plus/textures/parts/markers/wordexis");
 	public static readonly Texture[] disposalFlashAnimation = class_238.field_1989.field_90.field_240;
 
 	internal static FieldInfo PrivateField<T>(string field) => typeof(T).GetField(field, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
@@ -124,8 +135,8 @@ public static class Parts
 			field_1539 = true, // Is a glyph (?)
 			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
 			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/cardinalification"), // Panel icon
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/cardinalification"), // Hovered panel icon
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/cardinalification"), // Panel icon
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/cardinalification"), // Hovered panel icon
 			field_1540 = new HexIndex[]{
 				new(0, 0),
 				new(1, 0)
@@ -173,8 +184,8 @@ public static class Parts
 			field_1539 = true, // Is a glyph (?)
 			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
 			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/liquidation"), // Panel icon
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/liquidation"), // Hovered panel icon
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/liquidation"), // Panel icon
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/liquidation"), // Hovered panel icon
 			field_1540 = new HexIndex[]{
 				new(0, 0),
 				new(1, 0)
@@ -222,8 +233,8 @@ public static class Parts
 			field_1539 = true, // Is a glyph (?)
 			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
 			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/gerioification"), // Panel icon
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/gerioification"), // Hovered panel icon
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/gerioification"), // Panel icon
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/gerioification"), // Hovered panel icon
 			field_1540 = new HexIndex[]{
 				new(0, 0),
 				new(1, 0)
@@ -271,8 +282,8 @@ public static class Parts
 			field_1539 = true, // Is a glyph (?)
 			field_1549 = class_238.field_1989.field_97.field_382, // Shadow/glow
 			field_1550 = class_238.field_1989.field_97.field_383, // Stroke/outline
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/metallification"), // Panel icon
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/metallification"), // Hovered panel icon
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/metallification"), // Panel icon
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/metallification"), // Hovered panel icon
 			field_1540 = new HexIndex[]{
 				new(0, 0)
 			}, // Spaces used
@@ -298,8 +309,8 @@ public static class Parts
 			field_1539 = true, // Is a glyph (?)
 			field_1549 = class_238.field_1989.field_97.field_382, // Shadow/glow
 			field_1550 = class_238.field_1989.field_97.field_383, // Stroke/outline
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/demetallification"), // Panel icon
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/demetallification"), // Hovered panel icon
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/demetallification"), // Panel icon
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/demetallification"), // Hovered panel icon
 			field_1540 = new HexIndex[]{
 				new(0, 0)
 			}, // Spaces used
@@ -329,8 +340,8 @@ public static class Parts
 			field_1539 = true, // Is a glyph (?)
 			field_1549 = class_238.field_1989.field_97.field_368, // Shadow/glow
 			field_1550 = class_238.field_1989.field_97.field_369, // Stroke/outline
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/animisstabilizer"), // Panel icon
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/animisstabilizer"), // Hovered panel icon
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/animisstabilizer"), // Panel icon
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/animisstabilizer"), // Hovered panel icon
 			field_1540 = new HexIndex[]{
 				new(0, 0),
 				new(1, 0),
@@ -375,8 +386,8 @@ public static class Parts
 			field_1539 = true, // Is a glyph (?)
 			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
 			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/atomicprojection"), // Panel icon
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/atomicprojection"), // Hovered panel icon
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/atomicprojection"), // Panel icon
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/atomicprojection"), // Hovered panel icon
 			field_1540 = new HexIndex[]{
 				new(0, 0),
 				new(1, 0)
@@ -423,8 +434,8 @@ public static class Parts
 			field_1539 = true, // Is a glyph (?)
 			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
 			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/atomicrejection"), // Panel icon
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/atomicrejection"), // Hovered panel icon
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/atomicrejection"), // Panel icon
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/atomicrejection"), // Hovered panel icon
 			field_1540 = new HexIndex[]{
 				new(0, 0),
 				new(1, 0)
@@ -471,8 +482,8 @@ public static class Parts
 			field_1539 = true, // Is a glyph (?)
 			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
 			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/magneticpolarizer"), // Panel icon
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/magneticpolarizer"), // Hovered panel icon
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/magneticpolarizer"), // Panel icon
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/magneticpolarizer"), // Hovered panel icon
 			field_1540 = new HexIndex[]{
 				new(0, 0),
 				new(1, 0)
@@ -500,8 +511,8 @@ public static class Parts
 			field_1539 = true, // Is a glyph (?)
 			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
 			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/magneticdepolarizer"), // Panel icon
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/magneticdepolarizer"), // Hovered panel icon
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/magneticdepolarizer"), // Panel icon
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/magneticdepolarizer"), // Hovered panel icon
 			field_1540 = new HexIndex[]{
 				new(0, 0),
 				new(1, 0)
@@ -526,8 +537,8 @@ public static class Parts
 			field_1528 = "magical-parcher-plus-wordexiswheel",
 			field_1529 = class_134.method_253("Wordexis' Wheel", string.Empty),
 			field_1530 = class_134.method_253("Contains 6 Different Alternative Atoms.", string.Empty),
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/wordexiswheel"),
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/wordexiswheel"),
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/wordexiswheel"),
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/wordexiswheel"),
 			field_1531 = 30,
 			field_1552 = true,
 			field_1532 = (enum_2)1,
@@ -583,8 +594,8 @@ public static class Parts
 			field_1539 = true, // Is a glyph (?)
 			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
 			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/switcherooglyph"), // Panel icon
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/switcherooglyph"), // Hovered panel icon
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/switcherooglyph"), // Panel icon
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/switcherooglyph"), // Hovered panel icon
 			field_1540 = new HexIndex[]{
 				new(0, 0),
 				new(1, 0)
@@ -630,8 +641,8 @@ public static class Parts
 			field_1528 = "magical-parcher-plus-armofdisposal",
 			field_1529 = class_134.method_253("Arm of Disposal", string.Empty),
 			field_1530 = class_134.method_253("Grab command Removes any kind of molecule on the arm.", string.Empty),
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/armofdisposal"),
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/armofdisposal"),
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/armofdisposal"),
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/armofdisposal"),
 			field_1531 = 20,
 			field_1532 = (enum_2)1,
 			field_1533 = true,
@@ -667,8 +678,8 @@ public static class Parts
 			field_1539 = true, // Is a glyph (?)
 			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
 			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/quantumunbonder"), // Panel icon
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/quantumunbonder"), // Hovered panel icon
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/quantumunbonder"), // Panel icon
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/quantumunbonder"), // Hovered panel icon
 			field_1540 = new HexIndex[]{
 				new(0, 0),
 				new(1, 0),
@@ -705,8 +716,8 @@ public static class Parts
 			field_1539 = true, // Is a glyph (?)
 			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
 			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/atomquantumunbonder"), // Panel icon
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/atomquantumunbonder"), // Hovered panel icon
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/atomquantumunbonder"), // Panel icon
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/atomquantumunbonder"), // Hovered panel icon
 			field_1540 = new HexIndex[]{
 				new(0, 0),
 				new(1, 0)
@@ -737,8 +748,8 @@ public static class Parts
 			field_1539 = true, // Is a glyph (?)
 			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
 			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/bondpreservingdisposal"), // Panel icon
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/bondpreservingdisposal"), // Hovered panel icon
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/bondpreservingdisposal"), // Panel icon
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/bondpreservingdisposal"), // Hovered panel icon
 			field_1540 = new HexIndex[]{
 				new(0, 0),
 				new(1, 0)
@@ -769,8 +780,8 @@ public static class Parts
 			field_1539 = true, // Is a glyph (?)
 			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
 			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/hyperswitcheroo"), // Panel icon
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/hyperswitcheroo"), // Hovered panel icon
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/hyperswitcheroo"), // Panel icon
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/hyperswitcheroo"), // Hovered panel icon
 			field_1540 = new HexIndex[]{
 				new(0, 0),
 				new(1, 0),
@@ -822,8 +833,8 @@ public static class Parts
 			field_1539 = true, // Is a glyph (?)
 			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
 			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/switcherooglyph"), // Panel icon
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/switcherooglyph"), // Hovered panel icon
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/switcherooglyph"), // Panel icon
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/switcherooglyph"), // Hovered panel icon
 			field_1540 = new HexIndex[]{
 				new(0, 0),
 				new(1, 0)
@@ -871,8 +882,8 @@ public static class Parts
 			field_1539 = true, // Is a glyph (?)
 			field_1549 = class_238.field_1989.field_97.field_374, // Shadow/glow
 			field_1550 = class_238.field_1989.field_97.field_375, // Stroke/outline
-			field_1547 = class_235.method_615("textures/parts/magicalparcher/icons/switcherooglyph"), // Panel icon
-			field_1548 = class_235.method_615("textures/parts/magicalparcher/icons/switcherooglyph"), // Hovered panel icon
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/switcherooglyph"), // Panel icon
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/switcherooglyph"), // Hovered panel icon
 			field_1540 = new HexIndex[]{
 				new(0, 0),
 				new(1, 0),
@@ -1016,6 +1027,56 @@ public static class Parts
 		QApi.AddPartTypeToPanel(ChromaRotater, PartTypes.field_1775);
 		
 		QApi.AddPuzzlePermission("magicalparcherplus:chromarotator", "Glyph of Chroma Rotator", "Magical Parcher+");
+
+		BaronWheelPlus = new(){
+			field_1528 = "magical-parcher-plus-baronwheelplus",
+			field_1529 = class_134.method_253("Vaya's Wheel", string.Empty),
+			field_1530 = class_134.method_253("What The Fu- How did you get this one!?", string.Empty),
+			field_1547 = class_235.method_615("magical_parcher_plus/textures/parts/icons/wordexiswheel"),
+			field_1548 = class_235.method_615("magical_parcher_plus/textures/parts/icons/wordexiswheel"),
+			field_1531 = 30,
+			field_1552 = true,
+			field_1532 = (enum_2)1,
+			field_1533 = true,
+			field_1544 = new Dictionary<HexIndex, AtomType>
+			{
+				{
+					new HexIndex(-1, 0),
+					Atoms.Wood
+				},
+				{
+					new HexIndex(1, 0),
+					Atoms.Rock
+				},
+				{
+					new HexIndex(-1, 1),
+					AtomTypes.field_1676
+				},
+				{
+					new HexIndex(0, 1),
+					AtomTypes.field_1679
+				},
+				{
+					new HexIndex(0, -1),
+					AtomTypes.field_1678
+				},
+				{
+					new HexIndex(1, -1),
+					AtomTypes.field_1677
+				}
+			},
+			field_1536 = true,
+			field_1551 = Permissions.BaronWheel,
+		};
+
+		QApi.AddPartType(BaronWheelPlus, (part, pos, editor, renderer) => {
+		
+			class_236 uco = editor.method_1989(part, pos);
+			Vector2 risingOffset = uco.field_1984 + class_187.field_1742.method_492(new HexIndex(0, 0)).Rotated(uco.field_1985);
+
+			Editor.method_925(BaronPlusPlusPlusPlusPlusPlusPlusPlusPlusPlusPlusPlus(), risingOffset, new HexIndex(0, 0), uco.field_1985, 1f, 1f, 1f, false, null);
+		});
+		QApi.AddPartTypeToPanel(BaronWheelPlus, PartTypes.field_1771);
 		
 		////////////////////////////////////////////////////////////////////////////////
 

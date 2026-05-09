@@ -85,43 +85,43 @@ public static class Atoms
 
 	public static List<AtomType> atomsToAdd;
 	
-	public static Texture WordexisBackAccessories = class_235.method_615("textures/atoms/magicalparcher/wordexis_accessoriesback");
-	public static Texture WordexisVisor = class_235.method_615("textures/atoms/magicalparcher/wordexis_accessoriesfront");
-	public static Texture TricEars = class_235.method_615("textures/atoms/magicalparcher/tric_ears");
-	public static Texture TricBackAccessories = class_235.method_615("textures/atoms/magicalparcher/tric_accessoriesback");
-	public static Texture GerioHair = class_235.method_615("textures/atoms/magicalparcher/gerio_hair");
-	public static Texture GerioHat = class_235.method_615("textures/atoms/magicalparcher/gerio_hat");
-	public static Texture GabsSpikes = class_235.method_615("textures/atoms/magicalparcher/gabs_spikes");
-	public static Texture EZGGHat = class_235.method_615("textures/atoms/magicalparcher/ezgg_hat");
-	public static Texture ModrenityControlSticks = class_235.method_615("textures/atoms/magicalparcher/modrenity_controlsticks");
-	public static Texture ZenaMagnets = class_235.method_615("textures/atoms/magicalparcher/zena_magnets");
-	public static Texture RedZenaMagnets = class_235.method_615("textures/atoms/magicalparcher/redzena_magnets");
-	public static Texture BlueZenaMagnets = class_235.method_615("textures/atoms/magicalparcher/bluezena_magnets");
-	public static Texture CeminratesBestieEars = class_235.method_615("textures/atoms/magicalparcher/ceminratesbestie_ears");
-	public static Texture CeminratesBestieFrontAccessories = class_235.method_615("textures/atoms/magicalparcher/ceminratesbestie_accessoriesfront");
+	public static Texture WordexisBackAccessories = class_235.method_615("magical_parcher_plus/textures/atoms/wordexis_accessoriesback");
+	public static Texture WordexisVisor = class_235.method_615("magical_parcher_plus/textures/atoms/wordexis_accessoriesfront");
+	public static Texture TricEars = class_235.method_615("magical_parcher_plus/textures/atoms/tric_ears");
+	public static Texture TricBackAccessories = class_235.method_615("magical_parcher_plus/textures/atoms/tric_accessoriesback");
+	public static Texture GerioHair = class_235.method_615("magical_parcher_plus/textures/atoms/gerio_hair");
+	public static Texture GerioHat = class_235.method_615("magical_parcher_plus/textures/atoms/gerio_hat");
+	public static Texture GabsSpikes = class_235.method_615("magical_parcher_plus/textures/atoms/gabs_spikes");
+	public static Texture EZGGHat = class_235.method_615("magical_parcher_plus/textures/atoms/ezgg_hat");
+	public static Texture ModrenityControlSticks = class_235.method_615("magical_parcher_plus/textures/atoms/modrenity_controlsticks");
+	public static Texture ZenaMagnets = class_235.method_615("magical_parcher_plus/textures/atoms/zena_magnets");
+	public static Texture RedZenaMagnets = class_235.method_615("magical_parcher_plus/textures/atoms/redzena_magnets");
+	public static Texture BlueZenaMagnets = class_235.method_615("magical_parcher_plus/textures/atoms/bluezena_magnets");
+	public static Texture CeminratesBestieEars = class_235.method_615("magical_parcher_plus/textures/atoms/ceminratesbestie_ears");
+	public static Texture CeminratesBestieFrontAccessories = class_235.method_615("magical_parcher_plus/textures/atoms/ceminratesbestie_accessoriesfront");
 	public static Texture saltcircle = class_235.method_615("textures/atoms/salt_diffuse");
 
 	public static Texture[] BlockBotAccessories = {
-		class_235.method_615("textures/atoms/magicalparcher/ibot_antennas"),
-		class_235.method_615("textures/atoms/magicalparcher/anxietybot_antennas"),
-		class_235.method_615("textures/atoms/magicalparcher/obot_antennas"),
-		class_235.method_615("textures/atoms/magicalparcher/sbot_antennas"),
-		class_235.method_615("textures/atoms/magicalparcher/tbot_antennas"),
-		class_235.method_615("textures/atoms/magicalparcher/jbot_antennas"),
-		class_235.method_615("textures/atoms/magicalparcher/zbot_antennas"),
+		class_235.method_615("magical_parcher_plus/textures/atoms/ibot_antennas"),
+		class_235.method_615("magical_parcher_plus/textures/atoms/anxietybot_antennas"),
+		class_235.method_615("magical_parcher_plus/textures/atoms/obot_antennas"),
+		class_235.method_615("magical_parcher_plus/textures/atoms/sbot_antennas"),
+		class_235.method_615("magical_parcher_plus/textures/atoms/tbot_antennas"),
+		class_235.method_615("magical_parcher_plus/textures/atoms/jbot_antennas"),
+		class_235.method_615("magical_parcher_plus/textures/atoms/zbot_antennas"),
 	};
 	public static Texture[] SinfigieTextures = {
-		class_235.method_615("textures/atoms/magicalparcher/sinfigie_base"),
-		class_235.method_615("textures/atoms/magicalparcher/sinfigie_face"),
-		class_235.method_615("textures/atoms/magicalparcher/sinfigie_rotator")
+		class_235.method_615("magical_parcher_plus/textures/atoms/sinfigie_base"),
+		class_235.method_615("magical_parcher_plus/textures/atoms/sinfigie_face"),
+		class_235.method_615("magical_parcher_plus/textures/atoms/sinfigie_rotator")
 	};
 	public static Texture[] ToisakanseroTextures = {
-		class_235.method_615("textures/atoms/magicalparcher/toisakansero_base"),
-		class_235.method_615("textures/atoms/magicalparcher/toisakansero_face"),
-		class_235.method_615("textures/atoms/magicalparcher/toisakansero_rotator")
+		class_235.method_615("magical_parcher_plus/textures/atoms/toisakansero_base"),
+		class_235.method_615("magical_parcher_plus/textures/atoms/toisakansero_face"),
+		class_235.method_615("magical_parcher_plus/textures/atoms/toisakansero_rotator")
 	};
-	public static Texture ErizieErasers = class_235.method_615("textures/atoms/magicalparcher/erizie_erasers");
-	public static Texture ErizieFurs = class_235.method_615("textures/atoms/magicalparcher/erizie_furs");
+	public static Texture ErizieErasers = class_235.method_615("magical_parcher_plus/textures/atoms/erizie_erasers");
+	public static Texture ErizieFurs = class_235.method_615("magical_parcher_plus/textures/atoms/erizie_furs");
 
 	private static readonly Random DoItShakyShaky = new();
 
@@ -140,11 +140,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Erabukun"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Erabukun", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Erabukun", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/erabukun_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/erabukun_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/erabukun_combined"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/erabukun_combined"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:erabukun"
@@ -156,11 +156,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Wordexis"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Wordexis", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Wordexis", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/wordexis_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/wordexis_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/wordexis_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/wordexis_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:wordexis"
@@ -172,11 +172,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Zena"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Zena", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Zena", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/zena_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/zena_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/zena_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/zena_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:zena"
@@ -188,11 +188,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Tric"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Tric", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Tric", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/tric_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/tric_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/tric_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/tric_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:tric"
@@ -204,11 +204,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Gerio"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Gerio", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Gerio", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/gerio_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/gerio_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/gerio_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/gerio_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:gerio"
@@ -220,11 +220,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Gabs"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Gabs", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Gabs", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/gabs_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/gabs_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/gabs_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/gabs_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:gabs"
@@ -236,11 +236,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("EZGG"),
 			/*Atomic Name*/field_2285 = class_134.method_253("EZGG", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("EZGG", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/ezgg_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/ezgg_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/ezgg_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/ezgg_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:ezgg"
@@ -252,11 +252,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Modrenity"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Modrenity", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Modrenity", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/modrenity_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/modrenity_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/modrenity_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/modrenity_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:modrenity"
@@ -268,11 +268,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Abomination"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Abomination", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Abomination", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/abomination_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/abomination_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/modrenity_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/modrenity_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:abomination"
@@ -284,11 +284,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Red Zena"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Red Zena", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Red Zena", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/redzena_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/redzena_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/zena_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/zena_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:redzena"
@@ -300,11 +300,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Blue Zena"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Blue Zena", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Blue Zena", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/bluezena_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/bluezena_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/zena_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/zena_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:bluezena"
@@ -316,11 +316,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Qix"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Qix", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Qix", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/ceminratesbestie_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/ceminratesbestie_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/ceminratesbestie_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/ceminratesbestie_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:CeminratesBestie"
@@ -334,11 +334,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Proton"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Proton", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Proton", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/proton_symbol"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/proton_symbol"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/proton_diffuse"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/proton_diffuse"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:proton"
@@ -350,7 +350,7 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Switcheroo"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Switcheroo", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Switcheroo", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/switcheroo_symbol"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/switcheroo_symbol"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
@@ -368,11 +368,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Wood"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Elemental Wood", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Wood", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/simple/wordexis"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/simple/wordexis"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/zena_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/wood_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:wood"
@@ -384,11 +384,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Rock"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Elemental Rock", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Rock", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/simple/erabukun"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/simple/erabukun"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/zena_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/rock_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:rock"
@@ -400,11 +400,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Limbo"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Elemental Limbo", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Limbo", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/simple/zena"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/simple/zena"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/zena_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/limbo_diffuse"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:limbo"
@@ -418,11 +418,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("I-Bot"),
 			/*Atomic Name*/field_2285 = class_134.method_253("I-Bot", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("I-Bot", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/ibot_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/ibot_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/anxietybot_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/anxietybot_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:ibot"
@@ -434,11 +434,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Anxiety Bot"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Anxiety Bot", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Anxiety Bot", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/anxietybot_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/anxietybot_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/anxietybot_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/anxietybot_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:anxietybot"
@@ -450,11 +450,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("O-Bot"),
 			/*Atomic Name*/field_2285 = class_134.method_253("O-Bot", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("O-Bot", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/obot_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/obot_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/obot_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/obot_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:obot"
@@ -466,11 +466,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Z-Bot"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Z-Bot", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Z-Bot", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/zbot_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/zbot_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/anxietybot_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/anxietybot_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:zbot"
@@ -482,11 +482,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("T-Bot"),
 			/*Atomic Name*/field_2285 = class_134.method_253("T-Bot", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("T-Bot", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/tbot_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/tbot_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/anxietybot_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/anxietybot_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:tbot"
@@ -498,11 +498,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("J-Bot"),
 			/*Atomic Name*/field_2285 = class_134.method_253("J-Bot", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("J-Bot", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/jbot_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/jbot_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/anxietybot_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/anxietybot_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:jbot"
@@ -514,11 +514,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("S-Bot"),
 			/*Atomic Name*/field_2285 = class_134.method_253("S-Bot", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("S-Bot", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/sbot_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/sbot_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/anxietybot_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/anxietybot_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:sbot"
@@ -562,11 +562,11 @@ public static class Atoms
 			/*Non-local Name*/field_2284 = class_134.method_254("Erizie"),
 			/*Atomic Name*/field_2285 = class_134.method_253("Erizie", string.Empty),
 			/*Local name*/field_2286 = class_134.method_253("Erizie", string.Empty),
-			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/erizie_face"),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/erizie_face"),
 			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 			/*Default Graphics struct*/field_2290 = new class_106()
 			{
-				field_994 = class_235.method_615("textures/atoms/magicalparcher/erizie_base"),//salt_diffuse
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/erizie_base"),//salt_diffuse
 				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 			},
 			QuintAtomType = "magicalparcherplus:erizie"
@@ -578,11 +578,11 @@ public static class Atoms
 		//	/*Non-local Name*/field_2284 = class_134.method_254("Number"),
 		//	/*Atomic Name*/field_2285 = class_134.method_253("Number", string.Empty),
 		//	/*Local name*/field_2286 = class_134.method_253("Number", string.Empty),
-		//	/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/number_symbol"),
+		//	/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/number_symbol"),
 		//	/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 		//	/*Default Graphics struct*/field_2290 = new class_106()
 		//	{
-		//		field_994 = class_235.method_615("textures/atoms/magicalparcher/number_base"),//salt_diffuse
+		//		field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/number_base"),//salt_diffuse
 		//		field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 		//	},
 		//	QuintAtomType = "magicalparcherplus:numberatom"
@@ -612,18 +612,18 @@ public static class Atoms
 		for (int PTableAtomIndex = 0; PTableAtomIndex < 118; PTableAtomIndex++)
 		{
 			if (!PTableDoNotAdd[PTableAtomIndex]) {
-				bool ThisImageShouldBeTextured = MagicalParcherPlus.DoesThisTextureExists("textures/atoms/magicalparcher/ptableatoms/"+PTableNaming[PTableAtomIndex].ToLower()+"_diffuse");
+				bool ThisImageShouldBeTextured = MagicalParcherPlus.DoesThisTextureExists("magical_parcher_plus/textures/atoms/ptableatoms/"+PTableNaming[PTableAtomIndex].ToLower()+"_diffuse");
 				AtomType Whatwiyo = new AtomType()
 				{
 					/*ID, byte*/field_2283 = PTableAtomID,
 					/*Non-local Name*/field_2284 = class_134.method_254(PTableNaming[PTableAtomIndex]),
 					/*Atomic Name*/field_2285 = class_134.method_253("Elemental "+PTableNaming[PTableAtomIndex], string.Empty),
 					/*Local name*/field_2286 = class_134.method_253(PTableNaming[PTableAtomIndex], string.Empty),
-					/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/ptableatoms/"+PTableNaming[PTableAtomIndex].ToLower()+"_symbol"),
+					/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/ptableatoms/"+PTableNaming[PTableAtomIndex].ToLower()+"_symbol"),
 					/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 					/*Default Graphics struct*/field_2290 = new class_106()
 					{
-						field_994 = AndOr(ThisImageShouldBeTextured,class_235.method_615("textures/atoms/magicalparcher/ptableatoms/"+PTableNaming[PTableAtomIndex].ToLower()+"_diffuse"),class_235.method_615("textures/atoms/salt_diffuse")),//salt_diffuse
+						field_994 = AndOr(ThisImageShouldBeTextured,class_235.method_615("magical_parcher_plus/textures/atoms/ptableatoms/"+PTableNaming[PTableAtomIndex].ToLower()+"_diffuse"),class_235.method_615("textures/atoms/salt_diffuse")),//salt_diffuse
 						field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 					},
 					QuintAtomType = "magicalparcherplus:"+PTableNaming[PTableAtomIndex].ToLower()
@@ -656,11 +656,11 @@ public static class Atoms
 				/*Non-local Name*/field_2284 = class_134.method_254("Number "+(sbyte)PTableAtomIndex),
 				/*Atomic Name*/field_2285 = class_134.method_253("Number "+(sbyte)PTableAtomIndex, string.Empty),
 				/*Local name*/field_2286 = class_134.method_253("Number "+(sbyte)PTableAtomIndex, string.Empty),
-				/*Symbol*/field_2287 = class_235.method_615("textures/atoms/magicalparcher/number_symbol"),
+				/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/number_symbol"),
 				/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
 				/*Default Graphics struct*/field_2290 = new class_106()
 				{
-					field_994 = class_235.method_615("textures/atoms/magicalparcher/number_base"),//salt_diffuse
+					field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/number_base"),//salt_diffuse
 					field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
 				},
 				QuintAtomType = "magicalparcherplus:number_"+PTableAtomIndex
@@ -1089,8 +1089,8 @@ public static class Atoms
 		{
 			class_135.method_263(SinfigieTextures[0], tecolor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
 			float roteball = (float)new struct_27(Time.Now().Ticks).method_603()*2f;
-			float rotewidth = 60;
-			float roteheight = 60;
+			float rotewidth = 60*param_4582;
+			float roteheight = 60*param_4582;
 			float[] roterote = {
 				(float)(position.X+(-Math.Cos(roteball)*rotewidth/2)+(-Math.Sin(roteball)*roteheight/2)),
 				(float)(position.Y+(-Math.Sin(roteball)*rotewidth/2)+(Math.Cos(roteball)*roteheight/2)),
@@ -1105,15 +1105,16 @@ public static class Atoms
 			Vector2 rotofield = class_135.method_257().field_1695;
 			struct_0 rotocolor = tecolor.Packed();
 			class_135.method_261(SinfigieTextures[2], new MeshVertex(new Vector3(roterote[0], roterote[1], 0f), rotonormal, new Vector2(0f, 1f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[2], roterote[3], 0f), rotonormal, new Vector2(1f, 1f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[4], roterote[5], 0f), rotonormal, new Vector2(1f, 0f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[6], roterote[7], 0f), rotonormal, new Vector2(0f, 0f), rotofield, rotocolor));
-			class_135.method_263(SinfigieTextures[1], tecolor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
+			Color BrightColor = new Color(param_4584,param_4584,param_4584,param_4583);
+			class_135.method_263(SinfigieTextures[1], BrightColor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
 			return;
 		}
 		if (type == Toisakansero)
 		{
 			class_135.method_263(ToisakanseroTextures[0], tecolor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
 			float roteball = -((float)new struct_27(Time.Now().Ticks).method_603())*2f;
-			float rotewidth = 60;
-			float roteheight = 60;
+			float rotewidth = 60*param_4582;
+			float roteheight = 60*param_4582;
 			float[] roterote = {
 				(float)(position.X+(-Math.Cos(roteball)*rotewidth/2)+(-Math.Sin(roteball)*roteheight/2)),
 				(float)(position.Y+(-Math.Sin(roteball)*rotewidth/2)+(Math.Cos(roteball)*roteheight/2)),
@@ -1128,7 +1129,8 @@ public static class Atoms
 			Vector2 rotofield = class_135.method_257().field_1695;
 			struct_0 rotocolor = tecolor.Packed();
 			class_135.method_261(ToisakanseroTextures[2], new MeshVertex(new Vector3(roterote[0], roterote[1], 0f), rotonormal, new Vector2(0f, 1f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[2], roterote[3], 0f), rotonormal, new Vector2(1f, 1f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[4], roterote[5], 0f), rotonormal, new Vector2(1f, 0f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[6], roterote[7], 0f), rotonormal, new Vector2(0f, 0f), rotofield, rotocolor));
-			class_135.method_263(ToisakanseroTextures[1], tecolor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
+			Color BrightColor = new Color(param_4584,param_4584,param_4584,param_4583);
+			class_135.method_263(ToisakanseroTextures[1], BrightColor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
 			return;
 		}
 		//custom rendering

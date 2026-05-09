@@ -155,8 +155,8 @@ public class MagicalParcherPlus : QuintessentialMod
 		Parts.BypassPartRules = SET.BypassPartRules;
 		if (SET.SwapGifBorder)
 		{
-			class_238.field_1989.field_99.field_698 = class_235.method_615("textures/solution_editor/gif_frame_mpplus");
-			class_238.field_1989.field_99.field_699 = class_235.method_615("textures/solution_editor/gif_frame_pipeline_mpplus");
+			class_238.field_1989.field_99.field_698 = class_235.method_615("magical_parcher_plus/textures/solution_editor/gif_frame");
+			class_238.field_1989.field_99.field_699 = class_235.method_615("magical_parcher_plus/textures/solution_editor/gif_frame_pipeline");
 		}
 		else
 		{

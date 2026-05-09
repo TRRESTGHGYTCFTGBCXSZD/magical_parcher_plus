@@ -27,20 +27,20 @@ public static class AirWave
 		if (ContentLoaded) return;
 		ContentLoaded = true;
 		PockEight = new (){
-			field_4060 = Path.GetFileNameWithoutExtension(MagicalParcherPlus.self.Meta.PathDirectory + "/Content/sounds/magical_parcher/pock_eight.wav"),
-			field_4061 = class_158.method_375(MagicalParcherPlus.self.Meta.PathDirectory + "/Content/sounds/magical_parcher/pock_eight.wav")
+			field_4060 = Path.GetFileNameWithoutExtension(MagicalParcherPlus.self.Meta.PathDirectory + "/Content/magical_parcher_plus/sounds/pock_eight.wav"),
+			field_4061 = class_158.method_375(MagicalParcherPlus.self.Meta.PathDirectory + "/Content/magical_parcher_plus/sounds/pock_eight.wav")
 		};
 		Exploder[0] = new (){
-			field_4060 = Path.GetFileNameWithoutExtension(MagicalParcherPlus.self.Meta.PathDirectory + "/Content/sounds/magical_parcher/explode3.wav"),
-			field_4061 = class_158.method_375(MagicalParcherPlus.self.Meta.PathDirectory + "/Content/sounds/magical_parcher/explode3.wav")
+			field_4060 = Path.GetFileNameWithoutExtension(MagicalParcherPlus.self.Meta.PathDirectory + "/Content/magical_parcher_plus/sounds/explode3.wav"),
+			field_4061 = class_158.method_375(MagicalParcherPlus.self.Meta.PathDirectory + "/Content/magical_parcher_plus/sounds/explode3.wav")
 		};
 		Exploder[1] = new (){
-			field_4060 = Path.GetFileNameWithoutExtension(MagicalParcherPlus.self.Meta.PathDirectory + "/Content/sounds/magical_parcher/explode4.wav"),
-			field_4061 = class_158.method_375(MagicalParcherPlus.self.Meta.PathDirectory + "/Content/sounds/magical_parcher/explode4.wav")
+			field_4060 = Path.GetFileNameWithoutExtension(MagicalParcherPlus.self.Meta.PathDirectory + "/Content/magical_parcher_plus/sounds/explode4.wav"),
+			field_4061 = class_158.method_375(MagicalParcherPlus.self.Meta.PathDirectory + "/Content/magical_parcher_plus/sounds/explode4.wav")
 		};
 		Exploder[2] = new (){
-			field_4060 = Path.GetFileNameWithoutExtension(MagicalParcherPlus.self.Meta.PathDirectory + "/Content/sounds/magical_parcher/explode5.wav"),
-			field_4061 = class_158.method_375(MagicalParcherPlus.self.Meta.PathDirectory + "/Content/sounds/magical_parcher/explode5.wav")
+			field_4060 = Path.GetFileNameWithoutExtension(MagicalParcherPlus.self.Meta.PathDirectory + "/Content/magical_parcher_plus/sounds/explode5.wav"),
+			field_4061 = class_158.method_375(MagicalParcherPlus.self.Meta.PathDirectory + "/Content/magical_parcher_plus/sounds/explode5.wav")
 		};
 		FieldInfo field = typeof(class_11).GetField("field_52", BindingFlags.Static | BindingFlags.NonPublic);
 		Dictionary<string, float> volumeDictionary = (Dictionary<string, float>)field.GetValue(null);
