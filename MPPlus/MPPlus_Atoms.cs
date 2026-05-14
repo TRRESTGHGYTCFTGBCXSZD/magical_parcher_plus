@@ -35,6 +35,7 @@ public static class Atoms
 	private static byte SwitcherooID = 250;
 	private static byte NumberAtomID = 249;
 	//speaki is atom id 248
+	private static byte NegativeAnimismID = 247;
 
 	public static T AndOr<T>(bool dind, T truedind, T falsedind) {
 		return dind ? truedind : falsedind;
@@ -42,7 +43,7 @@ public static class Atoms
 	//atoms for atomic operations
 	public static AtomType Proton;
 	public static AtomType[] PTableAtoms = new AtomType[118];
-	private static string[] PTableNaming = {
+	public static string[] PTableNaming = {
 		"Hydrogen","Helium",
 		"Lithium","Berylium","Boron","Carbon","Nitrogen","Oxygen","Fluorine","Neon",
 		"Sodium","Magnesium","Aluminium","Phosphorus","Silicon","Sulfur","Chlorine","Argon",
@@ -69,11 +70,17 @@ public static class Atoms
 		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true, true, false,true, false,false,false,false,
 		false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
 	};
+	public static string[] StringifiedDirectionName = {
+		"East","North-East","North-West","West","South-West","South-East",
+	};
+	public static string[] StringifiedDirectionID = {
+		"e","ne","nw","w","sw","se",
+	};
 	//public static Dictionary<AtomType, int> PTableAtomsReverse = new();
 	//number atoms
 	public static AtomType[] NumberAtoms = new AtomType[256];
 	//atoms that don't categorize
-	public static AtomType Wood, Rock, Limbo, Switcheroo, NumberAtom;
+	public static AtomType Wood, Rock, Limbo, Switcheroo, AntiVitae, AntiMors;
 	//character atoms
 		// alternative atoms
 	public static AtomType Wordexis, Erabukun, Zena;
@@ -82,23 +89,36 @@ public static class Atoms
 	public static AtomType IBot, AnxietyBot, OBot, ZBot, TBot, JBot, SBot;
 		// volics for 7 bots
 	public static AtomType Sinfigie, Toisakansero, Erizie;
+		// bal cube's bal
+	public static List<AtomType> BalAtoms;
+	public static Dictionary<AtomType, int> BalAtomsReverse = new Dictionary<AtomType, int>();
 
 	public static List<AtomType> atomsToAdd;
 	
 	public static Texture WordexisBackAccessories = class_235.method_615("magical_parcher_plus/textures/atoms/wordexis_accessoriesback");
 	public static Texture WordexisVisor = class_235.method_615("magical_parcher_plus/textures/atoms/wordexis_accessoriesfront");
+
 	public static Texture TricEars = class_235.method_615("magical_parcher_plus/textures/atoms/tric_ears");
 	public static Texture TricBackAccessories = class_235.method_615("magical_parcher_plus/textures/atoms/tric_accessoriesback");
+
 	public static Texture GerioHair = class_235.method_615("magical_parcher_plus/textures/atoms/gerio_hair");
 	public static Texture GerioHat = class_235.method_615("magical_parcher_plus/textures/atoms/gerio_hat");
+
 	public static Texture GabsSpikes = class_235.method_615("magical_parcher_plus/textures/atoms/gabs_spikes");
+
 	public static Texture EZGGHat = class_235.method_615("magical_parcher_plus/textures/atoms/ezgg_hat");
+
 	public static Texture ModrenityControlSticks = class_235.method_615("magical_parcher_plus/textures/atoms/modrenity_controlsticks");
+
 	public static Texture ZenaMagnets = class_235.method_615("magical_parcher_plus/textures/atoms/zena_magnets");
 	public static Texture RedZenaMagnets = class_235.method_615("magical_parcher_plus/textures/atoms/redzena_magnets");
 	public static Texture BlueZenaMagnets = class_235.method_615("magical_parcher_plus/textures/atoms/bluezena_magnets");
+
 	public static Texture CeminratesBestieEars = class_235.method_615("magical_parcher_plus/textures/atoms/ceminratesbestie_ears");
 	public static Texture CeminratesBestieFrontAccessories = class_235.method_615("magical_parcher_plus/textures/atoms/ceminratesbestie_accessoriesfront");
+
+	public static Texture BalDirectionArrow = class_235.method_615("magical_parcher_plus/textures/atoms/bal_directionarrow");
+
 	public static Texture saltcircle = class_235.method_615("textures/atoms/salt_diffuse");
 
 	public static Texture[] BlockBotAccessories = {
@@ -125,9 +145,31 @@ public static class Atoms
 
 	private static readonly Random DoItShakyShaky = new();
 
+	private static IDetour hook_Sim_method_1829;
+
 	internal static void CreateSwitcherooRecipe(AtomType catalyst,Dictionary<AtomType,int> input,AtomType output){
 		Flexibility.SwitcherooRecipes.Add(new SwitcherooRecipe(new MultipleMatcher(catalyst),input,new AtomType[1]{output}));
 		Flexibility.SwitcherooRecipes.Add(new SwitcherooRecipe(new MultipleMatcher(output),input,new AtomType[1]{catalyst}));
+	}
+
+	internal static AtomType CreateBalAtom(int dir){
+		AtomType baller = new AtomType()
+		{
+			/*ID, byte*/field_2283 = NewCharactersAtomID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Bal"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Bal ("+StringifiedDirectionName[dir]+")", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Bal ("+StringifiedDirectionName[dir]+")", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("magical_parcher_plus/textures/atoms/bal_face"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("magical_parcher_plus/textures/atoms/bal_base"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/salt_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:bal_"+StringifiedDirectionID[dir]
+		};
+		BalAtomsReverse.Add(baller,dir);
+		return baller;
 	}
 
 	public static void AddNewContent() {
@@ -572,6 +614,47 @@ public static class Atoms
 			QuintAtomType = "magicalparcherplus:erizie"
 		};
 
+		AntiVitae = new AtomType()
+		{
+			/*ID, byte*/field_2283 = NegativeAnimismID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Anti-Vitae"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Elemental Anti-Vitae", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Anti-Vitae", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/vitae_symbol"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/mors_diffuse"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/mors_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:antivitae"
+		};
+
+		AntiMors = new AtomType()
+		{
+			/*ID, byte*/field_2283 = NegativeAnimismID,
+			/*Non-local Name*/field_2284 = class_134.method_254("Anti-Mors"),
+			/*Atomic Name*/field_2285 = class_134.method_253("Elemental Anti-Mors", string.Empty),
+			/*Local name*/field_2286 = class_134.method_253("Anti-Mors", string.Empty),
+			/*Symbol*/field_2287 = class_235.method_615("textures/atoms/mors_symbol"),
+			/*Shadow*/field_2288 = class_238.field_1989.field_81.field_599,
+			/*Default Graphics struct*/field_2290 = new class_106()
+			{
+				field_994 = class_235.method_615("textures/atoms/vitae_diffuse"),//salt_diffuse
+				field_995 = class_235.method_615("textures/atoms/vitae_shade")//salt_shade
+			},
+			QuintAtomType = "magicalparcherplus:antimors"
+		};
+
+		BalAtoms = new List<AtomType>(){
+			CreateBalAtom(0),
+			CreateBalAtom(1),
+			CreateBalAtom(2),
+			CreateBalAtom(3),
+			CreateBalAtom(4),
+			CreateBalAtom(5),
+		};
+
 		//NumberAtom = new AtomType()
 		//{
 		//	/*ID, byte*/field_2283 = ProtonID,
@@ -591,10 +674,12 @@ public static class Atoms
 		atomsToAdd = new List<AtomType>() {
 			Wood, Rock, Limbo,
 			Proton, Switcheroo,
+			AntiVitae, AntiMors,
 			Gerio, Gabs, Tric, EZGG, Modrenity, CeminratesBestie, RedZena, BlueZena, Abomination,
 			Wordexis, Erabukun, Zena,
 			IBot, AnxietyBot, OBot, ZBot, TBot, JBot, SBot,
-			Sinfigie, Toisakansero, Erizie
+			Sinfigie, Toisakansero, Erizie,
+			BalAtoms[0], BalAtoms[1], BalAtoms[2], BalAtoms[3], BalAtoms[4], BalAtoms[5],
 		};
 
 		//add atoms to internal dictionary
@@ -728,6 +813,16 @@ public static class Atoms
 		wanafo.Add(AtomTypes.field_1687,1);
 		wanafo.Add(AtomTypes.field_1688,1);
 		Flexibility.AntiAnimismusRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AtomTypes.field_1675, AtomTypes.field_1675 }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.AntiVitae,1);
+		wanafo.Add(Atoms.AntiMors,1);
+		Flexibility.AntiAnimismusRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AtomTypes.field_1675, AtomTypes.field_1675 }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Limbo,2);
+		Flexibility.AntiAnimismusRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AtomTypes.field_1675, AtomTypes.field_1675 }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(Atoms.Zena,2);
+		Flexibility.AntiAnimismusRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.Gerio, Atoms.Gerio }));
 		wanafo = new Dictionary<AtomType,int>();
 		wanafo.Add(Atoms.Zena,2);
 		Flexibility.PolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { Atoms.RedZena, Atoms.BlueZena }));
@@ -940,6 +1035,11 @@ public static class Atoms
 				}
 			}
 		});
+
+		hook_Sim_method_1829 = new Hook(
+			typeof(Sim).GetMethod("method_1829", BindingFlags.Instance | BindingFlags.NonPublic),
+			OnSimMethod1829
+		);
 	}
 	internal static void ReplaceTeAtoms(On.Editor.orig_method_927 orig, AtomType type, Vector2 position, float param_4582, float param_4583, float param_4584, float param_4585, float param_4586, float param_4587, Texture overrideShadow, Texture maskM, bool param_4590)
 	{
@@ -1087,7 +1187,8 @@ public static class Atoms
 
 		if (type == Sinfigie)
 		{
-			class_135.method_263(SinfigieTextures[0], tecolor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
+			Color BrightColor = new Color(param_4584,param_4584,param_4584,param_4583);
+			class_135.method_263(SinfigieTextures[0], BrightColor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
 			float roteball = (float)new struct_27(Time.Now().Ticks).method_603()*2f;
 			float rotewidth = 60*param_4582;
 			float roteheight = 60*param_4582;
@@ -1105,13 +1206,13 @@ public static class Atoms
 			Vector2 rotofield = class_135.method_257().field_1695;
 			struct_0 rotocolor = tecolor.Packed();
 			class_135.method_261(SinfigieTextures[2], new MeshVertex(new Vector3(roterote[0], roterote[1], 0f), rotonormal, new Vector2(0f, 1f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[2], roterote[3], 0f), rotonormal, new Vector2(1f, 1f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[4], roterote[5], 0f), rotonormal, new Vector2(1f, 0f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[6], roterote[7], 0f), rotonormal, new Vector2(0f, 0f), rotofield, rotocolor));
-			Color BrightColor = new Color(param_4584,param_4584,param_4584,param_4583);
-			class_135.method_263(SinfigieTextures[1], BrightColor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
+			class_135.method_263(SinfigieTextures[1], tecolor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
 			return;
 		}
 		if (type == Toisakansero)
 		{
-			class_135.method_263(ToisakanseroTextures[0], tecolor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
+			Color BrightColor = new Color(param_4584,param_4584,param_4584,param_4583);
+			class_135.method_263(ToisakanseroTextures[0], BrightColor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
 			float roteball = -((float)new struct_27(Time.Now().Ticks).method_603())*2f;
 			float rotewidth = 60*param_4582;
 			float roteheight = 60*param_4582;
@@ -1129,8 +1230,7 @@ public static class Atoms
 			Vector2 rotofield = class_135.method_257().field_1695;
 			struct_0 rotocolor = tecolor.Packed();
 			class_135.method_261(ToisakanseroTextures[2], new MeshVertex(new Vector3(roterote[0], roterote[1], 0f), rotonormal, new Vector2(0f, 1f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[2], roterote[3], 0f), rotonormal, new Vector2(1f, 1f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[4], roterote[5], 0f), rotonormal, new Vector2(1f, 0f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[6], roterote[7], 0f), rotonormal, new Vector2(0f, 0f), rotofield, rotocolor));
-			Color BrightColor = new Color(param_4584,param_4584,param_4584,param_4583);
-			class_135.method_263(ToisakanseroTextures[1], BrightColor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
+			class_135.method_263(ToisakanseroTextures[1], tecolor, position - new Vector2(30, 30) * param_4582, new Vector2(60, 60) * param_4582);
 			return;
 		}
 		//custom rendering
@@ -1234,7 +1334,100 @@ public static class Atoms
 		{
 			class_135.method_263(ErizieFurs, tecolor, position - new Vector2(60, 60) * param_4582, new Vector2(120, 120) * param_4582);
 		}
+		if (BalAtoms.Contains(type))
+		{
+			double roteball = Math.PI*(BalAtomsReverse[type]/3d);
+			double rotewidth = 120*param_4582;
+			double roteheight = 30*param_4582;
+			float[] roterote = {
+				(float)(position.X+(-Math.Cos(roteball)*rotewidth/2)+(-Math.Sin(roteball)*roteheight/2)),
+				(float)(position.Y+(-Math.Sin(roteball)*rotewidth/2)+(Math.Cos(roteball)*roteheight/2)),
+				(float)(position.X+(Math.Cos(roteball)*rotewidth/2)+(-Math.Sin(roteball)*roteheight/2)),
+				(float)(position.Y+(Math.Sin(roteball)*rotewidth/2)+(Math.Cos(roteball)*roteheight/2)),
+				(float)(position.X+(Math.Cos(roteball)*rotewidth/2)+(Math.Sin(roteball)*roteheight/2)),
+				(float)(position.Y+(Math.Sin(roteball)*rotewidth/2)+(-Math.Cos(roteball)*roteheight/2)),
+				(float)(position.X+(-Math.Cos(roteball)*rotewidth/2)+(Math.Sin(roteball)*roteheight/2)),
+				(float)(position.Y+(-Math.Sin(roteball)*rotewidth/2)+(-Math.Cos(roteball)*roteheight/2)),
+			};
+			Vector3 rotonormal = new Vector3(0f, 0f, -1f);
+			Vector2 rotofield = class_135.method_257().field_1695;
+			struct_0 rotocolor = tecolor.Packed();
+			class_135.method_261(BalDirectionArrow, new MeshVertex(new Vector3(roterote[0], roterote[1], 0f), rotonormal, new Vector2(0f, 1f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[2], roterote[3], 0f), rotonormal, new Vector2(1f, 1f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[4], roterote[5], 0f), rotonormal, new Vector2(1f, 0f), rotofield, rotocolor), new MeshVertex(new Vector3(roterote[6], roterote[7], 0f), rotonormal, new Vector2(0f, 0f), rotofield, rotocolor));
+			return;
+		}
 	}
+
+	public static void My_Method_1829(Sim sim_self, enum_127 param_5366)
+	{
+		//
+		if (param_5366 == 0) return;
+
+		var sim_dyn = new DynamicData(sim_self);
+		var SEB = sim_dyn.Get<SolutionEditorBase>("field_3818");
+		var solution = SEB.method_502();
+		var partList = solution.field_3919;
+
+		var partSimStates = sim_dyn.Get<Dictionary<Part, PartSimState>>("field_3821");
+		var moleculeList = sim_dyn.Get<List<Molecule>>("field_3823");
+
+		var moleculesToCheck = new Dictionary<Molecule,int>();
+		foreach (var part in partList)
+		{
+			//
+			InstructionType instructionType = sim_self.method_1820().method_852(sim_self.method_1818(), part, out Maybe<int> _);
+			if (instructionType.field_2548 == (enum_144)2 /*rotate*/ || instructionType.field_2548 == (enum_144)3 /*pivot*/)
+			{
+				//
+				foreach (Part gripper in part.method_1181())
+				{
+					PartSimState partSimState = partSimStates[gripper];
+					if (partSimState.field_2729.method_1085())
+					{
+						var mol = partSimState.field_2729.method_1087();
+						foreach (var kvp in mol.method_1100())
+						{
+							var atom = kvp.Value;
+							if (BalAtoms.Contains(atom.field_2275))
+							{
+								int rotation = instructionType.field_2549 ? 5 : 1 /* == -1 mod 6*/;
+								if (!moleculesToCheck.ContainsKey(mol))
+								{
+									moleculesToCheck.Add(mol, rotation);
+								}
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		foreach (var kvp in moleculesToCheck)
+		{
+			var mol = kvp.Key;
+			var rotation = kvp.Value;
+			foreach (var kvp1 in mol.method_1100())
+			{
+				var atom = kvp1.Value;
+				if (BalAtoms.Contains(atom.field_2275))
+				{
+					int newRotation = BalAtomsReverse[atom.field_2275] + rotation;
+					atom.field_2275 = BalAtoms[newRotation % 6];
+				}
+			}
+		}
+
+		sim_dyn.Set("field_3821", partSimStates);
+		sim_dyn.Set("field_3823", moleculeList);
+	}
+	private delegate void orig_Sim_method_1829(Sim self, enum_127 param_5366); //part instruction code
+	private static void OnSimMethod1829(orig_Sim_method_1829 orig, Sim sim_self, enum_127 param_5366)
+	{
+		My_Method_1829(sim_self, param_5366);
+		orig(sim_self, param_5366);
+	}
+
+	//private static void my_method_1835(IL.Sim.method_1385 orig){}
 
 	public static bool IsAndGetPTableAtom(AtomType WhatAtom, out int AtomIndex) {
 		for (int i = 0; i < 118; i++)
@@ -1254,6 +1447,7 @@ public static class Atoms
 
 	public static void Unload()
 	{
+		hook_Sim_method_1829.Dispose();
 		On.Editor.method_927 -= ReplaceTeAtoms;
 	}
 }

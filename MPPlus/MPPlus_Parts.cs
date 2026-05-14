@@ -48,7 +48,7 @@ public static class Parts
 	//marker parts
 	public static PartType ZenaMarker, TricMarker, WordexisMarker;
 	//cheater parts
-	public static PartType QuintessenceFabricator, AbominationFabricator;
+	public static PartType QuintessenceFabricator, AbominationFabricator, BalLauncher;
 	//season 1 parts
 	public static PartType Cardinalification, Liquidation, Gerioification, Metallification, Demetallification;
 	//season 2 parts
@@ -117,7 +117,11 @@ public static class Parts
 	public static readonly Texture ZenaMarkerBase = class_235.method_615("magical_parcher_plus/textures/parts/markers/zena");
 	public static readonly Texture TricMarkerBase = class_235.method_615("magical_parcher_plus/textures/parts/markers/tric");
 	public static readonly Texture WordexisMarkerBase = class_235.method_615("magical_parcher_plus/textures/parts/markers/wordexis");
+	public static readonly Texture BalMarkerBase = class_235.method_615("magical_parcher_plus/textures/parts/markers/bal");
 	public static readonly Texture[] disposalFlashAnimation = class_238.field_1989.field_90.field_240;
+
+	private static IDetour hook_Sim_method_1828;
+	private delegate void orig_Sim_method_1828(Sim sim); //code that runs every cycle but before parts are processed
 
 	internal static FieldInfo PrivateField<T>(string field) => typeof(T).GetField(field, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
 	internal static FieldInfo PrivateField(Type T, string field) => T.GetField(field, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
@@ -1079,6 +1083,45 @@ public static class Parts
 		QApi.AddPartTypeToPanel(BaronWheelPlus, PartTypes.field_1771);
 		
 		////////////////////////////////////////////////////////////////////////////////
+		//cheaters
+		
+		BalLauncher = new(){
+			field_1528 = "magical-parcher-plus-ballauncher",
+			field_1529 = class_134.method_253("Bal Launcher", string.Empty),
+			field_1530 = class_134.method_253("Launches Bal at specified direction.", string.Empty),
+			field_1531 = 0, // Cost
+			field_1539 = true, // Is a glyph (?)
+			field_1549 = class_238.field_1989.field_97.field_382, // Shadow/glow
+			field_1550 = class_238.field_1989.field_97.field_383, // Stroke/outline
+			field_1546 = false,
+			field_1547 = WordexisMarkerBase, // Panel icon
+			field_1548 = WordexisMarkerBase, // Hovered panel icon
+			field_1540 = new HexIndex[]{
+				new(0, 0)
+			}, // Spaces used
+			field_1536 = true,
+			field_1551 = Permissions.None,
+			CustomPermissionCheck = perms => (perms.Contains("magicalparcherplus:ballauncher")||BypassPartRules)
+		};
+
+		QApi.AddPartType(BalLauncher, (part, pos, editor, renderer) => {
+			class_256 markerbase = class_238.field_1989.field_90.field_185;
+			Vector2 markeroffset = (markerbase.field_2056.ToVector2() / 2).Rounded() + new Vector2(0f, 1f);
+			renderer.method_521(markerbase, markeroffset);
+			renderer.method_528(class_238.field_1989.field_90.field_187, new HexIndex(0, 0), Vector2.Zero);
+			renderer.method_521(BalMarkerBase, markeroffset);
+			if (editor.method_503() == enum_128.Stopped)
+			{
+				Molecule Bal = Molecule.method_1121(Atoms.BalAtoms[(part.method_1163().GetNumberOfTurns()%6+6)%6]);
+				Editor.method_925(Bal, pos, -part.method_1161(), 0f, 1f, 1f, 1f, false, null);
+			}
+		});
+		QApi.AddPartTypeToPanel(BalLauncher, PartTypes.field_1775);
+		
+		QApi.AddPuzzlePermission("magicalparcherplus:ballauncher", "Bal Launcher", "Magical Parcher+");
+
+		////////////////////////////////////////////////////////////////////////////////
+		//markers
 
 		ZenaMarker = new(){
 			field_1528 = "magical-parcher-plus-zenamarker",
@@ -1692,13 +1735,17 @@ public static class Parts
 						}
 						if (Flexibility.checkTriplexCondition(leftAtom.field_2280,rightAtom.field_2280) || Flexibility.checkTriplexCondition(rightAtom.field_2280,leftAtom.field_2280))
 						{
+							Molecule wannawanna;
 							if (leftAtom.field_2277 != rightAtom.field_2277){
 								sim.field_3823.Remove(leftAtom.field_2277);
 								sim.field_3823.Remove(rightAtom.field_2277);
-								sim.field_3823.Add(leftAtom.field_2277.method_1119(rightAtom.field_2277));
+								wannawanna = leftAtom.field_2277.method_1119(rightAtom.field_2277);
+								sim.field_3823.Add(wannawanna);
+							} else {
+								wannawanna = leftAtom.field_2277;
 							}
 							BondEffect bondEffect = new BondEffect(sim.field_3818, (enum_7)1, bonder.field_1922.method_779().field_1817, 60f, bonder.field_1922.method_779().field_1818);
-							if (leftAtom.field_2277.method_1112(bonder.field_1922.method_779().field_1814, part.method_1184(bonder.field_1920), part.method_1184(bonder.field_1921), bondEffect))
+							if (wannawanna.method_1112(bonder.field_1922.method_779().field_1814, part.method_1184(bonder.field_1920), part.method_1184(bonder.field_1921), bondEffect))
 								YOUARENOTAPRIVATEEYENOWPLAYSOUND(bonder.field_1922.method_779().field_1820);
 						}
 					}
@@ -1981,6 +2028,29 @@ public static class Parts
 				}
 			}
 		});
+		hook_Sim_method_1828 = new Hook(PrivateMethod<Sim>("method_1828"), OnSimMethod1828_SpawnBal);
+	}
+
+	private static void OnSimMethod1828_SpawnBal(orig_Sim_method_1828 orig, Sim sim)
+	{
+		orig(sim);
+		if (sim.method_1818() == 0)//run once at the start of simulation, before arms execute grabs
+		{
+			var partDict = sim.field_3821;
+			var molecules = sim.field_3823;
+
+			foreach (var part in partDict.Keys)
+			{
+				var partType = part.method_1159();
+				if (partType == BalLauncher)
+				{
+					var atomType = Atoms.BalAtoms[(part.method_1163().GetNumberOfTurns()%6+6)%6];
+					var scaffold = new Molecule();
+					scaffold.method_1105(new Atom(atomType), part.method_1184(new HexIndex(0, 0)));
+					molecules.Add(scaffold);
+				}
+			}
+		}
 	}
 
 	public static void Unload() { }

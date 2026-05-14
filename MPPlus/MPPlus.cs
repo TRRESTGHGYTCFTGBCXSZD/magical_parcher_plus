@@ -122,6 +122,10 @@ public class MagicalParcherPlus : QuintessentialMod
 			Logger.Log("[MP+] Detected Neuvolics, Adding Iridium");
 			MPPlusExtensions.AddNeuvolics();
 		}
+		if (QuintessentialLoader.CodeMods.Any(mod => mod.Meta.Name == "TrueAnimismus"))
+		{
+			Logger.Log("[MP+] Detected True Animismus");
+		}
 		AirWave.AddNewContent();
 		Atoms.AddNewContent();
 		Parts.AddNewContent();
@@ -132,6 +136,10 @@ public class MagicalParcherPlus : QuintessentialMod
 		if (QuintessentialLoader.CodeMods.Any(mod => mod.Meta.Name == "MetalQuintessence"))
 		{
 			MPPlusExtensions.AddMetalQuintessenceLater();
+		}
+		if (QuintessentialLoader.CodeMods.Any(mod => mod.Meta.Name == "TrueAnimismus"))
+		{
+			MPPlusExtensions.AddTrueAnimismusLater();
 		}
 		//On.MoleculeEditorScreen.method_50 += AddElementsToMoleculeEditor;
 	}

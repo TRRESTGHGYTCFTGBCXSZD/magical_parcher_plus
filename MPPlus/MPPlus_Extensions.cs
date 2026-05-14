@@ -58,6 +58,9 @@ internal class MPPlusExtensions
 	public static void AddAlchemicalInversions() {
 		Atoms.PTableAtoms[38] = AlchemicalInversions.Atoms.Yttrium;
 		Atoms.PTableIgnore[38] = true;
+		Dictionary<AtomType,int> wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(AlchemicalInversions.Atoms.Tenebrivex,2);
+		Flexibility.AntiAnimismusRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AtomTypes.field_1675, AtomTypes.field_1675 }));
 	}
 	public static void AddNeuvolics() {
 		Atoms.PTableAtoms[76] = Neuvolics.Atoms.Iridium;
@@ -66,6 +69,62 @@ internal class MPPlusExtensions
 	public static void AddVacancy_ExtHalvingMetallurgy() {
 		Flexibility.addMetallificationRule(HalvingMetallurgy.Atoms.Quicklime,Vaca.MainClass.VacaAtom);
 		Flexibility.addDemetallificationRule(Vaca.MainClass.VacaAtom,HalvingMetallurgy.Atoms.Quicklime);
+	}
+	public static void AddTrueAnimismusLater() {
+		Dictionary<AtomType,int> wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(TrueAnimismus.ModdedAtoms.TrueVitae,1);
+		wanafo.Add(Atoms.AntiVitae,1);
+		Flexibility.DepolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AtomTypes.field_1687, AtomTypes.field_1687 }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(TrueAnimismus.ModdedAtoms.RedVitae,1);
+		wanafo.Add(AtomTypes.field_1675,1);
+		Flexibility.DepolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AtomTypes.field_1687, AtomTypes.field_1687 }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(TrueAnimismus.ModdedAtoms.TrueVitae,1);
+		wanafo.Add(AtomTypes.field_1687,1);
+		Flexibility.DepolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { TrueAnimismus.ModdedAtoms.RedVitae, TrueAnimismus.ModdedAtoms.RedVitae }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(TrueAnimismus.ModdedAtoms.TrueMors,1);
+		wanafo.Add(Atoms.AntiMors,1);
+		Flexibility.DepolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AtomTypes.field_1688, AtomTypes.field_1688 }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(TrueAnimismus.ModdedAtoms.GreyMors,1);
+		wanafo.Add(AtomTypes.field_1675,1);
+		Flexibility.DepolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AtomTypes.field_1688, AtomTypes.field_1688 }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(TrueAnimismus.ModdedAtoms.TrueMors,1);
+		wanafo.Add(AtomTypes.field_1688,1);
+		Flexibility.DepolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { TrueAnimismus.ModdedAtoms.GreyMors, TrueAnimismus.ModdedAtoms.GreyMors }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(AtomTypes.field_1687,2);
+		Flexibility.PolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { TrueAnimismus.ModdedAtoms.RedVitae, AtomTypes.field_1675 }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(TrueAnimismus.ModdedAtoms.RedVitae,1);
+		wanafo.Add(AtomTypes.field_1687,1);
+		Flexibility.PolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { TrueAnimismus.ModdedAtoms.TrueVitae, AtomTypes.field_1675 }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(AtomTypes.field_1688,2);
+		Flexibility.PolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AtomTypes.field_1675, TrueAnimismus.ModdedAtoms.GreyMors }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(TrueAnimismus.ModdedAtoms.GreyMors,1);
+		wanafo.Add(AtomTypes.field_1688,1);
+		Flexibility.PolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AtomTypes.field_1675, TrueAnimismus.ModdedAtoms.TrueMors }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(TrueAnimismus.ModdedAtoms.TrueVitae,1);
+		wanafo.Add(Atoms.AntiVitae,1);
+		Flexibility.PolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { TrueAnimismus.ModdedAtoms.RedVitae, AtomTypes.field_1675 }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(TrueAnimismus.ModdedAtoms.RedVitae,1);
+		wanafo.Add(Atoms.AntiVitae,1);
+		Flexibility.PolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AtomTypes.field_1687, AtomTypes.field_1675 }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(TrueAnimismus.ModdedAtoms.TrueMors,1);
+		wanafo.Add(Atoms.AntiMors,1);
+		Flexibility.PolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AtomTypes.field_1675, TrueAnimismus.ModdedAtoms.GreyMors }));
+		wanafo = new Dictionary<AtomType,int>();
+		wanafo.Add(TrueAnimismus.ModdedAtoms.GreyMors,1);
+		wanafo.Add(Atoms.AntiMors,1);
+		Flexibility.PolarizerRecipes.Add(new UnshapedRecipe(wanafo,new AtomType[2] { AtomTypes.field_1675, AtomTypes.field_1688 }));
 	}
 	public static void AddTrueAnimismus_ExtAlchemicalInversions() {
 		Dictionary<AtomType,int> wanafo = new Dictionary<AtomType,int>();
